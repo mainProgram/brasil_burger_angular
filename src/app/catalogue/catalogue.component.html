@@ -1,0 +1,11 @@
+<div class="container mt-3">
+    <h5 class="my-3">Menus</h5>
+    <div class="row row-cols-1 row-cols-md-5 d-flex justify-content-between">
+        <app-card *ngFor = "let produit of menus" [produit]="produit"></app-card>
+    </div>
+
+    <h4 class="my-3">Burgers</h4>
+    <div class="row row-cols-1 row-cols-md-5  d-flex justify-content-between">
+        <app-card *ngFor = "let produit of burgers" [produit]="produit"></app-card>
+    </div>
+</div>

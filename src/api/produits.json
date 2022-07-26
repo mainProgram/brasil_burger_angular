@@ -1,0 +1,55 @@
+{
+    "burgers":
+    [
+        {
+            "id":1,
+            "nom" : "Burger 1",
+            "prix": 2000,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=999&q=80"
+        },
+        {
+            "id":2,
+            "nom" : "Burger 2",
+            "prix": 3000,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=999&q=80"
+        },
+        {
+            "id":3,
+            "nom" : "Burger 3",
+            "prix": 4000,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=999&q=80"
+        },
+        {
+            "id":4,
+            "nom" : "Burger 4",
+            "prix": 1000,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=999&q=80"
+        }
+    ],
+    "menus":[
+        {
+            "id":5,
+            "nom" : "Menu 1",
+            "prix": 5000,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=999&q=80"
+        },
+        {
+            "id":6,
+            "nom" : "Menu 2",
+            "prix": 6000,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=999&q=80"
+        },
+        {
+            "id":7,
+            "nom" : "Menu 3",
+            "prix": 6500,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=999&q=80"
+        },
+        {
+            "id":8,
+            "nom" : "Menu 4",
+            "prix": 8000,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=999&q=80"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+.detail{
+    cursor: pointer;
+    &:hover{ 
+        a{
+            color: #fff;
+        }
+    }
+}
+
+.monlien{
+    text-decoration: none;
+    font-size: 14px;
+    color: rgb(29, 27, 27);
+    &:hover{ color: #fff;}
+}
