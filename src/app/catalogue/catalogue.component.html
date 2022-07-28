@@ -1,11 +1,18 @@
-<div class="container mt-3">
-    <h5 class="my-3">Menus</h5>
-    <div class="row row-cols-1 row-cols-md-5 d-flex justify-content-between">
-        <app-card *ngFor = "let produit of menus" [produit]="produit"></app-card>
+<!-- <app-header [receiveInfo] = "receive"></app-header> -->
+
+<div class="container d-flex justify-content-center align-items-center" *ngIf="!isLoaded">
+    <img src="" alt="" srcset="">
+    <p>Spinner</p>
+</div>
+
+<div class="container mt-3" *ngIf="isLoaded">
+    <h4 class="my-3">Burgers</h4>
+    <div class="row row-cols-1 row-cols-md-5  d-flex">
+        <app-card *ngFor = "let produit of burgers" [produit]="produit" (produitPanier) = "receiveAddCart($event)" ></app-card>
     </div>
 
-    <h4 class="my-3">Burgers</h4>
-    <div class="row row-cols-1 row-cols-md-5  d-flex justify-content-between">
-        <app-card *ngFor = "let produit of burgers" [produit]="produit"></app-card>
+    <h4 class="my-3">Menus</h4>
+    <div class="row row-cols-1 row-cols-md-5 d-flex">
+        <app-card *ngFor = "let produit of menus" [produit]="produit" (produitPanier) = "receiveAddCart($event)"></app-card>
     </div>
 </div>

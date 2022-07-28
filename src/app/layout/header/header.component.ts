@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PanierService } from 'src/app/service/panier.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private panierService: PanierService) { }
 
-  ngOnInit(): void {
+  taillePanier: number = 0
+
+  ngOnInit(): void 
+  {
+    this.panierService.getPanier().subscribe(
+      resultat => {
+        this.taillePanier = resultat.length
+      }
+    )
   }
+
 
 }

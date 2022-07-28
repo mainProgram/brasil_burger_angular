@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IProduit } from 'src/app/interface/produit';
 import { CatalogueService } from 'src/app/service/catalogue-service';
 
 @Component({
@@ -9,9 +10,9 @@ import { CatalogueService } from 'src/app/service/catalogue-service';
 })
 export class CatalogueDetailComponent implements OnInit {
 
-    public menus:any = [];
-    public burgers:any = [];
-    public produit = 0;
+    public menus:IProduit[] = [];
+    public burgers:IProduit[] = [];
+    public produit : IProduit;
 
     constructor(private route: ActivatedRoute, private catalogueService: CatalogueService, private retour:Router) { }
 
@@ -24,11 +25,15 @@ export class CatalogueDetailComponent implements OnInit {
               this.menus = c.menus
               this.burgers = c.burgers
 
+              this.produit = this.catalogueService.getById(id, this.burgers);
+              if(this.produit === undefined)
+                  this.produit = this.catalogueService.getById(id, this.menus);
 
-              this.produit = this.menus.find(p => p.id === id)
-
-              if(this.produit==0 || this.produit == undefined)
-                  this.produit = this.burgers.find(p => p.id === id)
+              this.menus.forEach(element => {
+                
+                // console.log(element.frites)
+                (element.frites).forEach(el =>console.log(el.quantite))
+              });
 
               if(this.produit === undefined)
                 this.retour.navigate(["/catalogue"]);

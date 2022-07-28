@@ -13,3 +13,30 @@
     color: rgb(29, 27, 27);
     &:hover{ color: #fff;}
 }
+
+img{
+    height: 200px;
+    width: 200px;
+}
+
+.plusOne{
+    visibility: hidden;
+    position: absolute;
+    bottom: 48px;
+    left: 90px;
+}
+
+.plusOne.show{
+    visibility: visible;
+    background-color: #E89448;
+    animation-name: disappear;
+    animation-duration: 1s;
+}
+
+@keyframes disappear {
+    0%   { opacity: 1;  }
+    25%  { opacity: .8; }
+    50%  { opacity: .6; }
+    75%  { opacity: .4; }
+    100% { opacity: 0;  }
+}

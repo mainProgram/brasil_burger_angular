@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { CardComponent } from './catalogue/card/card.component';
 import { HttpClientModule } from "@angular/common/http";
 import { CatalogueDetailComponent } from './catalogue/catalogue-detail/catalogue-detail.component';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CatalogueDetailComponent } from './catalogue/catalogue-detail/catalogue
     CatalogueComponent,
     NotFoundComponent,
     CardComponent,
-    CatalogueDetailComponent
+    CatalogueDetailComponent,
+    PanierComponent
   ],
   imports: [
     RouterModule,

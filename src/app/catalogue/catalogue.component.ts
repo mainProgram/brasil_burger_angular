@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ICatalogue } from '../interface/catalogue';
+import { Component, Input, OnInit } from '@angular/core';
 import { CatalogueService } from '../service/catalogue-service';
+
 
 @Component({
   selector: 'app-catalogue',
@@ -15,18 +15,31 @@ export class CatalogueComponent implements OnInit
     public burgers: any = [];
 
     public errorMsg = "";
+    public isLoaded: boolean;
+
+    @Input()
+    public receive : number = 0
 
     constructor(private catalogueService : CatalogueService) { }
 
     ngOnInit(): void 
     {
-        this.catalogueService.getProduits().subscribe({
-            next: c => {
-                this.menus = c.menus
-                this.burgers = c.burgers
-            },
-            error: err => this.errorMsg = err
-        });
+        setTimeout(()=> {
+            this.isLoaded = true
+            this.catalogueService.getProduits().subscribe({
+                next: c => {
+                    this.menus = c.menus
+                    this.burgers = c.burgers
+                },
+                error: err => this.errorMsg = err
+            });
+        },1000);
+
+    }
+
+    public receiveAddCart(message){
+        if(JSON.parse(localStorage.getItem("panier")))
+        return this.receive = (JSON.parse(localStorage.getItem("panier"))).length
     }
 
 }

@@ -4,5 +4,5 @@ export interface ICatalogue
 {
     menus: IProduit[],
 
-    prix: IProduit[]
+    burgers: IProduit[]
 }

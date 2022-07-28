@@ -1,1 +1,40 @@
-<p>catalogue-detail works!</p>
+<div class="container d-flex my-5 flex-column" style="width:75%;">
+    <div class="d-flex">
+        <div class="description" style="width: 50%; margin-left: 20px;">
+            <h3>{{produit.nom}}</h3>
+            <h6>Prix: {{produit.prix}} FCFA</h6>
+            <hr>
+            <h5 *ngIf ="produit.burgers || produit.detail != ''">Description</h5>
+            <p *ngIf ="produit.detail != ''">{{ produit.detail }}</p>
+
+            <h6 *ngIf = "produit.burgers">Burgers</h6>
+            <ul *ngIf = "produit.burgers">
+                <li *ngFor="let burgers of produit.burgers">{{ burgers["quantite"]}} {{ burgers["burger"]["nom"]}}</li>
+            </ul>
+
+            <h6 *ngIf = "produit.frites">Frites</h6>
+            <ul *ngIf = "produit.frites">
+                <li *ngFor="let frites of produit.frites">{{ frites["quantite"]}} {{ frites["frite"]["nom"]}}</li>
+            </ul>
+
+            <h6 *ngIf = "produit.tailles">Boissons</h6>
+            <ul *ngIf = "produit.tailles">
+                <li *ngFor="let tailles of produit.tailles">{{ tailles["quantite"]}} {{ tailles["taille"]["nom"]}}</li>
+            </ul>
+
+            <div class="d-flex align-items-center detail btn btn-outline-dark p-1 w-50 justify-content-center">   
+                <a class="monlien">Ajouter au panier</a>
+                <span class="material-icons" style="font-size:18px; margin-left: 5px;">add_shopping_cart</span>
+            </div>    
+        </div>
+        
+        <div class="image">
+            <img src="{{'data:image/jpg;base64,' + produit.image }}" alt="" style="width: 400px;">
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center detail btn btn-outline-dark p-1 w-25 justify-content-center  align-self-end" [routerLink]="['/catalogue']">   
+        <a class="monlien">Retour au catalogue</a>
+        <span class="material-icons" style="font-size:18px;">keyboard_arrow_right</span>
+    </div>  
+</div>
