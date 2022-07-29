@@ -1,0 +1,90 @@
+{
+	"pm": [
+		{
+			"id": 1,
+			"prix": 500,
+			"quantiteStock": 5,
+			"taille": {
+				"nom": "PM"
+			},
+			"boisson": {
+				"nom": "Sprite",
+                "image": "../assets/boissons/sprite.png"
+			}
+		},
+		{
+			"id": 2,
+			"prix": 500,
+			"quantiteStock": 4,
+			"taille": {
+				"nom": "PM"
+			},
+			"boisson": {
+				"nom": "Coca",
+                "image": "../assets/boissons/cooca.jpg"
+			}
+		},
+		{
+			"id": 3,
+			"prix": 500,
+			"quantiteStock": 6,
+			"taille": {
+				"nom": "PM"
+			},
+			"boisson": {
+				"nom": "coca cherry",
+                "image": "../assets/boissons/coca_cherry2.png"
+			}
+		}
+	],
+	"gm": [
+		{
+			"id": 4,
+			"prix": 1000,
+			"quantiteStock": 6,
+			"taille": {
+				"nom": "GM"
+			},
+			"boisson": {
+				"nom": "Coca",
+                "image": "../assets/boissons/cooca.jpg"
+			}
+		},
+		{
+			"id": 5,
+			"prix": 1000,
+			"quantiteStock": 9,
+			"taille": {
+				"nom": "GM"
+			},
+			"boisson": {
+				"nom": "Sprite",
+                "image": "../assets/boissons/sprite.png"
+			}
+		},
+		{
+			"id": 7,
+			"prix": 1000,
+			"quantiteStock": 5,
+			"taille": {
+				"nom": "GM"
+			},
+			"boisson": {
+				"nom": "Pepsi",
+                "image": "../assets/boissons/Pepsi.jpg"
+			}
+		},
+		{
+			"id": 8,
+			"prix": 1000,
+			"quantiteStock": 2,
+			"taille": {
+				"nom": "GM"
+			},
+			"boisson": {
+				"nom": "coca cherry",
+                "image": "../assets/boissons/coca_cherry2.png"
+			}
+		}
+	]
+}

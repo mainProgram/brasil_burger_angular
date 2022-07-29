@@ -11,8 +11,8 @@ import { IProduit } from "../interface/produit";
 
 export class CatalogueService
 {
-    // private readonly CATALOGUE_URL = "api/produits.json";
-    private readonly CATALOGUE_URL = "https://127.0.0.1:8000/api/catalogue";
+    private readonly CATALOGUE_URL = "api/produits.json";
+    // private readonly CATALOGUE_URL = "https://127.0.0.1:8000/api/catalogue";
 
     constructor(private http:HttpClient){}
 
@@ -42,7 +42,7 @@ export class CatalogueService
     {
         return this.http.get<ICatalogue>(this.CATALOGUE_URL).pipe(
             // map(p => p?.burgers),
-            tap(produits => console.log(produits)),
+            // tap(produits => console.log(produits)),
             catchError(this.handleError)
         );
     }

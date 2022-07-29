@@ -1,12 +1,14 @@
 <div class="col my-3" id="{{ produit.id }}">
     <div class="card" >
-        <img src="{{'data:image/jpg;base64,' + produit.image }}" class="card-img-top" alt="...">
+        <!-- <img src="{{'data:image/jpg;base64,' + produit.image }}" class="card-img-top" alt="..."> -->
+        <img src="{{produit.image }}" class="card-img-top" alt="...">
         <div class="card-body">
             <h6 class="card-title">{{ produit.nom }}</h6>
             <p class="card-text">{{ produit.prix }} FCFA</p>
             <div class="d-flex justify-content-between align-items-end">
                 <span class="badge text-dark plusOne">+1</span>  
-                <div class="d-flex align-items-center detail btn btn-outline-dark p-1" (click)="addToCart(produit)"> 
+                
+                <div class="d-flex align-items-center detail btn btn-outline-dark p-1 {{disable}}" (click)="addToCart(produit)"> 
                     <a class="monlien">Ajouter</a>
                     <span class="material-icons" style="font-size:18px; margin-left: 5px;">add_shopping_cart</span>
                 </div>

@@ -17,6 +17,8 @@ export class CatalogueComponent implements OnInit
     public errorMsg = "";
     public isLoaded: boolean;
 
+    public hidden = "rm"
+
     @Input()
     public receive : number = 0
 

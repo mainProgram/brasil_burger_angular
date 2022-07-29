@@ -33,9 +33,15 @@ export class PanierComponent implements OnInit {
   public prixTotal = 0
 
   public delete(produit:IProduit) {
-    console.log(2)
     this.panierService.remove(produit)
   }
   
+  public plusOuMoins(element:IProduit, val:number)
+  {
+    this.panierService.plusOuMoins(element, val)
+  }
 
+  public updatePanier(){
+    alert("hi")
+  }
 }

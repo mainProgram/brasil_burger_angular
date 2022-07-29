@@ -15,6 +15,9 @@ export class CardComponent implements OnInit {
 
   public static tabPanier : IProduit[] = [];
 
+  @Input()
+  disable?: string
+
   @Output()
   public produitPanier: EventEmitter<number> = new EventEmitter<number>;
 

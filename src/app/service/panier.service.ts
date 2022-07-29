@@ -78,6 +78,34 @@ export class PanierService
       }})).subscribe()
   }
   
+
+  plusOuMoins(produit: IProduit, val:number){
+
+    this.achats.pipe(
+      take(1),
+
+      map((produits: IProduit[]) => {
+          
+        let tab = JSON.parse(localStorage.getItem("panier"));
+
+          if(tab){
+            let found = tab.find(param => param.id == produit.id)
+            if(found)
+            {
+                produits.forEach(p => {
+                  if(p.id == produit.id)
+                    (val == 1) ? p.quantite++  : p.quantite--;
+                })
+            }
+          }
+
+        this.mesAchatSubject.next(produits);
+        localStorage.setItem("panier", JSON.stringify(produits));
+      })
+    ).subscribe();
+  }
+
+
   // getAchats() {
   //   return this.achats;
   // }

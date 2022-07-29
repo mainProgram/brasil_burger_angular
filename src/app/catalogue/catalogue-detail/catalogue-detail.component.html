@@ -22,14 +22,16 @@
                 <li *ngFor="let tailles of produit.tailles">{{ tailles["quantite"]}} {{ tailles["taille"]["nom"]}}</li>
             </ul>
 
-            <div class="d-flex align-items-center detail btn btn-outline-dark p-1 w-50 justify-content-center">   
-                <a class="monlien">Ajouter au panier</a>
+            <div class="d-flex align-items-center p-1 w-50 justify-content-center {{ produit.burgers === undefined ?  'btn btn-outline-dark detail' : 'disabled' }} " id="addToPanier" (click)="addToCart(produit)">   
+                <a class="monlien" >Ajouter au panier</a>
+                <p class="d-none">Choisir les boissons d'abord !</p>
                 <span class="material-icons" style="font-size:18px; margin-left: 5px;">add_shopping_cart</span>
             </div>    
         </div>
-        
+
         <div class="image">
-            <img src="{{'data:image/jpg;base64,' + produit.image }}" alt="" style="width: 400px;">
+            <img src="{{ produit.image }}" alt="" style="width: 400px;">
+            <!-- <img src="{{'data:image/jpg;base64,' + produit.image }}" alt="" style="width: 400px;"> -->
         </div>
     </div>
 
@@ -38,3 +40,30 @@
         <span class="material-icons" style="font-size:18px;">keyboard_arrow_right</span>
     </div>  
 </div>
+
+<div class="container my-5" style="width:75%;" *ngIf="produit.tailles">
+    <div *ngIf="!taillepmvide" class="mb-5">
+        <b><p >Choix boisson(s) PM</p></b>
+        <div class="d-flex" style="overflow-x: auto; ">        
+            <div  *ngFor="let boisson of pm" class="d-flex flex-column align-items-center justify-content-around m-1" style="width:200px;">
+                <img src="{{boisson.boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
+               <div class="d-flex justify-content-around w-50">
+                    <input type="checkbox" value="{{ boisson.id}}" name="choixPM[]" (change)="tryme(taillePM, tailleGM)">
+                    <input type="number" style="width: 45px; " min="0" max="{{ taillePM}}"  name="qtePM[]"  (input)="tryme(taillePM, tailleGM)" value="0">
+               </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!taillegmvide" >
+        <b><p >Choix boisson(s) GM</p></b>
+        <div class="d-flex" style="overflow-x: auto; ">        
+            <div  *ngFor="let boisson of gm" class="d-flex flex-column align-items-center justify-content-around m-1" style="width:200px;">
+                <img src="{{boisson.boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
+               <div class="d-flex justify-content-around w-50">
+                    <input type="checkbox" value="{{ boisson.id}}" name="choixGM[]" (change)="tryme(taillePM, tailleGM)">
+                    <input type="number" style="width: 45px; " min="0" max="{{ tailleGM}}"  name="qteGM[]"  (input)="tryme(taillePM, tailleGM)" value="0">
+               </div>
+            </div>
+        </div>
+    </div>
+</div> 

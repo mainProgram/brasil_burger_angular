@@ -7,7 +7,12 @@
         </div>
         <span [routerLink]="['/catalogue']">Continuer mes achats ></span>
     </div> -->
-    <div class="d-flex align-items-start justify-content-between">
+    <div *ngIf="elements.length == 0" class="d-flex">
+        <h3 class="text-danger">Votre panier est vide !</h3>
+        <a [routerLink] = "['/catalogue']" class="btn btn-outline-dark mx-5">Catalogue > </a>
+    </div>
+
+    <div class="d-flex align-items-start justify-content-between" *ngIf="elements.length > 0">
         <table class="table table-hover" style="width:70%;">
             <thead style="padding: 40px;">
                 <tr>
@@ -20,13 +25,14 @@
             </thead>
             <tbody>
                 <tr *ngFor = "let element of elements">
-                    <td colspan="2"><img src="{{'data:image/jpg;base64,' + element.image }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ element.nom }}</span></td>
+                    <td colspan="2"><img src="{{ element.image }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ element.nom }}</span></td>
+                    <!-- <td colspan="2"><img src="{{'data:image/jpg;base64,' + element.image }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ element.nom }}</span></td> -->
                     <td>{{ element.prix }}</td>
                     <td>
-                        <div>
-                            <span class="badge bg-dark px-1 py-0" style="margin-right: 5px;">+</span>
-                            <span class="text-dark quantite">{{element.quantite}}</span>
-                            <span class="badge bg-dark px-1 py-0" style=" margin-left: 5px;">-</span>
+                        <div id="{{element.id}}">
+                            <span class="badge bg-dark px-1 py-0" style="margin-right: 5px;" (click)="plusOuMoins(element, 1)">+</span>
+                            <span class="text-dark quantite" >{{element.quantite}}</span>
+                            <span class="badge bg-dark px-1 py-0" style=" margin-left: 5px;" (click)="plusOuMoins(element, 0)" >-</span>
                         </div>
                     </td>
                     <td>{{ element.quantite  * element.prix}} FCFA</td>
