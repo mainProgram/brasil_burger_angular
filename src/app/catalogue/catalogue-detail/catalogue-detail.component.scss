@@ -30,3 +30,31 @@
         }
     }
 }
+
+#addToPanier{
+    position: relative;
+}
+
+
+.plusOne{
+    visibility: hidden;
+    position: absolute;
+    top: -18px;
+    left: 230px;
+}
+
+.plusOne.show{
+    visibility: visible;
+    background-color: #E89448;
+    animation-name: disappear;
+    animation-duration: 1s;
+}
+
+@keyframes disappear {
+    0%   { opacity: 1;  }
+    25%  { opacity: .8; }
+    50%  { opacity: .6; }
+    75%  { opacity: .4; }
+    100% { opacity: 0;  }
+}
+

@@ -4,37 +4,43 @@
 			"id": 1,
 			"prix": 500,
 			"quantiteStock": 5,
+			"image": "../assets/boissons/sprite_pm.jpg",
 			"taille": {
 				"nom": "PM"
 			},
 			"boisson": {
 				"nom": "Sprite",
                 "image": "../assets/boissons/sprite.png"
-			}
+			},
+			"nom": "Sprite PM"
 		},
 		{
 			"id": 2,
 			"prix": 500,
 			"quantiteStock": 4,
+			"image": "../assets/boissons/coca_pm.jpg",
 			"taille": {
 				"nom": "PM"
 			},
 			"boisson": {
 				"nom": "Coca",
                 "image": "../assets/boissons/cooca.jpg"
-			}
+			},
+			"nom": "Coca PM"
 		},
 		{
 			"id": 3,
 			"prix": 500,
 			"quantiteStock": 6,
+			"image": "../assets/boissons/coca_cherry_canette.jpg",
 			"taille": {
 				"nom": "PM"
 			},
 			"boisson": {
 				"nom": "coca cherry",
                 "image": "../assets/boissons/coca_cherry2.png"
-			}
+			},
+			"nom": "Coca cherry PM"
 		}
 	],
 	"gm": [
@@ -42,49 +48,77 @@
 			"id": 4,
 			"prix": 1000,
 			"quantiteStock": 6,
+			"image": "../assets/boissons/coca_gm.png",
 			"taille": {
 				"nom": "GM"
 			},
 			"boisson": {
 				"nom": "Coca",
                 "image": "../assets/boissons/cooca.jpg"
-			}
+			},
+			"nom": "Coca GM"
 		},
 		{
 			"id": 5,
 			"prix": 1000,
 			"quantiteStock": 9,
+			"image": "../assets/boissons/sprite_GM.png",
 			"taille": {
 				"nom": "GM"
 			},
 			"boisson": {
 				"nom": "Sprite",
                 "image": "../assets/boissons/sprite.png"
-			}
+			},
+			"nom": "Sprite GM"
 		},
 		{
 			"id": 7,
 			"prix": 1000,
 			"quantiteStock": 5,
+			"image": "../assets/boissons/pepsi_gm.png",
 			"taille": {
 				"nom": "GM"
 			},
 			"boisson": {
 				"nom": "Pepsi",
                 "image": "../assets/boissons/Pepsi.jpg"
-			}
+			},
+			"nom": "Pepsi GM"
 		},
 		{
 			"id": 8,
 			"prix": 1000,
 			"quantiteStock": 2,
+			"image": "../assets/boissons/coca_cherry_gm.jpg",
 			"taille": {
 				"nom": "GM"
 			},
 			"boisson": {
 				"nom": "coca cherry",
                 "image": "../assets/boissons/coca_cherry2.png"
-			}
+			},
+			"nom": "Coca cherry GM"
+		}
+	],
+	"frites": [
+		{
+			"id": 6,
+			"prix":500,
+			"nom": "simple",
+			"image": "../assets/frites/frite-petite.jpg"
+		},
+		{
+			"id": 7,
+			"prix":1000,
+			"nom": "moyenne",
+			"image": "../assets/frites/frite-moyenne.jpg"
+		},
+		{
+			"id": 8,
+			"prix":1500,
+			"nom": "grande",
+			"image": "../assets/frites/frite-grande.jpg"
 		}
 	]
 }

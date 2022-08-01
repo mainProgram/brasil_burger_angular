@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, throwError } from "rxjs";
 import { catchError, map, pluck, tap } from "rxjs/operators";
 import { ICatalogue } from "../interface/catalogue";
+import { IComplement } from "../interface/complement";
 import { IProduit } from "../interface/produit";
 
 @Injectable({
@@ -12,37 +13,25 @@ import { IProduit } from "../interface/produit";
 export class CatalogueService
 {
     private readonly CATALOGUE_URL = "api/produits.json";
+    private readonly COMPLEMENTS_URL = "api/complements.json";
+    // private readonly COMPLEMENTS_URL = "https://127.0.0.1:8000/api/complements";
     // private readonly CATALOGUE_URL = "https://127.0.0.1:8000/api/catalogue";
 
     constructor(private http:HttpClient){}
-
-    private _orderCount = new BehaviorSubject<any>({
-      cartTotal : 0
-    });
-
-    private _orderCount$ = this._orderCount.asObservable();
-
-    getOrderCount(): Observable<any>
-    {
-      return this._orderCount$;
-    }
-
-    setOrderCount(latestValue: any)
-    {
-      return this._orderCount.next(latestValue);
-    }
-
-
-    public addToCart(produit: IProduit)
-    {
-        
-    }
 
     public getProduits(): Observable<ICatalogue>
     {
         return this.http.get<ICatalogue>(this.CATALOGUE_URL).pipe(
             // map(p => p?.burgers),
             // tap(produits => console.log(produits)),
+            catchError(this.handleError)
+        );
+    }
+
+    public getComplements(): Observable<IComplement>
+    {
+        return this.http.get<IComplement>(this.COMPLEMENTS_URL).pipe(
+            tap(produits => console.log(produits)),
             catchError(this.handleError)
         );
     }

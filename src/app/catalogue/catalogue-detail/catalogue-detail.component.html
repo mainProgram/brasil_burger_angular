@@ -1,7 +1,7 @@
-<div class="container d-flex my-5 flex-column" style="width:75%;">
+<div class="container d-flex my-5 flex-column" style="width:75%;"  id="{{ produit.id }}">
     <div class="d-flex">
         <div class="description" style="width: 50%; margin-left: 20px;">
-            <h3>{{produit.nom}}</h3>
+            <h3>{{produit.nom | titlecase}}</h3>
             <h6>Prix: {{produit.prix}} FCFA</h6>
             <hr>
             <h5 *ngIf ="produit.burgers || produit.detail != ''">Description</h5>
@@ -9,12 +9,12 @@
 
             <h6 *ngIf = "produit.burgers">Burgers</h6>
             <ul *ngIf = "produit.burgers">
-                <li *ngFor="let burgers of produit.burgers">{{ burgers["quantite"]}} {{ burgers["burger"]["nom"]}}</li>
+                <li *ngFor="let burgers of produit.burgers">{{ burgers["quantite"]}} {{ burgers["burger"]["nom" | titlecase]}}</li>
             </ul>
 
             <h6 *ngIf = "produit.frites">Frites</h6>
             <ul *ngIf = "produit.frites">
-                <li *ngFor="let frites of produit.frites">{{ frites["quantite"]}} {{ frites["frite"]["nom"]}}</li>
+                <li *ngFor="let frites of produit.frites">{{ frites["quantite"]}} {{ frites["frite"]["nom" | titlecase]}}</li>
             </ul>
 
             <h6 *ngIf = "produit.tailles">Boissons</h6>
@@ -22,7 +22,8 @@
                 <li *ngFor="let tailles of produit.tailles">{{ tailles["quantite"]}} {{ tailles["taille"]["nom"]}}</li>
             </ul>
 
-            <div class="d-flex align-items-center p-1 w-50 justify-content-center {{ produit.burgers === undefined ?  'btn btn-outline-dark detail' : 'disabled' }} " id="addToPanier" (click)="addToCart(produit)">   
+            <div class="d-flex align-items-center p-1 w-50 justify-content-center mt-5 {{ produit.burgers === undefined ?  'btn btn-outline-dark detail' : 'disabled' }} " id="addToPanier" (click)="addToCart(produit)">   
+                <span class="badge text-dark plusOne">+1</span>  
                 <a class="monlien" >Ajouter au panier</a>
                 <p class="d-none">Choisir les boissons d'abord !</p>
                 <span class="material-icons" style="font-size:18px; margin-left: 5px;">add_shopping_cart</span>
@@ -49,8 +50,8 @@
                 <img src="{{boisson.boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
                <div class="d-flex justify-content-around w-50">
                     <input type="checkbox" value="{{ boisson.id}}" name="choixPM[]" (change)="tryme(taillePM, tailleGM)">
-                    <input type="number" style="width: 45px; " min="0" max="{{ taillePM}}"  name="qtePM[]"  (input)="tryme(taillePM, tailleGM)" value="0">
-               </div>
+                    <input type="number" style="width: 45px;" min="0" max="{{ taillePM}}"  name="qtePM[]"  (input)="tryme(taillePM, tailleGM)" value="0">
+                </div>
             </div>
         </div>
     </div>
@@ -61,7 +62,7 @@
                 <img src="{{boisson.boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
                <div class="d-flex justify-content-around w-50">
                     <input type="checkbox" value="{{ boisson.id}}" name="choixGM[]" (change)="tryme(taillePM, tailleGM)">
-                    <input type="number" style="width: 45px; " min="0" max="{{ tailleGM}}"  name="qteGM[]"  (input)="tryme(taillePM, tailleGM)" value="0">
+                    <input type="number" style="width: 45px;" min="0" max="{{ tailleGM}}"  name="qteGM[]"  (input)="tryme(taillePM, tailleGM)" value="0">
                </div>
             </div>
         </div>

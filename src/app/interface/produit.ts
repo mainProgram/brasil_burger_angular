@@ -16,5 +16,7 @@ export interface IProduit
 
     burgers?: any[],
 
-    quantite?: number
+    quantite?: number,
+
+    categorie?: string
 }

@@ -5,3 +5,31 @@ span{
 td{
     padding: 20px;
 }
+
+.disabled{
+    cursor: not-allowed !important;
+    background: rgba(128, 128, 128, 0.651) ;
+    color: gray;
+}
+
+
+select{
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.ocre {
+    color: #E89448;
+}
+
+.badge{
+    &:hover{
+        background-color: #E89448 !important;
+    }
+}
+
+.delete{
+    &:hover{
+        color: #E89448 !important;
+    }
+}

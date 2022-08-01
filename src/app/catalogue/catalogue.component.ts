@@ -13,6 +13,8 @@ export class CatalogueComponent implements OnInit
 
     public menus: any = [];
     public burgers: any = [];
+    public frites: any = [];
+    public boissons: any = [];
 
     public errorMsg = "";
     public isLoaded: boolean;
@@ -28,10 +30,18 @@ export class CatalogueComponent implements OnInit
     {
         setTimeout(()=> {
             this.isLoaded = true
-            this.catalogueService.getProduits().subscribe({
+            this.catalogueService.getProduits().subscribe({         //Menus et burgers
                 next: c => {
                     this.menus = c.menus
                     this.burgers = c.burgers
+                },
+                error: err => this.errorMsg = err
+            });
+
+            this.catalogueService.getComplements().subscribe({      //frites et boissons
+                next: c => {
+                    this.frites = c.frites
+                    this.boissons = c.pm.concat(c.gm)
                 },
                 error: err => this.errorMsg = err
             });
@@ -39,9 +49,9 @@ export class CatalogueComponent implements OnInit
 
     }
 
-    public receiveAddCart(message){
-        if(JSON.parse(localStorage.getItem("panier")))
-        return this.receive = (JSON.parse(localStorage.getItem("panier"))).length
-    }
+    // public receiveAddCart(message){
+    //     if(JSON.parse(localStorage.getItem("panier")))
+    //     return this.receive = (JSON.parse(localStorage.getItem("panier"))).length
+    // }
 
 }

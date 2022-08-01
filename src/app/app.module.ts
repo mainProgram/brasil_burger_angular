@@ -12,23 +12,28 @@ import { CardComponent } from './catalogue/card/card.component';
 import { HttpClientModule } from "@angular/common/http";
 import { CatalogueDetailComponent } from './catalogue/catalogue-detail/catalogue-detail.component';
 import { PanierComponent } from './panier/panier.component';
+import { CarouselComponent } from './home/carousel/carousel.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
+  declarations: 
+  [
     AppComponent,
     HomeComponent,
     CatalogueComponent,
     NotFoundComponent,
     CardComponent,
     CatalogueDetailComponent,
-    PanierComponent
+    PanierComponent,
+    CarouselComponent
   ],
   imports: [
     RouterModule,
     BrowserModule,
     LayoutModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

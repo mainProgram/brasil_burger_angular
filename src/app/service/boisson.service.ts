@@ -2,20 +2,17 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class BoissonService {
 
   constructor(private http:HttpClient) { }
 
-  public BOISSON_URL = "api/boissons.json";
+  public BOISSON_URL = "api/complements.json";
   // public BOISSON_URL = "https://127.0.0.1:8000/api/taille_boissons";
 
   public getBoissons(): Observable<any>
     {
         return this.http.get<any>(this.BOISSON_URL).pipe(
-            tap(produits => console.log(produits)),
             catchError(this.handleError)
         );
     }

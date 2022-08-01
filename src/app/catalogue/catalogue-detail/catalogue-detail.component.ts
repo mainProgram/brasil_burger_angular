@@ -114,7 +114,14 @@ export class CatalogueDetailComponent implements OnInit {
     public addToCart(produit : IProduit)
     {
         let bouton = document.getElementById("addToPanier")
-        if(!(bouton.classList.contains('disabled')))
+        if(!(bouton.classList.contains('disabled'))){
+          
           this.panierService.ajouterAuPanier(produit)
+          document.getElementById(`${produit.id}`).querySelector(".plusOne").classList.add("show")
+
+          setTimeout( () => {
+            document.getElementById(`${produit.id}`).querySelector(".plusOne").classList.remove("show")
+          }, 1000);
+        }
     }
 }

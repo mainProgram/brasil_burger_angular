@@ -27,30 +27,16 @@ export class CardComponent implements OnInit {
 
     this.panierService.ajouterAuPanier(produit);
 
-    document.getElementById(`${produit.id}`).querySelector(".plusOne").classList.add("show")
+    let id = produit.nom + produit.id
+    let element =  document.getElementById(`${id}`).querySelector(".plusOne").classList // le petit +1 a chaque fois qu'on ajoute 1 produit au panier
+    element.add("show")
 
     setTimeout( () => {
-      document.getElementById(`${produit.id}`).querySelector(".plusOne").classList.remove("show")
+     element.remove("show")
     }, 1000);
 
-    // this.produitPanier.emit(1) 
-
-    // let tab = JSON.parse(localStorage.getItem("panier"));
-    // if(tab){
-    //   let found = tab.find(param => param.id == produit.id)
-    //   if(!found)
-    //       CardComponent.tabPanier.push(newproduit)
-    // }
-    
-
-
-    // localStorage.setItem("panier", JSON.stringify(CardComponent.tabPanier))
-    
+    // this.produitPanier.emit(1)     
   }
 
-  
-  ngOnInit(): void {
-   
-  }
-
+  ngOnInit(): void { }
 }

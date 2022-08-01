@@ -1,0 +1,122 @@
+[
+	{
+		"id": 1,
+		"nom": "Zone 1",
+		"prix": 1000,
+		"quartiers": [
+			{
+				"nom": "Ouest-Foire"
+			},
+			{
+				"nom": "Nord-Foire"
+			},
+			{
+				"nom": "Dieuppeul"
+			},
+			{
+				"nom": "Derkelé"
+			},
+			{
+				"nom": "Grand-Dakar"
+			},
+			{
+				"nom": "Mermoz"
+			},
+			{
+				"nom": "Sacré-coeur"
+			},
+			{
+				"nom": "Liberté 4"
+			},
+			{
+				"nom": "HLM"
+			},
+			{
+				"nom": "Sicap-Liberté"
+			}
+		]
+	},
+	{
+		"id": 2,
+		"nom": "Zone 2",
+		"prix": 1500,
+		"quartiers": [
+			{
+				"nom": "Dakar-Plateau"
+			},
+			{
+				"nom": "Gueule-Tapée"
+			},
+			{
+				"nom": "Fass"
+			},
+			{
+				"nom": "Fann"
+			},
+			{
+				"nom": "Point-E"
+			},
+			{
+				"nom": "Médina"
+			}
+		]
+	},
+	{
+		"id": 3,
+		"nom": "Zone 3",
+		"prix": 2000,
+		"quartiers": [
+			{
+				"nom": "Maristes"
+			},
+			{
+				"nom": "Dalifort"
+			},
+			{
+				"nom": "Yarakh"
+			}
+		]
+	},
+	{
+		"id": 4,
+		"nom": "Zone 4",
+		"prix": 2500,
+		"quartiers": [
+			{
+				"nom": "Yeumbeul"
+			},
+			{
+				"nom": "Diamagueune"
+			},
+			{
+				"nom": "Sicap Mbao"
+			}
+		]
+	},
+	{
+		"id": 5,
+		"nom": "Zone 5",
+		"prix": 3000,
+		"quartiers": [
+			{
+				"nom": "Rufisque"
+			},
+			{
+				"nom": "Bargny"
+			},
+			{
+				"nom": "Diamniadio"
+			}
+		]
+	},
+	{
+		"id": 6,
+		"nom": "Zone 6",
+		"prix": 3500,
+		"quartiers": [
+			{
+				"nom": "Khar yAllah"
+			}
+		]
+	}
+]

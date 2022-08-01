@@ -1,12 +1,14 @@
 {
-	"burgers": [
+	"burgers": 
+	[
 		{
 			"prix": 2500,
 			"id": 1,
 			"nom": "Colonel Burger",
 			"isEtat": true,
 			"detail": "",
-            "image": "../assets/images/ColonelOriginal.jpg"
+            "image": "../assets/images/ColonelOriginal.jpg",
+			"categorie": "burger"
 		},
 		{
 			"prix": 4500,
@@ -14,7 +16,8 @@
 			"nom": "Bacon Burger",
 			"isEtat": true,
 			"detail": "bacon, salade, tomate",
-            "image": "../assets/images/ColonelOriginal.jpg"
+            "image": "../assets/images/ColonelOriginal.jpg",
+			"categorie": "burger"
 		},
 		{
 			"prix": 5000,
@@ -22,7 +25,8 @@
 			"nom": "Brasil Burger Salad",
 			"isEtat": true,
 			"detail": "",
-            "image": "../assets/images/ColonelOriginal.jpg"
+            "image": "../assets/images/ColonelOriginal.jpg",
+			"categorie": "burger"
 		},
 		{
 			"prix": 6000,
@@ -30,7 +34,8 @@
 			"nom": "Brasil Double Burger",
 			"isEtat": true,
 			"detail": "",
-            "image": "../assets/images/ColonelOriginal.jpg"
+            "image": "../assets/images/ColonelOriginal.jpg",
+			"categorie": "burger"
 		},
 		{
 			"prix": 4000,
@@ -38,7 +43,8 @@
 			"nom": "Brasil Burger Ranch",
 			"isEtat": true,
 			"detail": "",
-            "image": "../assets/images/ColonelOriginal.jpg"
+            "image": "../assets/images/ColonelOriginal.jpg",
+			"categorie": "burger"
 		},
 		{
 			"prix": 2000,
@@ -46,7 +52,8 @@
 			"nom": "Cheese Bacon Burger",
 			"isEtat": true,
 			"detail": "",
-            "image": "../assets/images/ColonelOriginal.jpg"
+            "image": "../assets/images/ColonelOriginal.jpg",
+			"categorie": "burger"
 		},
 		{
 			"prix": 3000,
@@ -54,12 +61,15 @@
 			"nom": "Big Mac",
 			"isEtat": true,
 			"detail": "",
-            "image": "../assets/images/ColonelOriginal.jpg"
+            "image": "../assets/images/ColonelOriginal.jpg",
+			"categorie": "burger"
 
 		}
 	],
-	"menus": [
+	"menus": 
+	[
 		{
+			"categorie": "menu",
 			"nom": "Menu Colonel Burger",
             "image": "../assets/images/ColonelOriginal.jpg",
 			"frites": [
@@ -85,14 +95,14 @@
 						"detail": ""
 					}
 				}
-			],
-			
+			],	
 			"id": 17,
 			"prix": 3000,
 			"isEtat": true,
 			"detail": ""
 		},
 		{
+			"categorie": "menu",
 			"nom": "Menu Bacon Burger",
             "image": "../assets/images/ColonelOriginal.jpg",
 			"frites": [
@@ -133,6 +143,7 @@
 			"detail": ""
 		},
 		{
+			"categorie": "menu",
 			"nom": "Menu Burger Salad",
             "image": "../assets/images/ColonelOriginal.jpg",
 			"frites": [
@@ -173,6 +184,7 @@
 			"detail": ""
 		},
 		{
+			"categorie": "menu",
 			"nom": "Menu Double Burger",
             "image": "../assets/images/ColonelOriginal.jpg",
 			"frites": [
@@ -213,6 +225,7 @@
 			"detail": ""
 		},
 		{
+			"categorie": "menu",
 			"nom": "Menu Gourmand",
             "image": "../assets/images/ColonelOriginal.jpg",
 			"frites": [
@@ -263,6 +276,7 @@
 			"detail": ""
 		},
 		{
+			"categorie": "menu",
 			"nom": "Menu Burger Ranch",
             "image": "../assets/images/ColonelOriginal.jpg",
 			"frites": [
@@ -303,6 +317,7 @@
 			"detail": ""
 		},
 		{
+			"categorie": "menu",
 			"nom": "Menu Bacon",
             "image": "../assets/images/ColonelOriginal.jpg",
 			"frites": [
@@ -343,6 +358,7 @@
 			"detail": ""
 		},
 		{
+			"categorie": "menu",
 			"nom": "Menu Bacon 2",
             "image": "../assets/images/ColonelOriginal.jpg",
 			"frites": [
