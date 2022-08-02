@@ -14,6 +14,7 @@ import { CatalogueDetailComponent } from './catalogue/catalogue-detail/catalogue
 import { PanierComponent } from './panier/panier.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { FormsModule } from '@angular/forms';
+import { CommandeComponent } from './commande/commande.component';
 
 @NgModule({
   declarations: 
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     CardComponent,
     CatalogueDetailComponent,
     PanierComponent,
-    CarouselComponent
+    CarouselComponent,
+    CommandeComponent
   ],
   imports: [
     RouterModule,

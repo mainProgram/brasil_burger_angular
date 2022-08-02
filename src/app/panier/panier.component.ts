@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ICommande } from '../interface/commande';
 import { IProduit } from '../interface/produit';
+import { CommandeService } from '../service/commande.service';
 import { PanierService } from '../service/panier.service';
 import { ZoneService } from '../service/zone.service';
 
@@ -10,7 +12,7 @@ import { ZoneService } from '../service/zone.service';
 })
 export class PanierComponent implements OnInit {
 
-  constructor(private panierService: PanierService, private zoneService: ZoneService) { }
+  constructor(private panierService: PanierService, private zoneService: ZoneService, private commandeService: CommandeService) { }
 
   ngOnInit(): void 
   {
@@ -26,6 +28,8 @@ export class PanierComponent implements OnInit {
   public option = 0
 
   public zones = []
+
+  public zone = null
 
   public prixLivraison = 0
 
@@ -48,17 +52,12 @@ export class PanierComponent implements OnInit {
       }
       else if(option.value == 2) //livraison
       {
-          liv.removeAttribute("hidden")                     //on affiche le texte livraison    
-          prixLiv.removeAttribute("hidden")                 //on affiche le prix de la livraison
           this.zoneService.getZones().subscribe( zones => { 
             this.zones = zones                              //on stocke les zones dans lattribut
           } ) 
-          this.prixLivraison  = 1000 ;                      //pour la premiere fois la zone 1 est selectionne et son prix est affiche
-          this.prixTotal += this.prixLivraison              //et on ajoute le prix de la livraison au prix total du panier
-
+          liv.removeAttribute("hidden")                     //on affiche le texte livraison    
           let top = liv.offsetTop + 500                    //on abaisse le scrollbar jusquau niveau du div avec les zones de livraison
           window.scrollTo(0,top)
-          valider.classList.remove("disabled")            //on active le bouton valider
       }
   }
 
@@ -68,8 +67,10 @@ export class PanierComponent implements OnInit {
       if(zone.id == optionLiv.value)
         this.prixLivraison = zone.prix
     })
-
-    this.calculPrixPanier()
+    let prixLiv = document.getElementById("prixLivraison")
+    prixLiv.removeAttribute("hidden")                                           //on affiche le prix de la livraison
+    document.getElementById("valider").classList.remove("disabled")            //on active le bouton valider
+    this.calculPrixPanier()                                                   //et on recalcule le prix total du panier
   }
   
   public calculPrixPanier(){
@@ -83,5 +84,139 @@ export class PanierComponent implements OnInit {
       
       this.prixTotal += this.prixLivraison
     })
+  }
+
+  public commander(option, optionLiv)
+  {
+    if(!this.isThereAMenuOrABurger())
+      alert("Choisissez un menu ou un burger !")
+    else
+    {
+      let tabBurgers = []
+      let tabMenus = []
+      let tabFrites = []
+      let tabTailleBoissons = []
+
+      this.elements.forEach(el => {
+        if(el.categorie == "burger")
+        {
+          let objet = {
+              "quantite": el.quantite,
+              "burger": "/api/burgers/"+el.id,
+              "prix":  el.quantite * el.prix
+          }
+          tabBurgers.push(objet)
+          console.log(tabBurgers)
+        }
+        else if(el.categorie == "menu")
+        {
+          let objet = {
+            "quantite": el.quantite,
+            "menu": "/api/menus/"+el.id,
+            "prix":  el.quantite * el.prix
+          }
+          tabMenus.push(objet)
+        }
+        else if(el.categorie == "frite")
+        {
+          let objet =
+          {
+            "quantite": el.quantite,
+            "frite": "/api/frites/"+el.id,
+            "prix":  el.quantite * el.prix
+          }
+          tabFrites.push(objet)
+        }
+        else
+        {
+          let objet =
+          {
+            
+            "quantite": el.quantite,
+            "tailleBoisson": "/api/taille_boissons/"+el.id,
+            "prix":  el.quantite * el.prix
+          }
+          tabTailleBoissons.push(objet)
+        }
+      })
+
+      if( optionLiv.value != 0)
+          this.zone = "api/zones/"+optionLiv.value
+
+      const tab = 
+      {
+        "zone" : this.zone,
+        "client": "api/clients/1",
+        "etat": "en attente",
+        "prix": this.prixTotal,
+        "date": Date,
+        "commandeMenus": tabMenus,
+        "commandeBurgers": tabBurgers,
+        "commandeFrites": tabFrites,
+        "commandeTailleBoissons": tabTailleBoissons
+      }
+      // const tab = 
+      // {
+      //   "zone" : "api/zones/"+optionLiv.value,
+      //   "client": "api/clients/1",
+      //   "etat": "en attente",
+      //   "prix": this.prixTotal,
+      //   "date": Date,
+      //   "commandeMenus": tabMenus.map(function(item) {
+      //     return [
+      //         {
+      //           "quantite": item.quantite,
+      //           "menu": "api/menus/"+item.id,
+      //           "prix":  item.quantite * item.prix
+      //         }
+      //       ]
+      //   }),
+      //   "commandeBurgers": tabBurgers.map(function(item) {
+      //     return [
+      //         {
+      //           "quantite": item.quantite,
+      //           "burger": "api/burgers/"+item.id,
+      //           "prix":  item.quantite * item.prix
+      //         }
+      //       ]
+      //   }),
+      //   "commandeFrites": tabFrites.map(function(item) {
+      //     return [
+      //         {
+      //           "quantite": item.quantite,
+      //           "frite": "api/frites/"+item.id,
+      //           "prix":  item.quantite * item.prix
+      //         }
+      //       ]
+      //   }),
+      //   "commandeTailleBoissons": tabTailleBoissons.map(function(item) {
+      //     return [
+      //         {
+      //           "quantite": item.quantite,
+      //           "tailleBoisson": "/api/taille_boissons/"+item.id,
+      //           "prix":  item.quantite * item.prix
+      //         }
+      //       ]
+      //   }),
+      // }
+   
+      this.commandeService.saveOrder(tab);
+
+      this.panierService.resetPanier()
+      
+      let liv = document.getElementById("liv")
+      liv.setAttribute("hidden", "hidden")
+    }
+  }
+
+  public isThereAMenuOrABurger()
+  {
+    let burgerOrMenuFound = false
+    this.elements.forEach(el => {
+      if(el.categorie && ( el.categorie == "burger" || el.categorie == "menu"))
+        burgerOrMenuFound = true
+    })
+
+    return burgerOrMenuFound
   }
 }

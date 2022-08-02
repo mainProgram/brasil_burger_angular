@@ -104,18 +104,21 @@
 	"frites": [
 		{
 			"id": 6,
+			"categorie": "frite",
 			"prix":500,
 			"nom": "simple",
 			"image": "../assets/frites/frite-petite.jpg"
 		},
 		{
 			"id": 7,
+			"categorie": "frite",
 			"prix":1000,
 			"nom": "moyenne",
 			"image": "../assets/frites/frite-moyenne.jpg"
 		},
 		{
 			"id": 8,
+			"categorie": "frite",
 			"prix":1500,
 			"nom": "grande",
 			"image": "../assets/frites/frite-grande.jpg"

@@ -27,8 +27,14 @@ export class PanierService
           
         let tab = JSON.parse(localStorage.getItem("panier"));
 
-          if(tab){
-            let found = tab.find(param => param.id == produit.id)
+          if(tab)
+          {
+            let found = false
+            tab.forEach(p => {
+              if (produit.id == p.id && produit.nom == p.nom)
+                found = true
+            })
+
             if(!found) //Si on ne trouve pas le produit dans le panier on l'ajoute
             {
               produit = Object.assign({}, produit, {"quantite":1})
@@ -83,11 +89,15 @@ export class PanierService
         let tab = JSON.parse(localStorage.getItem("panier"));
 
           if(tab){
-            let found = tab.find(param => param.id == produit.id)
+            let found = false
+            tab.forEach(p => {
+              if (produit.id == p.id && produit.nom == p.nom)
+                found = true
+            })
             if(found)
             {
                 produits.forEach(p => {
-                  if(p.id == produit.id)
+                  if(produit.id == p.id && produit.nom == p.nom)
                     if(plusOuMoins == 1)  
                       p.quantite++  
                     else if(p.quantite > 1)
@@ -100,6 +110,12 @@ export class PanierService
         localStorage.setItem("panier", JSON.stringify(produits));
       })
     ).subscribe();
+  }
+
+  resetPanier()
+  {
+    this.mesAchatSubject.next([]);
+    localStorage.setItem("panier", JSON.stringify([]));
   }
 
 }

@@ -21,7 +21,7 @@
                     <!-- <td colspan="2"><img src="{{'data:image/jpg;base64,' + element.image }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ element.nom }}</span></td> -->
                     <td>{{ element.prix }}</td>
                     <td>
-                        <div id="{{element.id}}">
+                        <div id="{{element.nom}}{{element.id}}">
                             <span class="badge bg-dark px-1 py-0" style="margin-right: 5px;" (click)="plusOuMoins(element, 1)">+</span>
                             <span class="text-dark quantite" >{{element.quantite}}</span>
                             <span class="badge bg-dark px-1 py-0" style=" margin-left: 5px;" (click)="plusOuMoins(element, 0)" >-</span>
@@ -46,13 +46,13 @@
                     </select>
                 </div>
             </div>
-            <a class="btn btn-outline-dark mb-3 disabled" #valider>Valider</a>
+            <a class="btn btn-outline-dark mb-3 disabled" #valider (click)="commander(option, optionLiv)" id="valider">Valider</a>
             <a [routerLink] = "['/catalogue']" class="btn btn-outline-dark">Catalogue > </a>
         </div>
     </div>
 </div>
 
-<div class="container my-5" id="liv" hidden>
+<div class="container my-5" id="liv" hidden >
     <h5>Choix de la zone de livraison</h5>
     <div *ngFor = "let zone of zones" class="mt-3">
         <span class="ocre"><b>{{zone.nom | titlecase}}: </b><span>{{zone.prix}} FCFA</span></span><br>
@@ -61,6 +61,7 @@
     <div class="w-25">
         <b><label for="select2" class="mt-3">Choisir la zone</label></b>
         <select class="form-select" name="select2" #optionLiv (change)="changeOptionLiv(optionLiv)">
+            <option selected disabled value="0">choisir</option>
             <option *ngFor="let zone of zones" value={{zone.id}}>{{zone.nom}}</option>
         </select>
     </div>

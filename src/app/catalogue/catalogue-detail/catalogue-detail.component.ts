@@ -29,12 +29,12 @@ export class CatalogueDetailComponent implements OnInit {
     {
         const id = +this.route.snapshot.paramMap.get("id");
 
-        this.catalogueService.getProduits().subscribe({
+        this.catalogueService.getProduits().subscribe({  // Get produit by id
           next: c => {
               this.menus = c.menus
               this.burgers = c.burgers
 
-              this.produit = this.catalogueService.getById(id, this.burgers);
+              this.produit = this.catalogueService.getById(id, this.burgers);    
               if(this.produit === undefined)
                   this.produit = this.catalogueService.getById(id, this.menus);
 
@@ -51,37 +51,37 @@ export class CatalogueDetailComponent implements OnInit {
           if(this.produit.tailles){
 
             this.produit.tailles.forEach(taille => {
-              (taille.taille.nom == "PM") ? this.taillePM = taille.quantite : this.tailleGM = taille.quantite
+              (taille.taille.nom == "PM") ? this.taillePM = taille.quantite : this.tailleGM = taille.quantite //quantite de pm et de gm
             })
 
-            this.taillepmvide = (this.taillePM <= 0);
-            this.taillegmvide = (this.tailleGM <= 0);
+            this.taillepmvide = (this.taillePM <= 0);   // ya til des boissons pm ds le menu ?
+            this.taillegmvide = (this.tailleGM <= 0);   // ya til des boissons gm ds le menu ?
           }
         }
       )
     }
 
-    tryme(nombre, nombre2){
-      let r1 = this.tryme2(nombre, 'choixPM[]','qtePM[]');
-      let r2 = this.tryme2(nombre2, 'choixGM[]','qteGM[]');
+    tryme(maxPM, maxGM){ // CHOIC DES PM ET CHOIX DES GM CORRECTS?
+      let pmCorrect = this.tryme2(maxPM, 'choixPM[]','qtePM[]');
+      let gmCorrect = this.tryme2(maxGM, 'choixGM[]','qteGM[]');
 
-      (r1+r2 == 2) ? this.remove() : this.add()
+      (pmCorrect + gmCorrect == 2) ? this.remove() : this.add()
     }
 
-    tryme2(nombre, choixPMouGM, qtePMouGM){
-      let checked = document.getElementsByName(`${choixPMouGM}`)
+    tryme2(max, choixPMouGM, qtePMouGM){
+      let checked = document.getElementsByName(`${choixPMouGM}`) //Les checkboxes de chaque boisson
 
-      let qtes = document.getElementsByName(`${qtePMouGM}`)
+      let qtes = document.getElementsByName(`${qtePMouGM}`)     //Les quantites de chaque boisson
 
       let qteTotale = 0
       qtes.forEach(el => {
-          if((<HTMLInputElement>el.previousElementSibling).checked)
+          if((<HTMLInputElement>el.previousElementSibling).checked) //Si la boisson est cochée alors on verifie sa quantité choisie
             qteTotale += (+(<HTMLInputElement>el).value)
       })
 
-      if(qteTotale != nombre) return 0
-      
-      else
+      if(qteTotale != max)        //Quantité choisie != quantité du menu ?
+        return 0       
+      else                        //Quantité choisie == quantité du menu mais esk les boissons cochées sont correctes
       {
         let somme = 0
         checked.forEach(el => {
@@ -91,7 +91,7 @@ export class CatalogueDetailComponent implements OnInit {
             else somme+= frere
           }
         })
-        if(somme != nombre) return 0
+        if(somme != max) return 0
         else return 1
       }
        
@@ -113,15 +113,15 @@ export class CatalogueDetailComponent implements OnInit {
 
     public addToCart(produit : IProduit)
     {
-        let bouton = document.getElementById("addToPanier")
-        if(!(bouton.classList.contains('disabled'))){
-          
-          this.panierService.ajouterAuPanier(produit)
-          document.getElementById(`${produit.id}`).querySelector(".plusOne").classList.add("show")
+        let boutonAjouter = document.getElementById("addToPanier")
+        let notificationPlusUn = document.getElementById(`${produit.id}`).querySelector(".plusOne")
 
-          setTimeout( () => {
-            document.getElementById(`${produit.id}`).querySelector(".plusOne").classList.remove("show")
-          }, 1000);
+        if(!(boutonAjouter.classList.contains('disabled'))) //si le bouton ajouter au panier n'est pas desactivé
+        {
+          this.panierService.ajouterAuPanier(produit)
+
+          notificationPlusUn.classList.add("show")
+          setTimeout( () => { notificationPlusUn.classList.remove("show")}, 1000);
         }
     }
 }
