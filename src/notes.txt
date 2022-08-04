@@ -1,0 +1,276 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { CatalogueService } from '../service/catalogue-service';
+
+
+@Component({
+  selector: 'app-catalogue',
+  templateUrl: './catalogue.component.html',
+  styleUrls: ['./catalogue.component.scss']
+})
+
+export class CatalogueComponent implements OnInit 
+{
+
+    public menus: any = [];
+    public burgers: any = [];
+    public frites: any = [];
+    public boissons: any = [];
+
+    public errorMsg = "";
+    public isLoaded: boolean;
+
+    public hidden = "rm"
+
+    public filtrage = []
+
+    public tabMenusFiltered = []
+    public tabBurgersFiltered = []
+    public tabPrixFiltered = []
+
+    public  divBurgersMenusBoissonsFrites = document.getElementsByClassName("hide") 
+    public  divFilterResults = document.getElementsByClassName("filterResults") 
+
+
+    @Input()
+    public receive : number = 0
+
+    constructor(private catalogueService : CatalogueService) { }
+
+    ngOnInit(): void 
+    {
+        setTimeout(()=> {
+            this.isLoaded = true
+            this.catalogueService.getProduits().subscribe({         //Menus et burgers
+                next: c => {
+                    this.menus = c.menus
+                    this.burgers = c.burgers
+                    this.menus.forEach(element => {
+                        this.tabMenusFiltered.push(element.nom);                //initialisation tableau de filtre de menus
+                        if(this.tabPrixFiltered.indexOf(element.prix) == -1)    //initialisation tableau de filtre de prix
+                            this.tabPrixFiltered.push(""+element.prix)
+                    });
+                    
+                    this.burgers.forEach(element => {
+                        this.tabBurgersFiltered.push(element.nom)
+                        if(this.tabPrixFiltered.indexOf(element.prix) == -1)    //initialisation tableau de filtre de prix
+                            this.tabPrixFiltered.push(""+element.prix)
+                    });  //initialisation tableau de filtre de burger
+
+                    this.tabPrixFiltered.sort()
+                },
+                error: err => this.errorMsg = err
+            });
+
+            this.catalogueService.getComplements().subscribe({      //frites et boissons
+                next: c => {
+                    this.frites = c.frites
+                    this.boissons = c.pm.concat(c.gm)
+                },
+                error: err => this.errorMsg = err
+            });
+        },1000);
+
+    }
+
+   
+
+
+    filterList = {
+        menu : this.tabMenusFiltered,
+        burger: this.tabBurgersFiltered,
+        prix: this.tabPrixFiltered,
+        categorie: ["menu", "burger"]
+    };  
+
+    filterChange(appliedfilters) {
+        this.filtrage = []
+
+        let filtreMenu = appliedfilters.appliedFilterValues.menu;
+        let filtrePrix = appliedfilters.appliedFilterValues.prix;
+        let filtreBurger = appliedfilters.appliedFilterValues.burger;
+        let filtreCategorie = appliedfilters.appliedFilterValues.categorie;
+
+        if(filtreMenu)
+            this.filtre(filtreMenu, this.menus)
+        
+        if(filtreBurger)
+            this.filtre(filtreBurger, this.burgers)
+
+        if(filtrePrix)
+        {
+            this.hide()
+            this.menus.filter(item => { if (item.prix == Number(filtrePrix)) this.filtrage.push(item) })
+            this.burgers.filter(item => { if (item.prix == Number(filtrePrix)) this.filtrage.push(item) })
+        }
+
+        if(filtreCategorie)
+        {
+            this.hide()
+            if(filtreCategorie == "burger")
+                this.burgers.filter(item => { if (item.categorie == filtreCategorie) this.filtrage.push(item) })
+            else if(filtreCategorie == "menu")
+                this.menus.filter(item => { if (item.categorie == filtreCategorie) this.filtrage.push(item) })
+        }
+
+        if(!filtreMenu && !filtreBurger && !filtrePrix && !filtreCategorie)
+            this.unhide()
+        
+    }
+    
+    public hide(){
+        Array.from(this.divBurgersMenusBoissonsFrites).forEach((element) => { element.setAttribute("hidden", "hidden")})
+        this.divFilterResults[0].removeAttribute("hidden")
+    }
+
+    public unhide(){
+        this.divFilterResults[0].setAttribute("hidden", "hidden")
+        Array.from(this.divBurgersMenusBoissonsFrites).forEach((element) => { element.removeAttribute("hidden")})
+    }
+
+    public filtre(criteria, array){
+        this.hide()
+        array.filter(item => { if (item.nom == criteria) this.filtrage.push(item) })
+    }
+}
+
+----------------------------------------------
+import { Component, Input, OnInit } from '@angular/core';
+import { CatalogueService } from '../service/catalogue-service';
+
+
+@Component({
+  selector: 'app-catalogue',
+  templateUrl: './catalogue.component.html',
+  styleUrls: ['./catalogue.component.scss']
+})
+
+export class CatalogueComponent implements OnInit 
+{
+
+    public menus: any = [];
+    public burgers: any = [];
+    public frites: any = [];
+    public boissons: any = [];
+
+    public errorMsg = "";
+    public isLoaded: boolean;
+
+    public hidden = "rm"
+
+    public filtrage = []
+
+    public tabMenusFiltered = []
+    public tabBurgersFiltered = []
+    public tabPrixFiltered = []
+
+    public  divBurgersMenusBoissonsFrites = document.getElementsByClassName("hide") 
+    public  divFilterResults = document.getElementsByClassName("filterResults") 
+
+
+    @Input()
+    public receive : number = 0
+
+    constructor(private catalogueService : CatalogueService) { }
+
+    ngOnInit(): void 
+    {
+        setTimeout(()=> {
+            this.isLoaded = true
+            this.catalogueService.getProduits().subscribe({         //Menus et burgers
+                next: c => {
+                    this.menus = c.menus
+                    this.burgers = c.burgers
+                    this.menus.forEach(element => {
+                        this.tabMenusFiltered.push(element.nom);                //initialisation tableau de filtre de menus
+                        if(this.tabPrixFiltered.indexOf(element.prix) == -1)    //initialisation tableau de filtre de prix
+                            this.tabPrixFiltered.push(""+element.prix)
+                    });
+                    
+                    this.burgers.forEach(element => {
+                        this.tabBurgersFiltered.push(element.nom)
+                        if(this.tabPrixFiltered.indexOf(element.prix) == -1)    //initialisation tableau de filtre de prix
+                            this.tabPrixFiltered.push(""+element.prix)
+                    });  //initialisation tableau de filtre de burger
+
+                    this.tabPrixFiltered.sort()
+                },
+                error: err => this.errorMsg = err
+            });
+
+            this.catalogueService.getComplements().subscribe({      //frites et boissons
+                next: c => {
+                    this.frites = c.frites
+                    this.boissons = c.pm.concat(c.gm)
+                },
+                error: err => this.errorMsg = err
+            });
+        },1000);
+
+    }
+
+   
+
+
+    filterList = {
+        menu : this.tabMenusFiltered,
+        burger: this.tabBurgersFiltered,
+        prix: this.tabPrixFiltered,
+        categorie: ["menu", "burger"]
+    };  
+
+    filterChange(appliedfilters) {
+        this.filtrage = []
+        this.menus.forEach(element => { this.filtrage.push(element) } )
+        this.burgers.forEach(element => { this.filtrage.push(element) } )
+
+        let filtreMenu = appliedfilters.appliedFilterValues.menu;
+        let filtrePrix = appliedfilters.appliedFilterValues.prix;
+        let filtreBurger = appliedfilters.appliedFilterValues.burger;
+        let filtreCategorie = appliedfilters.appliedFilterValues.categorie;
+
+        this.hide()
+
+        if(filtreMenu)
+            console.log( this.filtrage.filter(item => {(item.nom == (filtreMenu))}))
+        
+        if(filtreBurger)
+            this.filtrage = this.filtrage.filter(item => {(item.nom == (filtreBurger))})
+
+        if(filtrePrix)
+        {
+            this.hide()
+            this.filtrage = this.filtrage.filter(item => {(item.prix == Number(filtrePrix))})
+            this.filtrage = this.filtrage.filter(item => {(item.prix == Number(filtrePrix))})
+        }
+
+        if(filtreCategorie)
+        {
+            this.hide()
+            if(filtreCategorie == "burger")
+                this.filtrage = this.filtrage.filter(item => {(item.categorie == filtreCategorie) })
+            else if(filtreCategorie == "menu")
+                this.filtrage = this.filtrage.filter(item => {(item.categorie == filtreCategorie) })
+        }
+
+        if(!filtreMenu && !filtreBurger && !filtrePrix && !filtreCategorie)
+            this.unhide()
+        
+    }
+    
+    public hide(){
+        Array.from(this.divBurgersMenusBoissonsFrites).forEach((element) => { element.setAttribute("hidden", "hidden")})
+        this.divFilterResults[0].removeAttribute("hidden")
+    }
+
+    public unhide(){
+        this.divFilterResults[0].setAttribute("hidden", "hidden")
+        Array.from(this.divBurgersMenusBoissonsFrites).forEach((element) => { element.removeAttribute("hidden")})
+    }
+
+    public filtre(criteria, array){
+        this.hide()
+        array = array.filter(item => { (item.nom == criteria) })
+        return array
+    }
+}
+

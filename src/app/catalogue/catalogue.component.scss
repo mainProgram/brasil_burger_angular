@@ -1,3 +1,8 @@
+* 
+{
+    box-sizing: border-box;
+}
+
 .container{
     min-height: 80vh;
 }
@@ -5,3 +10,14 @@
 .row{
     flex-wrap: wrap;
 }
+
+.app-btn {
+    height: 32px;
+    width: 110px;
+    background: #E98448; 
+    border: none;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    border-radius: 2px;
+  }

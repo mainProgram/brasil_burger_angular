@@ -22,6 +22,7 @@
     "@popperjs/core": "^2.10.2",
     "angular-responsive-carousel": "^2.1.2",
     "bootstrap": "^5.2.0",
+    "generic-list-filter": "^0.1.6",
     "material-icons": "^1.11.7",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

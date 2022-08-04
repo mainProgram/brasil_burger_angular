@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { CommandeComponent } from './commande/commande.component';
 import { CommandeDetailComponent } from './commande/commande-detail/commande-detail.component';
 import { FormatEtat } from './shared/pipes/format-etat.pipe';
+import { GenericListFilterModule } from 'generic-list-filter';
 
 @NgModule({
   declarations: 
@@ -39,7 +40,8 @@ import { FormatEtat } from './shared/pipes/format-etat.pipe';
     LayoutModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    GenericListFilterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
