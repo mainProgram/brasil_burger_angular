@@ -1,13 +1,33 @@
-<div class="container mt-5">
-    <table class="table table-hover" style="width:70%;">
-        <thead>
-            <tr>
-                <th>N° Commande</th>
-                <th>Etat</th>
-                <th>Date</th>
-                <th>Prix</th>
-                <th>Détails</th>
-            </tr>
-        </thead>
-    </table>
+<div class="container mt-5  d-flex justify-content-center align-items-center">
+    <ng-container *ngIf="commandes.length > 0">
+        <table class="table table-hover" style="width:70%;">
+            <thead>
+                <tr>
+                    <th>N° Commande</th>
+                    <th>Date</th>
+                    <th>Prix</th>
+                    <th>Etat</th>
+                    <th>Détails</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let com of commandes; let in=index">
+                    <td>{{in+1}}</td>
+                    <td>{{com.date | date:"short"}}</td>
+                    <td>{{com.prix}} FCFA</td>
+                    <td [style.color]="getColour(com.etat)">{{com.etat | formatEtat }}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(com.etat)}} </span></td> 
+                    <!-- <td>{{( com.etat == "en attente") ? "En attente" : (com.etat == "termine") ? "Livré" : (com.etat == "valide") ? "En cours" : (com.etat == "annule") ? "Annulé": ""}}</td>  -->
+                    <td [routerLink] = "['/commandes', com.id]"><span class="material-icons">remove_red_eye</span></td>
+                    <td><a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'en attente'" (click) = annulerCommande(com.id)> Annuler</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+    <div class="d-flex flex-column align-items-center">
+        <h3 class="text-danger mb-5" *ngIf="commandes.length == 0">Pas de commande pour le moment !</h3>
+        <div>
+            <a [routerLink] = "['/catalogue']" class="btn btn-outline-dark mx-5">Catalogue > </a>
+        </div>
+    </div>
 </div>

@@ -1,9 +1,31 @@
 .detail{
+    display: flex;
+    align-items: center;
     cursor: pointer;
     &:hover{ 
         a{
             color: #fff;
         }
+    }
+}
+.reduce{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img{
+        height: 70px;
+        width: 70px;
+    }
+    .monlien{
+        display: none;
+    }
+    
+    .addAndDetails{
+        align-items: center !important;
+        justify-content: center !important;
     }
 }
 
@@ -30,7 +52,7 @@ img{
     visibility: visible;
     background-color: #E89448;
     animation-name: disappear;
-    animation-duration: 1s;
+    animation-duration: .5s;
 }
 
 @keyframes disappear {

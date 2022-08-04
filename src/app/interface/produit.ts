@@ -18,5 +18,7 @@ export interface IProduit
 
     quantite?: number,
 
-    categorie?: string
+    categorie?: string,
+
+    tabBoissonsMenu?: []
 }

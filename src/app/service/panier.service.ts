@@ -37,7 +37,7 @@ export class PanierService
 
             if(!found) //Si on ne trouve pas le produit dans le panier on l'ajoute
             {
-              produit = Object.assign({}, produit, {"quantite":1})
+              produit = Object.assign({}, produit, {"quantite":1}) //qte du produit for the very first time
 
               produits.push(produit);
             }

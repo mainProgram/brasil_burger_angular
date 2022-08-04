@@ -78,7 +78,7 @@
 					"frite": {
 						"prix": 500,
 						"id": 6,
-						"nom": "simple",
+						"nom": "frite simple",
 						"isEtat": true,
 						"detail": ""
 					}
@@ -97,7 +97,7 @@
 				}
 			],	
 			"id": 17,
-			"prix": 3000,
+			"prix": 3325,
 			"isEtat": true,
 			"detail": ""
 		},
@@ -111,7 +111,7 @@
 					"frite": {
 						"prix": 500,
 						"id": 6,
-						"nom": "simple",
+						"nom": "frite frite simple",
 						"isEtat": true,
 						"detail": ""
 					}
@@ -152,7 +152,7 @@
 					"frite": {
 						"prix": 500,
 						"id": 6,
-						"nom": "simple",
+						"nom": "frite simple",
 						"isEtat": true,
 						"detail": ""
 					}
@@ -193,7 +193,7 @@
 					"frite": {
 						"prix": 500,
 						"id": 6,
-						"nom": "simple",
+						"nom": "frite simple",
 						"isEtat": true,
 						"detail": ""
 					}
@@ -234,7 +234,7 @@
 					"frite": {
 						"prix": 500,
 						"id": 6,
-						"nom": "simple",
+						"nom": "frite simple",
 						"isEtat": true,
 						"detail": ""
 					}
@@ -285,7 +285,7 @@
 					"frite": {
 						"prix": 500,
 						"id": 6,
-						"nom": "simple",
+						"nom": "frite simple",
 						"isEtat": true,
 						"detail": ""
 					}
@@ -326,7 +326,7 @@
 					"frite": {
 						"prix": 500,
 						"id": 6,
-						"nom": "simple",
+						"nom": "frite simple",
 						"isEtat": true,
 						"detail": ""
 					}
@@ -367,7 +367,7 @@
 					"frite": {
 						"prix": 500,
 						"id": 6,
-						"nom": "simple",
+						"nom": "frite simple",
 						"isEtat": true,
 						"detail": ""
 					}

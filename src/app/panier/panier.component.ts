@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICommande } from '../interface/commande';
 import { IProduit } from '../interface/produit';
+import { BoissonService } from '../service/boisson.service';
 import { CommandeService } from '../service/commande.service';
 import { PanierService } from '../service/panier.service';
 import { ZoneService } from '../service/zone.service';
@@ -10,17 +11,8 @@ import { ZoneService } from '../service/zone.service';
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.scss']
 })
-export class PanierComponent implements OnInit {
-
-  constructor(private panierService: PanierService, private zoneService: ZoneService, private commandeService: CommandeService) { }
-
-  ngOnInit(): void 
-  {
-    this.panierService.getPanier().subscribe(produits => { this.elements = produits })
-
-    this.calculPrixPanier()
-  }
-
+export class PanierComponent implements OnInit 
+{
   public elements = []
 
   public prixTotal = 0
@@ -33,6 +25,24 @@ export class PanierComponent implements OnInit {
 
   public prixLivraison = 0
 
+  public complements = []
+
+  constructor(private panierService: PanierService, private zoneService: ZoneService, private commandeService: CommandeService, private complementsService:BoissonService) { }
+
+  ngOnInit(): void 
+  {
+    this.panierService.getPanier().subscribe(produits => { this.elements = produits })
+
+    this.calculPrixPanier()
+
+    this.complementsService.getComplements().subscribe(
+      complements =>{
+        complements.pm.forEach(b => { this.complements.push(b) })
+        complements.gm.forEach(b => { this.complements.push(b) })
+        complements.frites.forEach(b => { this.complements.push(b) })
+      })
+  }
+
   public delete(produit:IProduit) {  this.panierService.remove(produit) } //Supression d'un produit du panier
   
   public plusOuMoins(element:IProduit, val:number) { this.panierService.plusOuMoins(element, val)} //réduction ou augmentation de la quantité d'un produit du panier
@@ -44,6 +54,7 @@ export class PanierComponent implements OnInit {
 
       if(option.value == 1) // retrait
       {
+          (<HTMLInputElement>document.getElementById("optionLiv")).value = "0";
           liv.setAttribute("hidden", "hidden")        //on cache le texte livraison
           prixLiv.setAttribute("hidden", "hidden")    //on cache le prix de la livraison
           valider.classList.remove("disabled")        //on active le bouton valider
@@ -52,6 +63,7 @@ export class PanierComponent implements OnInit {
       }
       else if(option.value == 2) //livraison
       {
+          valider.classList.add("disabled")        //on active le bouton valider 
           this.zoneService.getZones().subscribe( zones => { 
             this.zones = zones                              //on stocke les zones dans lattribut
           } ) 
@@ -110,10 +122,12 @@ export class PanierComponent implements OnInit {
         }
         else if(el.categorie == "menu")
         {
+          let tabBoissonsMenus = el.tabBoissonsMenu.length > 0 ? el.tabBoissonsMenu : null
           let objet = {
             "quantite": el.quantite,
             "menu": "/api/menus/"+el.id,
-            "prix":  el.quantite * el.prix
+            "prix":  el.quantite * el.prix,
+            "commandeMenuTailleBoissons": tabBoissonsMenus
           }
           tabMenus.push(objet)
         }
@@ -149,7 +163,6 @@ export class PanierComponent implements OnInit {
         "client": "api/clients/1",
         "etat": "en attente",
         "prix": this.prixTotal,
-        "date": Date,
         "commandeMenus": tabMenus,
         "commandeBurgers": tabBurgers,
         "commandeFrites": tabFrites,
@@ -219,4 +232,22 @@ export class PanierComponent implements OnInit {
 
     return burgerOrMenuFound
   }
+
+  public resetPanier(){ this.panierService.resetPanier(); this.elements = []}
+
+  public scroll = function scroll(){
+    const { 
+        scrollTop, 
+        scrollHeight, 
+        clientHeight 
+    } = document.documentElement
+
+    // if(scrollTop + clientHeight >= scrollHeight - 5)  {  
+    //   TOP_ARROW.firstChild.classList.add("show")
+    // else
+    //   TOP_ARROW.firstChild.classList.remove("show")
+       
+    // }
+  }
+
 }

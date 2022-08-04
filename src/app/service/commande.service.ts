@@ -1,49 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, take, map } from 'rxjs';
-import { ICommande } from '../interface/commande';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommandeService {
 
-  mesCommandesSubject =  new BehaviorSubject<ICommande[]>([]);
-  commandes = this.mesCommandesSubject.asObservable();
+  constructor(private http:HttpClient, private retour:Router) { }
 
-  constructor(private http:HttpClient) 
-  { 
-    let commandesDuClient = JSON.parse(localStorage.getItem("commandes")); 
+  public readonly COMMANDE_URL = "https://127.0.0.1:8000/api/commandes"
 
-      if(!commandesDuClient) commandesDuClient = [];
-
-      this.mesCommandesSubject.next(commandesDuClient);
-  }
-
-  ajouterCommande(commande: ICommande)
+  public saveOrder(body)
   {
-    this.commandes.pipe(
-      take(1),
-
-      map((commandes: ICommande[]) => {
-          
-        commandes.push(commande);
-            
-        this.mesCommandesSubject.next(commandes); //on passe le nouveau tableeau au behaviourSubject
-
-        console.log(localStorage.setItem("commandes", JSON.stringify(commandes))); //on ecrase le tableau de commandes du local storage avec le new
-
-       
-      })
-    ).subscribe();
-  }
-
-
-  public saveOrder(body){
-    this.http.post<any>("https://127.0.0.1:8000/api/commandes", body).subscribe(
+    this.http.post<any>(this.COMMANDE_URL, body).subscribe(
       {
         next: data => {
-          console.log(data.id)
+          this.retour.navigate(["/commandes/"+data.id])
         },
         // error: error =>{
         //   alert("Y'a erreur")
@@ -51,4 +24,44 @@ export class CommandeService {
       }
     )
   }
+
+  public getCommandesById(id)
+  {
+    let COMMANDE_CLIENT_URL = "https://127.0.0.1:8000/api/clients/"+ id +"/commandes"
+    // let COMMANDE_CLIENT_URL = "api/commandes.json"
+
+    return this.http.get<any>(COMMANDE_CLIENT_URL)
+  }
+
+  public getById(id:number)
+  {  
+    return this.http.get<any>(this.COMMANDE_URL+"/"+id)
+  }
+
+  public annulerCommande(id)
+  {
+    return this.http.put<any>("https://127.0.0.1:8000/api/commandes/"+id, {
+      "etat": "annule"
+    })
+  }
+  // public getById(id:number, tab: ICommande[]){  return tab.find(param => param.id == id)}
+
+  public formatEtat(etat)
+  {
+    let etatFormate
+    if(etat == "en attente")
+      etatFormate = "En attente"
+    else if(etat == "termine")
+      etatFormate = "Livré"
+    else if(etat == "valide")
+      etatFormate = "En cours"
+    else if(etat == "annule")
+      etatFormate = "Annulé"
+    else if(etat == "livraison")    
+      etatFormate = "En cours de livraison"
+    return etatFormate
+  }
+
 }
+
+

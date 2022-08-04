@@ -1,0 +1,55 @@
+[
+    {
+        "zone": null,
+        "prix": 50725,
+        "commandeTailleBoissons": [],
+        "commandeMenus": [
+            {
+                "quantite": 2,
+                "menu": {
+                    "nom": "Menu Colonel Burger",
+                    "prix": 3325
+                }
+            },
+            {
+                "quantite": 3,
+                "menu": {
+                    "nom": "Menu Bacon Burger",
+                    "prix": 5225
+                }
+            },
+            {
+                "quantite": 2,
+                "menu": {
+                    "nom": "Menu Burger Salad",
+                    "prix": 5700
+                }
+            },
+            {
+                "quantite": 2,
+                "menu": {
+                    "nom": "Menu Burger Ranch",
+                    "prix": 4750
+                }
+            }
+        ],
+        "commandeFrites": [
+            {
+                "quantite": 1,
+                "frite": {
+                    "prix": 1500,
+                    "nom": "frite grande"
+                }
+            }
+        ],
+        "commandeBurgers": [
+            {
+                "quantite": 1,
+                "burger": {
+                    "prix": 6000,
+                    "nom": "Brasil Double Burger"
+                }
+            }
+        ]
+    }
+]

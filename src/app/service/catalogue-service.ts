@@ -31,7 +31,7 @@ export class CatalogueService
     public getComplements(): Observable<IComplement>
     {
         return this.http.get<IComplement>(this.COMPLEMENTS_URL).pipe(
-            tap(produits => console.log(produits)),
+            // tap(produits => console.log(produits)),
             catchError(this.handleError)
         );
     }

@@ -7,12 +7,12 @@ export class BoissonService {
 
   constructor(private http:HttpClient) { }
 
-  public BOISSON_URL = "api/complements.json";
-  // public BOISSON_URL = "https://127.0.0.1:8000/api/taille_boissons";
+  public COMPLEMENTS_URL = "api/complements.json";
+  // public COMPLEMENTS_URL = "https://127.0.0.1:8000/api/taille_boissons";
 
-  public getBoissons(): Observable<any>
+  public getComplements(): Observable<any>
     {
-        return this.http.get<any>(this.BOISSON_URL).pipe(
+        return this.http.get<any>(this.COMPLEMENTS_URL).pipe(
             catchError(this.handleError)
         );
     }

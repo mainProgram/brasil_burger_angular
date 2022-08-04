@@ -1,5 +1,7 @@
 export interface ICommande
 {
+    id: number,
+
     prix : number,
 
     etat: string,
@@ -8,5 +10,14 @@ export interface ICommande
 
     zone: string,
 
-    client: number
+    client: number,
+
+    commandeMenus: [],
+
+    commandeBurgers: [],
+
+    commandeFrites: [],
+
+    commandeTailleBoissons: [],
+
 }

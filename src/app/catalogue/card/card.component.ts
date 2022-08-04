@@ -18,6 +18,9 @@ export class CardComponent implements OnInit {
   @Input()
   disable?: string
 
+  @Input()
+  miniCard?: string
+
   @Output()
   public produitPanier: EventEmitter<number> = new EventEmitter<number>;
 
@@ -33,7 +36,7 @@ export class CardComponent implements OnInit {
 
     setTimeout( () => {
      element.remove("show")
-    }, 1000);
+    }, 500);
 
     // this.produitPanier.emit(1)     
   }

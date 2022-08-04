@@ -1,4 +1,4 @@
-<div class="container d-flex my-5 flex-column" style="width:75%;"  id="{{ produit.id }}">
+<div class="container d-flex my-5 flex-column" style="width:75%;"  id="{{produit.id}}">
     <div class="d-flex">
         <div class="description" style="width: 50%; margin-left: 20px;">
             <h3>{{produit.nom | titlecase}}</h3>
@@ -7,20 +7,26 @@
             <h5 *ngIf ="produit.burgers || produit.detail != ''">Description</h5>
             <p *ngIf ="produit.detail != ''">{{ produit.detail }}</p>
 
-            <h6 *ngIf = "produit.burgers">Burgers</h6>
-            <ul *ngIf = "produit.burgers">
-                <li *ngFor="let burgers of produit.burgers">{{ burgers["quantite"]}} {{ burgers["burger"]["nom" | titlecase]}}</li>
-            </ul>
+            <ng-container *ngIf = "produit.burgers">
+                <h6 >Burgers</h6>
+                <ul>
+                    <li *ngFor="let burgers of produit.burgers">{{ burgers["quantite"]}} {{ burgers["burger"]["nom"] | titlecase}}</li>
+                </ul>
+            </ng-container>
 
-            <h6 *ngIf = "produit.frites">Frites</h6>
-            <ul *ngIf = "produit.frites">
-                <li *ngFor="let frites of produit.frites">{{ frites["quantite"]}} {{ frites["frite"]["nom" | titlecase]}}</li>
-            </ul>
+            <ng-container *ngIf = "produit.frites">
+                <h6>Frites</h6>
+                <ul>
+                    <li *ngFor="let frites of produit.frites">{{ frites["quantite"]}} {{ frites["frite"]["nom"] | titlecase}}</li>
+                </ul>
+            </ng-container>
 
-            <h6 *ngIf = "produit.tailles">Boissons</h6>
-            <ul *ngIf = "produit.tailles">
-                <li *ngFor="let tailles of produit.tailles">{{ tailles["quantite"]}} {{ tailles["taille"]["nom"]}}</li>
-            </ul>
+            <ng-container *ngIf = "produit.tailles">
+                <h6>Boissons</h6>
+                <ul>
+                    <li *ngFor="let tailles of produit.tailles">{{ tailles["quantite"]}} {{ tailles["taille"]["nom"]}}</li>
+                </ul>
+            </ng-container>
 
             <div class="d-flex align-items-center p-1 w-50 justify-content-center mt-5 {{ produit.burgers === undefined ?  'btn btn-outline-dark detail' : 'disabled' }} " id="addToPanier" (click)="addToCart(produit)">   
                 <span class="badge text-dark plusOne">+1</span>  
@@ -36,7 +42,7 @@
         </div>
     </div>
 
-    <div class="d-flex align-items-center detail btn btn-outline-dark p-1 w-25 justify-content-center  align-self-end" [routerLink]="['/catalogue']">   
+    <div class="d-flex align-items-center detail btn btn-outline-dark p-1 w-25 justify-content-center align-self-end" [routerLink]="['/catalogue']">   
         <a class="monlien">Retour au catalogue</a>
         <span class="material-icons" style="font-size:18px;">keyboard_arrow_right</span>
     </div>  
@@ -68,3 +74,17 @@
         </div>
     </div>
 </div> 
+
+<div class="container my-2">
+    <h5>Produits Similaires</h5>
+    <div class="row row-cols-1 row-cols-md-5 d-flex">
+        <app-card *ngFor = "let produit of produitsSimilaires" [produit]="produit" [miniCard]="'reduce'"></app-card>
+    </div>
+</div>
+
+<div class="container my-5">
+    <h5>Accompagnements</h5>
+    <div class="row row-cols-1 row-cols-md-5 d-flex">
+        <app-card *ngFor = "let produit of complements" [produit]="produit" [miniCard]="'reduce'"></app-card>
+    </div>
+</div>

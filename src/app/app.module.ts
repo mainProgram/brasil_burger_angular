@@ -15,6 +15,8 @@ import { PanierComponent } from './panier/panier.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { FormsModule } from '@angular/forms';
 import { CommandeComponent } from './commande/commande.component';
+import { CommandeDetailComponent } from './commande/commande-detail/commande-detail.component';
+import { FormatEtat } from './shared/pipes/format-etat.pipe';
 
 @NgModule({
   declarations: 
@@ -27,7 +29,9 @@ import { CommandeComponent } from './commande/commande.component';
     CatalogueDetailComponent,
     PanierComponent,
     CarouselComponent,
-    CommandeComponent
+    CommandeComponent,
+    CommandeDetailComponent,
+    FormatEtat
   ],
   imports: [
     RouterModule,
