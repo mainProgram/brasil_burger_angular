@@ -8,6 +8,7 @@ import { PanierComponent } from './panier/panier.component';
 import { HomeComponent } from './home/home.component';
 import { TailleBoissonPipe } from '../shared/pipes/tailleBoissonPipe';
 import { CardComponent } from './catalogue/card/card.component';
+import { GenericListFilterModule } from 'generic-list-filter';
 
 
 @NgModule({
@@ -21,13 +22,14 @@ import { CardComponent } from './catalogue/card/card.component';
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule
+    PublicRoutingModule,
+    GenericListFilterModule,
   ],
   exports: [
     CatalogueComponent,
     CatalogueDetailComponent,
     PanierComponent,
-    HomeComponent
+    HomeComponent,
   ]
 })
 export class PublicModule { }

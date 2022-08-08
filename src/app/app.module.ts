@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { CommandeComponent } from './commande/commande.component';
 import { CommandeDetailComponent } from './commande/commande-detail/commande-detail.component';
 import { FormatEtat } from './shared/pipes/format-etat.pipe';
-import { GenericListFilterModule } from 'generic-list-filter';
 import { AdminModule } from './admin/admin.module';
 import { PublicModule } from './public/public.module';
 
@@ -31,7 +30,6 @@ import { PublicModule } from './public/public.module';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    GenericListFilterModule,
     AdminModule,
     PublicModule
   ],

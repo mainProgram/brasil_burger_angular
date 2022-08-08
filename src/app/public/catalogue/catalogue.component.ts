@@ -107,9 +107,14 @@ export class CatalogueComponent implements OnInit
             else if(filtrePrix)
                 filtrage.forEach(item => { if ( item.prix == Number(filtrePrix)) this.filtrage.push(item)})  
         }
+
+        if(this.filtrage.length == 0)
+            document.getElementsByClassName("no-results")[0].removeAttribute("hidden");
+        
     }
     
     public hide(){
+        document.getElementsByClassName("no-results")[0].setAttribute("hidden", "hidden");
         Array.from(this.divBurgersMenusBoissonsFrites).forEach((element) => { element.setAttribute("hidden", "hidden")})
         this.divFilterResults[0].removeAttribute("hidden")
     }

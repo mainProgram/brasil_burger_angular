@@ -53,7 +53,5 @@
         <app-card *ngFor = "let produit of filtrage" [produit]="produit"></app-card>
     </div>
 
-    <h4 class="my-3 text-danger" *ngIf="filtrage.length == 0" >Pas de résultats</h4>
-
-    
+    <h4 class="my-3 text-danger no-results" *ngIf="filtrage.length == 0" hidden>Pas de résultats</h4>  
 </div>
