@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CatalogueService } from '../service/catalogue-service';
+import { CatalogueService } from '../../service/catalogue-service';
 
 
 @Component({

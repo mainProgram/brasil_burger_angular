@@ -32,10 +32,9 @@ export class BoissonService {
   }
 
   async getProducts(): Promise<any> {
-    const res = await firstValueFrom(
+    return await firstValueFrom(
       this.http.get<any>(this.COMPLEMENTS_URL).pipe(timeout(10000))
     );
-    console.log(res);
-    return res
+   
   }
 }

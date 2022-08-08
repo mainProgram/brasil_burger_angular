@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ICommande } from '../interface/commande';
-import { IProduit } from '../interface/produit';
-import { BoissonService } from '../service/boisson.service';
-import { CommandeService } from '../service/commande.service';
-import { PanierService } from '../service/panier.service';
-import { ZoneService } from '../service/zone.service';
+import { IProduit } from '../../interface/produit';
+import { BoissonService } from '../../service/boisson.service';
+import { CommandeService } from '../../service/commande.service';
+import { PanierService } from '../../service/panier.service';
+import { ZoneService } from '../../service/zone.service';
 
 @Component({
   selector: 'app-panier',

@@ -19,13 +19,18 @@ export class TailleBoissonPipe implements PipeTransform
         
         this.complementsService.getProducts().then(elements => {
             elements.pm.forEach(el => {if(el.id == id) {
+                    console.log(el.nom)
+                   this.nom =(el.nom)
                 }
             })
             elements.gm.forEach(el => {if(el.id == id) {
+                console.log(el.nom)
                 this.nom =(el.nom)
              }})
         })
         
+        console.log(this.nom)
+        return this.nom
 
         // this.complementsService.getComplements().subscribe(elements => {
         //     elements.pm.forEach(el => {
