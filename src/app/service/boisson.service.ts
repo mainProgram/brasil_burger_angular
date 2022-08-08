@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, firstValueFrom, Observable, tap, throwError, timeout } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class BoissonService {
@@ -31,5 +31,11 @@ export class BoissonService {
       return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-
+  async getProducts(): Promise<any> {
+    const res = await firstValueFrom(
+      this.http.get<any>(this.COMPLEMENTS_URL).pipe(timeout(10000))
+    );
+    console.log(res);
+    return res
+  }
 }

@@ -20,7 +20,13 @@
             </thead>
             <tbody>
                 <tr *ngFor = "let element of elements">
-                    <td colspan="2"><img src="{{ element.image }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ element.nom | titlecase}}</span></td>
+                    <td colspan="2"><img src="{{ element.image }}" alt="" style="width:40px; margin-right: 8px;">
+                        <span>{{ element.nom | titlecase}}</span>
+                        <br>
+                        <ng-container *ngIf="element.categorie == 'menu' && element.tailles">
+                            <span *ngFor="let boisson of element.tabBoissonsMenu" style="font-size:10px; color: black;">{{boisson.tailleBoisson | tailleBoissonPipe }}</span>
+                        </ng-container>
+                    </td>
                     <!-- <td colspan="2"><img src="{{'data:image/jpg;base64,' + element.image }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ element.nom }}</span></td> -->
                     <td>{{ element.prix }}</td>
                     <td>

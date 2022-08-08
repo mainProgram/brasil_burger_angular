@@ -18,6 +18,8 @@ import { CommandeComponent } from './commande/commande.component';
 import { CommandeDetailComponent } from './commande/commande-detail/commande-detail.component';
 import { FormatEtat } from './shared/pipes/format-etat.pipe';
 import { GenericListFilterModule } from 'generic-list-filter';
+import { TailleBoissonPipe } from './shared/pipes/tailleBoissonPipe';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: 
@@ -32,7 +34,8 @@ import { GenericListFilterModule } from 'generic-list-filter';
     CarouselComponent,
     CommandeComponent,
     CommandeDetailComponent,
-    FormatEtat
+    FormatEtat,
+    TailleBoissonPipe
   ],
   imports: [
     RouterModule,
@@ -41,7 +44,8 @@ import { GenericListFilterModule } from 'generic-list-filter';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    GenericListFilterModule
+    GenericListFilterModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

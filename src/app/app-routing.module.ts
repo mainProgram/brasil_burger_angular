@@ -17,7 +17,10 @@ const routes: Routes = [
     { path: 'commandes/:id', component: CommandeDetailComponent }, 
     { path: '', redirectTo: 'home',pathMatch:"full"}, 
     // { path: 'login', loadChildren: () => import('./securite/securite.module').then(m => m.SecuriteModule) },
-    { path: "**",component: NotFoundComponent}
+    {
+        path: 'auth', loadChildren: () =>  import('./auth/auth.module').then(m => m.AuthModule)
+    },
+    { path: "**",component: NotFoundComponent},
 ]
 
 @NgModule({

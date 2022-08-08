@@ -43,6 +43,12 @@ export class PanierService
             }
             else // si on l'a trouvé on augmente sa quantité
             {
+              if(produit.categorie == "menu" && produit.tailles)
+              {
+                produit = Object.assign({}, produit, {"quantite":1}) //qte du produit for the very first time
+                produits.push(produit);
+              }
+              else
                 produits.forEach(p => {
                   if(p.id == produit.id)
                     p.quantite++;

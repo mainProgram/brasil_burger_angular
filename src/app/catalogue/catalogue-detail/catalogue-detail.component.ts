@@ -194,4 +194,5 @@ export class CatalogueDetailComponent implements OnInit {
       }
       return array
     }
+
 }
