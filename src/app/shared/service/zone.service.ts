@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,11 @@ export class ZoneService {
 
   constructor(private http:HttpClient){}
 
-  private readonly ZONES_URL = "https://127.0.0.1:8000/api/zones.json";
   // private readonly ZONES_URL = "api/zones.json";
 
   public getZones(): Observable<any>
   {
-      return this.http.get<any>(this.ZONES_URL).pipe(
+      return this.http.get<any>(environment.ZONES_URL).pipe(
           catchError(this.handleError)
       );
   }

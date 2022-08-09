@@ -7,7 +7,8 @@ export const environment = {
   CATALOGUE_URL : "https://127.0.0.1:8000/api/catalogue",
   COMPLEMENTS_URL : "https://127.0.0.1:8000/api/complements",
   COMMANDE_URL : "https://127.0.0.1:8000/api/commandes",
-  BASE_URL : "https://127.0.0.1:8000/api/"
+  BASE_URL : "https://127.0.0.1:8000/api/",
+  ZONES_URL : "https://127.0.0.1:8000/api/zones"
 };
 
 
