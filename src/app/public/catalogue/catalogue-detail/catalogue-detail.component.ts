@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IProduit } from 'src/app/interface/produit';
-import { BoissonService } from 'src/app/service/boisson.service';
-import { CatalogueService } from 'src/app/service/catalogue-service';
-import { PanierService } from 'src/app/service/panier.service';
+import { IProduit } from 'src/app/shared/interface/interfaces';
+import { BoissonService } from 'src/app/shared/service/boisson.service';
+import { CatalogueService } from 'src/app/shared/service/catalogue-service';
+import { PanierService } from 'src/app/shared/service/panier.service';
 
 @Component({
   selector: 'app-catalogue-detail',

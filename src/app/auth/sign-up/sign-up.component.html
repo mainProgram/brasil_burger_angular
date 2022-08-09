@@ -1,1 +1,66 @@
-<p>sign-up works!</p>
+<div class="container my-3">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 d-flex flex-column align-items-center justify-content-center">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="pt-4 pb-2">
+              <h5 class="card-title text-center pb-0 fs-4">Création d'un compte</h5>
+              <p class="text-center small">Remplissez les champs</p>
+            </div>
+            <form class="row g-3 needs-validation" method='post' novalidate>
+            <div class="row">
+                <div class="col-6">
+                  <label for="yourName" class="form-label">Nom</label>
+                  <input type="text" name="nom" class="form-control" id="yourName" required>
+                  <div class="invalid-feedback">Entrez un nom valide!</div>
+                </div>
+                <div class="col-6">
+                  <label for="yourFName" class="form-label">Prénom</label>
+                  <input type="text" name="prenom" class="form-control" id="yourEmail" required>
+                  <div class="invalid-feedback">Entrez un prénom valide!</div>
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-6">
+                  <label for="yourEmail" class="form-label">Email</label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    <input type="email" name="email" class="form-control" id="yourEmail" required>
+                    <div class="invalid-feedback">Entrez votre adresse email!</div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label for="yourNumber" class="form-label">Téléphone</label>
+                  <input type="tel" name="telephone" class="form-control" id="yourPassword" required>
+                  <div class="invalid-feedback">Entrez votre numéro de téléphone!</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                  <label for="yourPassword" class="form-label">Mot de passe</label>
+                  <input type="password" name="password" class="form-control" id="yourPassword" required>
+                  <div class="invalid-feedback">Entrez votre mot de passe!</div>
+                </div>
+                <div class="col-6">
+                  <label for="yourPassword" class="form-label">Confirmer votre mot de passe</label>
+                  <input type="password" name="confirm_password" class="form-control" id="yourPassword" required>
+                  <div class="invalid-feedback">Entrez deux mot de passes identiques!</div>
+                </div>
+            </div>
+              <div class="col-12">
+                <label for="yourAddress" class="form-label">Adresse</label>
+                <input type="text" name="address" class="form-control" id="yourAdress" required>
+                <div class="invalid-feedback">Entrez votre adresse!</div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-warning w-100" type="submit">Soumettre</button>
+              </div>
+              <div class="col-12">
+                <p class="small mb-0">Vous avez déja un compte? <a >Connectez-vous.</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

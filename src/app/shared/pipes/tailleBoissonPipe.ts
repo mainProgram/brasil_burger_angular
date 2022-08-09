@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { BoissonService } from "src/app/service/boisson.service";
+import { BoissonService } from "../service/boisson.service";
 
 @Pipe({
     name: "tailleBoissonPipe"

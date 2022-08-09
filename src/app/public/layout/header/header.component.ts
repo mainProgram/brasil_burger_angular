@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PanierService } from 'src/app/service/panier.service';
+import { PanierService } from 'src/app/shared/service/panier.service';
 
 @Component({
   selector: 'app-header',

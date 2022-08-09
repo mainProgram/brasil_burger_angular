@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CatalogueService } from '../../service/catalogue-service';
-
+import { CatalogueService } from 'src/app/shared/service/catalogue-service';
 
 @Component({
   selector: 'app-catalogue',

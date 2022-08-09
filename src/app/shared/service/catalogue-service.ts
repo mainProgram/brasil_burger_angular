@@ -1,10 +1,8 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, throwError } from "rxjs";
-import { catchError, map, pluck, tap } from "rxjs/operators";
-import { ICatalogue } from "../interface/catalogue";
-import { IComplement } from "../interface/complement";
-import { IProduit } from "../interface/produit";
+import { Observable, throwError } from "rxjs";
+import { catchError} from "rxjs/operators";
+import { ICatalogue, IComplement, IProduit } from "../interface/interfaces";
 
 @Injectable({
     providedIn: "root"

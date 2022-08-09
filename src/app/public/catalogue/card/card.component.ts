@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ICatalogue } from 'src/app/interface/catalogue';
-import { IProduit } from 'src/app/interface/produit';
-import { PanierService } from 'src/app/service/panier.service';
+import { IProduit } from 'src/app/shared/interface/interfaces';
+import { PanierService } from 'src/app/shared/service/panier.service';
 
 @Component({
   selector: 'app-card',

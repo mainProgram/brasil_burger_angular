@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduit } from '../../interface/produit';
-import { BoissonService } from '../../service/boisson.service';
-import { CommandeService } from '../../service/commande.service';
-import { PanierService } from '../../service/panier.service';
-import { ZoneService } from '../../service/zone.service';
+import { IProduit } from 'src/app/shared/interface/interfaces';
+import { BoissonService } from 'src/app/shared/service/boisson.service';
+import { CommandeService } from 'src/app/shared/service/commande.service';
+import { PanierService } from 'src/app/shared/service/panier.service';
+import { ZoneService } from 'src/app/shared/service/zone.service';
 
 @Component({
   selector: 'app-panier',

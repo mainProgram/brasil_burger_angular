@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { elementAt } from 'rxjs';
-import { ICommande } from 'src/app/interface/commande';
-import { CommandeService } from 'src/app/service/commande.service';
+import { ICommande } from 'src/app/shared/interface/interfaces';
+import { CommandeService } from 'src/app/shared/service/commande.service';
 
 @Component({
   selector: 'app-commande-detail',

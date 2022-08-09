@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, take, map } from 'rxjs';
-import { IProduit } from '../interface/produit';
+import { IProduit } from '../interface/interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class PanierService 
