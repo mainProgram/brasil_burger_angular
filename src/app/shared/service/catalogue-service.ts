@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError} from "rxjs/operators";
+import { environment } from "src/environments/environment";
 import { ICatalogue, IComplement, IProduit } from "../interface/interfaces";
 
 @Injectable({
@@ -10,16 +11,14 @@ import { ICatalogue, IComplement, IProduit } from "../interface/interfaces";
 
 export class CatalogueService
 {
-    private readonly CATALOGUE_URL = "api/produits.json";
-    private readonly COMPLEMENTS_URL = "api/complements.json";
-    // private readonly COMPLEMENTS_URL = "https://127.0.0.1:8000/api/complements";
-    // private readonly CATALOGUE_URL = "https://127.0.0.1:8000/api/catalogue";
+    // private readonly CATALOGUE_URL = "api/produits.json";
+    // private readonly COMPLEMENTS_URL = "api/complements.json";
 
     constructor(private http:HttpClient){}
 
     public getProduits(): Observable<ICatalogue>
     {
-        return this.http.get<ICatalogue>(this.CATALOGUE_URL).pipe(
+        return this.http.get<ICatalogue>(environment.CATALOGUE_URL).pipe(
             // map(p => p?.burgers),
             // tap(produits => console.log(produits)),
             catchError(this.handleError)
@@ -28,7 +27,7 @@ export class CatalogueService
 
     public getComplements(): Observable<IComplement>
     {
-        return this.http.get<IComplement>(this.COMPLEMENTS_URL).pipe(
+        return this.http.get<IComplement>(environment.COMPLEMENTS_URL).pipe(
             // tap(produits => console.log(produits)),
             catchError(this.handleError)
         );

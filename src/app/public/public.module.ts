@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { TailleBoissonPipe } from '../shared/pipes/tailleBoissonPipe';
 import { CardComponent } from './catalogue/card/card.component';
 import { GenericListFilterModule } from 'generic-list-filter';
+import { LayoutModule } from './layout/layout.module';
 
 
 @NgModule({
@@ -24,12 +25,14 @@ import { GenericListFilterModule } from 'generic-list-filter';
     CommonModule,
     PublicRoutingModule,
     GenericListFilterModule,
+    LayoutModule
   ],
   exports: [
     CatalogueComponent,
     CatalogueDetailComponent,
     PanierComponent,
     HomeComponent,
+    LayoutModule
   ]
 })
 export class PublicModule { }

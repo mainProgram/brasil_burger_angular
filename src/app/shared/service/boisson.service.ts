@@ -1,18 +1,16 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, firstValueFrom, Observable, tap, throwError, timeout } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class BoissonService {
 
   constructor(private http:HttpClient) { }
 
-  public COMPLEMENTS_URL = "api/complements.json";
-  // public COMPLEMENTS_URL = "https://127.0.0.1:8000/api/taille_boissons";
-
   public getComplements(): Observable<any>
     {
-        return this.http.get<any>(this.COMPLEMENTS_URL).pipe(
+        return this.http.get<any>(environment.COMPLEMENTS_URL).pipe(
             catchError(this.handleError)
         );
     }
@@ -33,7 +31,7 @@ export class BoissonService {
 
   async getProducts(): Promise<any> {
     return await firstValueFrom(
-      this.http.get<any>(this.COMPLEMENTS_URL).pipe(timeout(10000))
+      this.http.get<any>(environment.COMPLEMENTS_URL).pipe(timeout(10000))
     );
    
   }

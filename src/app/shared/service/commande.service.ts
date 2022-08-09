@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,9 @@ export class CommandeService {
 
   constructor(private http:HttpClient, private retour:Router) { }
 
-  public readonly COMMANDE_URL = "https://127.0.0.1:8000/api/commandes"
-
   public saveOrder(body)
   {
-    this.http.post<any>(this.COMMANDE_URL, body).subscribe(
+    this.http.post<any>(environment.COMMANDE_URL, body).subscribe(
       {
         next: data => {
           this.retour.navigate(["/commandes/"+data.id])
@@ -28,23 +27,21 @@ export class CommandeService {
   public getCommandesById(id)
   {
     let COMMANDE_CLIENT_URL = "https://127.0.0.1:8000/api/clients/"+ id +"/commandes"
-    // let COMMANDE_CLIENT_URL = "api/commandes.json"
 
     return this.http.get<any>(COMMANDE_CLIENT_URL)
   }
 
   public getById(id:number)
   {  
-    return this.http.get<any>(this.COMMANDE_URL+"/"+id)
+    return this.http.get<any>(environment.COMMANDE_URL+"/"+id)
   }
 
   public annulerCommande(id)
   {
-    return this.http.put<any>("https://127.0.0.1:8000/api/commandes/"+id, {
+    return this.http.put<any>(environment.COMMANDE_URL+"/"+id, {
       "etat": "annule"
     })
   }
-  // public getById(id:number, tab: ICommande[]){  return tab.find(param => param.id == id)}
 
   public formatEtat(etat)
   {

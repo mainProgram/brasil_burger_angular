@@ -11,7 +11,6 @@ import { CommandeDetailComponent } from './commande/commande-detail/commande-det
 import { FormatEtat } from './shared/pipes/format-etat.pipe';
 import { AdminModule } from './admin/admin.module';
 import { PublicModule } from './public/public.module';
-import { LayoutModule } from './public/layout/layout.module';
 import { NotFoundComponent } from './public/not-found/not-found.component';
 
 @NgModule({
@@ -22,11 +21,10 @@ import { NotFoundComponent } from './public/not-found/not-found.component';
     CommandeComponent,
     CommandeDetailComponent,
     FormatEtat
-    ],
+  ],
   imports: [
     RouterModule,
     BrowserModule,
-    LayoutModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

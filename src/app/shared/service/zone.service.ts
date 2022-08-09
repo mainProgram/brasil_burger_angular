@@ -9,7 +9,8 @@ export class ZoneService {
 
   constructor(private http:HttpClient){}
 
-  private readonly ZONES_URL = "api/zones.json";
+  private readonly ZONES_URL = "https://127.0.0.1:8000/api/zones.json";
+  // private readonly ZONES_URL = "api/zones.json";
 
   public getZones(): Observable<any>
   {
