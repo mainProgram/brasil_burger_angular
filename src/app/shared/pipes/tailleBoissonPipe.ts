@@ -9,39 +9,25 @@ export class TailleBoissonPipe implements PipeTransform
 {
     constructor(private complementsService:BoissonService){}
 
-    public toutesLesBoissons = []
     public nom = ""
 
-    transform(iri: string) 
+    async transform(iri: string) 
     {     
         let tab = iri.split("/");
         let id = Number(tab[3]);
         
-        this.complementsService.getProducts().then(elements => {
-            elements.pm.forEach(el => {if(el.id == id) {
-                    console.log(el.nom)
-                   this.nom =(el.nom)
-                }
-            })
-            elements.gm.forEach(el => {if(el.id == id) {
-                console.log(el.nom)
-                this.nom =(el.nom)
-             }})
-        })
-        
-        console.log(this.nom)
-        return this.nom
+        let res = await this.getName(id)     
+        return (res);       
+    }
+    
+    async getName(id: number)
+    {
+        let tailleBoisson ;
+        let products = await this.complementsService.getProducts();
 
-        // this.complementsService.getComplements().subscribe(elements => {
-        //     elements.pm.forEach(el => {
-        //         if(el.id == id) {
-        //            this.nom =(el.nom)
-        //         }
-        //     })
-        //     elements.gm.forEach(el => {if(el.id == id) {
-        //         this.nom =(el.nom)
-        //      }})
-        // })
-
+        tailleBoisson = (products.pm.find(el => el.id == id)) ;
+        tailleBoisson = (tailleBoisson) ? tailleBoisson : (products.gm.find(el => el.id == id));
+                
+        return await tailleBoisson.nom
     }
 }
