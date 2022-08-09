@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,16 +13,14 @@ export class LoginComponent implements OnInit {
     password: null
   }
 
-  public LOGIN_URL = "https://127.0.0.1:8000/api/login_check"
-
-  constructor(private http:HttpClient) { }
+  constructor(private authService :AuthService) { }
   
   public onSubmit()
   {
-    return this.http.post(this.LOGIN_URL, this.form).subscribe(
+    this.authService.login(this.form).subscribe(
       data => console.log(data),
       err => console.log(err)
-    )
+    );
   }
 
   ngOnInit(): void 

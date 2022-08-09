@@ -37,8 +37,8 @@
         </div>
 
         <div class="image">
-            <!-- <img src="{{ produit.image }}" alt="" style="width: 400px;"> -->
-            <img src="{{'data:image/jpg;base64,' + produit.image }}" alt="" style="width: 400px;">
+            <img src="{{ produit.image }}" alt="" style="width: 400px;">
+            <!-- <img src="{{'data:image/jpg;base64,' + produit.image }}" alt="" style="width: 400px;"> -->
         </div>
     </div>
 
@@ -53,8 +53,7 @@
         <b><p >Choix boisson(s) PM</p></b>
         <div class="d-flex" style="overflow-x: auto; ">        
             <div  *ngFor="let boisson of pm" class="d-flex flex-column align-items-center justify-content-around m-1" style="width:200px;">
-                <img src="{{'data:image/jpg;base64,' + boisson.image }}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
-                <!-- <img src="{{boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;"> -->
+                <img src="{{boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
                <div class="d-flex justify-content-around w-50">
                     <input type="checkbox" value="{{ boisson.id}}" name="choixPM[]" (change)="tryme(taillePM, tailleGM)">
                     <input type="number" style="width: 45px;" min="0" max="{{ taillePM}}"  name="qtePM[]"  (input)="tryme(taillePM, tailleGM)" value="0">
@@ -66,7 +65,7 @@
         <b><p >Choix boisson(s) GM</p></b>
         <div class="d-flex" style="overflow-x: auto; ">        
             <div  *ngFor="let boisson of gm" class="d-flex flex-column align-items-center justify-content-around m-1" style="width:200px;">
-                <img src="{{'data:image/jpg;base64,' + boisson.image }}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
+                <img src="{{boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
                <div class="d-flex justify-content-around w-50">
                     <input type="checkbox" value="{{ boisson.id}}" name="choixGM[]" (change)="tryme(taillePM, tailleGM)">
                     <input type="number" style="width: 45px;" min="0" max="{{ tailleGM}}"  name="qteGM[]"  (input)="tryme(taillePM, tailleGM)" value="0">

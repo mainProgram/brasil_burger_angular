@@ -1,7 +1,7 @@
 <div class="col my-3 " id="{{produit.nom}}{{ produit.id }}">
     <div class="card {{miniCard}}"  >
-        <img src="{{'data:image/jpg;base64,' + produit.image }}" class="card-img-top" alt="...">
-        <!-- <img src="{{produit.image }}" class="card-img-top" alt="..."> -->
+        <!-- <img src="{{'data:image/jpg;base64,' + produit.image }}" class="card-img-top" alt="..."> -->
+        <img src="{{produit.image }}" class="card-img-top" alt="...">
         <div class="card-body">
             <h6 class="card-title">{{ produit.nom | titlecase}}</h6>
             <p class="card-text">{{ produit.prix }} FCFA</p>

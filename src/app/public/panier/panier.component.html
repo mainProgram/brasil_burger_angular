@@ -21,7 +21,7 @@
             <tbody>
                 <tr *ngFor = "let element of elements">
                     <!-- <td colspan="2"><img src="{{ element.image }}" alt="" style="width:40px; margin-right: 8px;"> -->
-                    <td colspan="2"><img src="{{'data:image/jpg;base64,' + element.image }}" alt="" style="width:40px; margin-right: 8px;">
+                    <td colspan="2"><img src="{{ element.image }}" alt="" style="width:40px; margin-right: 8px;">
                         <span>{{ element.nom | titlecase}}</span>
                         <br>
                         <ng-container *ngIf="element.categorie == 'menu' && element.tailles">

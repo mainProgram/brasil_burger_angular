@@ -1,30 +1,8 @@
-export interface ICommande
-{
-    id: number,
-
-    prix : number,
-
-    etat: string,
-
-    date: Date,
-
-    zone: string,
-
-    client: number,
-
-    commandeMenus: [],
-
-    commandeBurgers: [],
-
-    commandeFrites: [],
-
-    commandeTailleBoissons: [],
-
-}
+import { Time } from "@angular/common"
 
 export interface IProduit
 {
-    id: number,
+    id?: number,
     
     nom: string,
 
@@ -32,7 +10,7 @@ export interface IProduit
 
     image: string,
 
-    detail: string,
+    detail?: string,
 
     frites?: any[],
 
@@ -61,3 +39,99 @@ export interface ICatalogue
 
     burgers: IProduit[]
 }
+
+export interface ICommande
+{
+    id? : number 
+
+    client : string
+
+    livraison? : string
+
+    gestionnaire? : string
+
+    zone? : string
+
+    ticket? : string
+
+    etat : string
+  
+    paye? : string
+    
+    prix : number
+
+    commandeTailleBoissons? : []
+
+    date? : Date
+
+    numero? : string
+
+    commandeMenus? : []
+
+    commandeFrites? : []
+
+    commandeBurgers? : []
+}
+
+export interface Livraison
+{
+    id? : number,
+
+    duree? : Time
+
+    date? : Date
+
+    livreur? : string
+
+    commandes : []
+}
+
+export interface Zone
+{
+    id : number
+
+    nom : string
+
+    prix : string
+
+    isEtat? : boolean 
+
+    quartiers? : []
+
+    commandes? : []
+}
+
+export interface Ticket
+{
+
+}
+
+export interface User
+{
+    id? : number
+
+    email? : string
+
+    roles? : []
+
+    password? : string
+
+    confirmPassword? : string
+
+    nom? : string
+
+    prenom? : string
+
+    telephone? : string
+
+    isEtat? : boolean
+
+    produits? : []
+
+    token? : string
+
+    isActivated? : boolean
+
+    expiredAt? : Date
+}
+
