@@ -135,3 +135,15 @@ export interface User
     expiredAt? : Date
 }
 
+export interface ICredential
+{
+    email: string,
+
+    password: string
+}
+
+export interface IToken
+{
+    token: string
+}
+

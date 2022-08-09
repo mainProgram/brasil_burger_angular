@@ -16,9 +16,9 @@
                 <label  class="form-label">Adresse email</label>
                 <div class="input-group">
                   <span class="input-group-text" id="inputGroupPrepend">@</span>
-                  <input type="text" name="username" value="" class="form-control" id="username" required #username="ngModel" [(ngModel)] = "form.username">
+                  <input type="text" name="email" value="" class="form-control" id="email" required #email="ngModel" [(ngModel)] = "form.email">
                 </div>
-                <span class="form_error" *ngIf="username.errors?.['required'] && f.submitted">L'email est requis !</span>
+                <span class="form_error" *ngIf="email.errors?.['required'] && f.submitted">L'email est requis !</span>
               </div>
 
 

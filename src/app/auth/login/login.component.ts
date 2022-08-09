@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ICredential } from 'src/app/shared/interface/interfaces';
 import { AuthService } from 'src/app/shared/service/auth.service';
+import { TokenService } from 'src/app/shared/service/token.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +10,24 @@ import { AuthService } from 'src/app/shared/service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  public form:any = {
-    username: null,
-    password: null
+  public form: ICredential = {
+    email: '',
+    password: ''
   }
 
-  constructor(private authService :AuthService) { }
+  constructor(private authService :AuthService, private tokenService:TokenService) { }
   
   public onSubmit()
   {
     this.authService.login(this.form).subscribe(
-      data => console.log(data),
-      err => console.log(err)
+      {
+        next: (data) => {
+          console.log(data.token)
+          this.tokenService.saveToken(data.token)
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete') 
+      }
     );
   }
 

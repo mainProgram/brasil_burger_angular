@@ -6,21 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
-import { CommandeComponent } from './commande/commande.component';
-import { CommandeDetailComponent } from './commande/commande-detail/commande-detail.component';
-import { FormatEtat } from './shared/pipes/format-etat.pipe';
 import { AdminModule } from './admin/admin.module';
 import { PublicModule } from './public/public.module';
 import { NotFoundComponent } from './public/not-found/not-found.component';
+import { ClientModule } from './client/client.module';
+import { TokenInterceptorProvider } from './_helpers/token.interceptor';
 
 @NgModule({
   declarations: 
   [
     AppComponent,
     NotFoundComponent,
-    CommandeComponent,
-    CommandeDetailComponent,
-    FormatEtat
   ],
   imports: [
     RouterModule,
@@ -29,9 +25,12 @@ import { NotFoundComponent } from './public/not-found/not-found.component';
     HttpClientModule,
     FormsModule,
     AdminModule,
-    PublicModule
+    PublicModule,
+    ClientModule
   ],
-  providers: [],
+  providers: [
+    TokenInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommandeService } from '../shared/service/commande.service';
+import { CommandeService } from 'src/app/shared/service/commande.service';
 
 @Component({
   selector: 'app-commande',
