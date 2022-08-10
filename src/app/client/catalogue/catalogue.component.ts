@@ -21,7 +21,6 @@ export class CatalogueComponent implements OnInit
     public hidden = "rm"
 
     public filtrage = []
-
     public tabPrixFiltered = []
 
     public  divBurgersMenusBoissonsFrites = document.getElementsByClassName("hide") 
@@ -64,34 +63,34 @@ export class CatalogueComponent implements OnInit
                 error: err => this.errorMsg = err
             });
         },1000);
-
     }
 
-   
-
-
+    //Initialisation de ma liste de filtre
     filterList = {
         nom: ["menu", "salad", "bacon", "burger", "ranch", "double"],
         prix: this.tabPrixFiltered,
         categorie: ["menu", "burger"]
     };  
 
-    filterChange(appliedfilters) {
+    filterChange(appliedfilters)  //Filtre
+    {
+        // Initialisation du tableau de filtre
         let filtrage = []
         this.filtrage = []
         this.menus.forEach(element => filtrage.push(element))
         this.burgers.forEach(element => filtrage.push(element))
 
+        // Recupération des filtres 
         let filtreCategorie = appliedfilters.appliedFilterValues.categorie;
         let filtrePrix = appliedfilters.appliedFilterValues.prix;
         let filtreNom = appliedfilters.appliedFilterValues.nom;
 
-        if(!filtreCategorie && !filtrePrix && !filtreNom)
-            this.unhide()
-        else
+        if(!filtreCategorie && !filtrePrix && !filtreNom) // Si il ny a aucun filtre
+            this.unhide()  
+        else // Suivant les filtres entrés par l'utilisateur
         {
             this.hide()
-            if(filtreCategorie && filtreNom && filtrePrix)
+            if(filtreCategorie && filtreNom && filtrePrix) 
                 filtrage.forEach(item => { if (item.prix == Number(filtrePrix) && item.categorie == filtreCategorie && item.nom.toLowerCase().indexOf(filtreNom) != -1) this.filtrage.push(item)})
             else if(filtreCategorie && filtreNom)
                 filtrage.forEach(item => { if (item.categorie == filtreCategorie && item.nom.toLowerCase().indexOf(filtreNom) != -1) this.filtrage.push(item)})
@@ -107,18 +106,20 @@ export class CatalogueComponent implements OnInit
                 filtrage.forEach(item => { if ( item.prix == Number(filtrePrix)) this.filtrage.push(item)})  
         }
 
-        if(this.filtrage.length == 0)
+        if(this.filtrage.length == 0)  // Si il n'y a pas resultats alors afficher no results
             document.getElementsByClassName("no-results")[0].removeAttribute("hidden");
         
     }
     
-    public hide(){
+    public hide()
+    {
         document.getElementsByClassName("no-results")[0].setAttribute("hidden", "hidden");
         Array.from(this.divBurgersMenusBoissonsFrites).forEach((element) => { element.setAttribute("hidden", "hidden")})
         this.divFilterResults[0].removeAttribute("hidden")
     }
 
-    public unhide(){
+    public unhide()
+    {
         this.divFilterResults[0].setAttribute("hidden", "hidden")
         Array.from(this.divBurgersMenusBoissonsFrites).forEach((element) => { element.removeAttribute("hidden")})
     }
