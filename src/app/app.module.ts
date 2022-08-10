@@ -10,7 +10,10 @@ import { AdminModule } from './admin/admin.module';
 import { PublicModule } from './public/public.module';
 import { NotFoundComponent } from './public/not-found/not-found.component';
 import { ClientModule } from './client/client.module';
-import { TokenInterceptorProvider } from './_helpers/token.interceptor';
+// import { TokenInterceptorProvider } from './_helpers/token.interceptor';
+import { registerLocaleData } from '@angular/common'; 
+import localeFr from '@angular/common/locales/fr'; 
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: 
@@ -26,10 +29,10 @@ import { TokenInterceptorProvider } from './_helpers/token.interceptor';
     FormsModule,
     AdminModule,
     PublicModule,
-    ClientModule
+    ClientModule,
   ],
   providers: [
-    TokenInterceptorProvider
+    // TokenInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })

@@ -14,7 +14,7 @@
             <tbody>
                 <tr *ngFor="let com of commandes; let in=index">
                     <td>{{in+1}}</td>
-                    <td>{{com.date | date:"short"}}</td>
+                    <td>{{com.date | date:"short":'+00:00':'fr'}}</td>
                     <td>{{com.prix}} FCFA</td>
                     <td [style.color]="getColour(com.etat)">{{com.etat | formatEtat }}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(com.etat)}} </span></td> 
                     <!-- <td>{{( com.etat == "en attente") ? "En attente" : (com.etat == "termine") ? "Livré" : (com.etat == "valide") ? "En cours" : (com.etat == "annule") ? "Annulé": ""}}</td>  -->

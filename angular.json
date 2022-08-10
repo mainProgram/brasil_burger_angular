@@ -119,9 +119,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+                "src/styles.scss",
+                "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "node_modules/ng2-daterangepicker/assets/daterangepicker.css"
+              ],
+              "scripts": [
+                "node_modules/bootstrap/dist/js/bootstrap.min.js",
+                "node_modules/jquery/dist/jquery.min.js"
+            ]
           }
         }
       }

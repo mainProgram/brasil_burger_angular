@@ -1,0 +1,88 @@
+<div class="container mt-5">
+    <ng-container *ngIf="commande">
+        <div class="d-flex align-items-start justify-content-between">
+            <table class="table table-hover" style="width:70%;">
+                <thead style="padding: 40px;">
+                    <tr>
+                        <th colspan="2">Produits</th>
+                        <th>Prix unitaire</th>
+                        <th>Quantité</th>
+                        <th>Sous-total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngIf="commande.commandeMenus.length > 0">
+                        <tr *ngFor="let menu of commande.commandeMenus">
+                            <td colspan="2"><img src="{{ 'data:image/jpg;base64,' + menu['menu']['image'] }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ menu["menu"]["nom"]| titlecase}}</span></td>
+                            <td>{{ menu["menu"]["prix"]}} FCFA</td>
+                            <td>{{ menu["quantite"]}}</td>
+                            <td>{{ menu["menu"]["prix"] * menu["quantite"]}} FCFA</td>
+                        </tr>
+                    </ng-container>
+                    <ng-container *ngIf="commande.commandeBurgers.length > 0">
+                        <tr *ngFor="let burger of commande.commandeBurgers">
+                            <td colspan="2"><img src="{{ 'data:image/jpg;base64,' + burger['burger']['image'] }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ burger["burger"]["nom"]| titlecase}}</span></td>
+                            <td>{{ burger["burger"]["prix"]}} FCFA</td>
+                            <td>{{ burger["quantite"]}}</td>
+                            <td>{{ burger["burger"]["prix"] * burger["quantite"]}} FCFA</td>
+                        </tr>
+                    </ng-container>
+                    <ng-container *ngIf="commande.commandeFrites.length > 0">
+                        <tr *ngFor="let frite of commande.commandeFrites">
+                            <td colspan="2"><img src="{{ 'data:image/jpg;base64,' + frite['frite']['image'] }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ frite["frite"]["nom"]| titlecase}}</span></td>
+                            <td>{{ frite["frite"]["prix"]}} FCFA</td>
+                            <td>{{ frite["quantite"]}}</td>
+                            <td>{{ frite["frite"]["prix"] * frite["quantite"]}} FCFA</td>
+                        </tr>
+                    </ng-container>
+                    <ng-container *ngIf="commande.commandeTailleBoissons.length > 0">
+                        <tr *ngFor="let tailleBoisson of commande.commandeTailleBoissons">
+                            <td colspan="2"><img src="{{ 'data:image/jpg;base64,' + tailleBoisson['tailleBoisson']['image'] }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ tailleBoisson["tailleBoisson"]["nom"]| titlecase}}</span></td>
+                            <td>{{ tailleBoisson["tailleBoisson"]["prix"]}} FCFA</td>
+                            <td>{{ tailleBoisson["quantite"]}}</td>
+                            <td>{{ tailleBoisson["tailleBoisson"]["prix"] * tailleBoisson["quantite"]}} FCFA</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+            <div class="border w-25 p-5 d-flex flex-column">
+                <div>
+                    <h5>Résumé commande</h5>
+                    <p id="prixLivraison" *ngIf="commande.zone">Livraison: {{ commande['zone']['prix']}}  FCFA</p>
+                    <p>Total: {{ commande.prix }} FCFA</p>
+                    <p>Mode : {{ commande.zone ? "Livraison"  : "Sur place"  }}</p>
+                    <p>Etat: {{commande.etat | formatEtat}}</p>
+                </div>
+                <a [routerLink] = "['/admin/commandes']" class="btn btn-outline-dark">Commandes > </a>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="commandes && commandes.length > 0">
+          <table class="table table-hover caption-top" style="width:70%;">
+            <!-- <caption>Les commandes du {{ newDate() }} <input type="date" id="input" (change)= "changeDate()"></caption> -->
+            <thead>
+                <tr>
+                    <th>N° Commande</th>
+                    <th>Heure</th>
+                    <th>Etat</th>
+                    <th>Client</th>
+                    <th>Détails</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let com of commandes">
+                    <td>{{com.numero}}</td>
+                    <td>{{com.date | date:"short":'+00:00':'fr'}}</td>
+                    <!-- <td [style.color]="getColour(com.etat)">{{com.etat | formatEtat }}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(com.etat)}} </span></td>  -->
+                    <!-- <td>{{com.client.prenom}} {{com.client.nom}}</td> -->
+                    <!-- <td [routerLink] = "['/admin/commandes', com.id]"><span class="material-icons orange">remove_red_eye</span></td> -->
+                    <!-- <td><a class="btn btn-outline-success p-1" *ngIf="com.etat == 'en attente'" (click) = "valider(com.id)">Valider</a><a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'" (click) = "annuler(com.id)">Annuler</a></td> -->
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+    <ng-container *ngIf="commandes && commandes.length == 0">
+        <h4 class="text-danger">Pas de résultats !</h4>
+    </ng-container>
+</div>

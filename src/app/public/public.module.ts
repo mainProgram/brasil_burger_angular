@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { PublicRoutingModule } from './public-routing.module';
 import { LayoutModule } from './layout/layout.module';
+import { FormatEtat } from '../shared/pipes/format-etat.pipe';
 
 
 @NgModule({
   declarations: [
-   
+    FormatEtat
   ],
   imports: [
     CommonModule,
@@ -15,7 +16,8 @@ import { LayoutModule } from './layout/layout.module';
     LayoutModule
   ],
   exports: [
-    LayoutModule
+    LayoutModule,
+    FormatEtat
   ]
 })
 export class PublicModule { }

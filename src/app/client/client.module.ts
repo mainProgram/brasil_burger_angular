@@ -10,8 +10,7 @@ import { CardComponent } from './catalogue/card/card.component';
 import { GenericListFilterModule } from 'generic-list-filter';
 import { CommandeComponent } from './commande/commande.component';
 import { CommandeDetailComponent } from './commande/commande-detail/commande-detail.component';
-import { FormatEtat } from '../shared/pipes/format-etat.pipe';
-
+import { PublicModule } from '../public/public.module';
 
 @NgModule({
   declarations: [
@@ -23,12 +22,12 @@ import { FormatEtat } from '../shared/pipes/format-etat.pipe';
     CardComponent,
     CommandeComponent,
     CommandeDetailComponent,
-    FormatEtat
   ],
   imports: [
     CommonModule,
     ClientRoutingModule,
     GenericListFilterModule,
+    PublicModule
   ],
   exports: [
     CatalogueComponent,

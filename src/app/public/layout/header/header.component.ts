@@ -21,8 +21,6 @@ export class HeaderComponent implements OnInit {
         this.taillePanier = resultat.length
       }
     )
-
-    this.http.get("https://127.0.0.1:8000/api/livraisons").subscribe()
   }
 
   public logout(): void

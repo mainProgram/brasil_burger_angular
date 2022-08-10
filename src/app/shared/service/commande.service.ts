@@ -24,11 +24,20 @@ export class CommandeService {
     )
   }
 
-  public getCommandesById(id)
+  public getCommandesById(id: number)
   {
     let COMMANDE_CLIENT_URL = "https://127.0.0.1:8000/api/clients/"+ id +"/commandes"
 
     return this.http.get<any>(COMMANDE_CLIENT_URL)
+  }
+
+  public getCommandesByZone(zone: string)
+  {
+    console.log(zone);
+    
+  console.log((environment.COMMANDE_URL+"?zone.nom="+zone));
+  
+    return this.http.get<any>(environment.COMMANDE_URL+"?zone.nom="+zone)
   }
 
   public getById(id:number)
@@ -40,6 +49,22 @@ export class CommandeService {
   {
     return this.http.put<any>(environment.COMMANDE_URL+"/"+id, {
       "etat": "annule"
+    })
+  }
+
+  public validerCommande(id)
+  {
+    return this.http.put<any>(environment.COMMANDE_URL+"/"+id, {
+      "etat": "valide"
+    })
+  }
+
+  public traiterCommande(id:number, etat:string)
+  {
+    console.log(etat);
+    
+    return this.http.put<any>(environment.COMMANDE_URL+"/"+id, {
+      "etat": etat  
     })
   }
 
@@ -57,6 +82,11 @@ export class CommandeService {
     else if(etat == "livraison")    
       etatFormate = "En cours de livraison"
     return etatFormate
+  }
+
+  public getCommandes()
+  {
+    return this.http.get<any>(environment.COMMANDE_URL)
   }
 
 }
