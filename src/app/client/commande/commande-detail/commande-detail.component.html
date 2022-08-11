@@ -50,7 +50,8 @@
                 <p id="prixLivraison" *ngIf="commande.zone">Livraison: {{ commande['zone']['prix']}}  FCFA</p>
                 <p>Total: {{ commande.prix }} FCFA</p>
                 <p>Mode : {{ commande.zone ? "Livraison"  : "Sur place"  }}</p>
-                <p>Etat: {{commande.etat | formatEtat}}</p>
+                <p>Etat: <span [style.color]="getColour(commande.etat)">{{commande.etat | formatEtat}}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(commande.etat)}} </span></span></p>
+
             </div>
             <a [routerLink] = "['/commandes']" class="btn btn-outline-dark">Mes commandes > </a>
         </div>

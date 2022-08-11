@@ -1,0 +1,40 @@
+.disabled{
+    cursor: not-allowed!important;
+    background: rgba(128, 128, 128, 0.651) ;
+    a,span{color: gray;}
+    position: relative;
+    &:hover
+    {
+        p{
+            display: flex !important;
+            position: absolute;
+            font-size: 10px;
+            right: 20px;
+            bottom: 12px;
+        }
+    }
+}
+
+.col{
+    input{
+        margin-right: 10px;
+    }
+}
+
+span{
+    margin-right: 10px;
+}
+
+.orange-text{
+    color: #E89448;
+}
+
+.icon{
+    color: #000;
+    cursor: pointer;
+    margin-left: 15px;
+    &:hover{
+        color: white;
+        background: #E89448;
+    }
+}

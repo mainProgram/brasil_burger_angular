@@ -86,13 +86,13 @@ export interface Livraison
     commandes : []
 }
 
-export interface Zone
+export interface IZone
 {
     id : number
 
     nom : string
 
-    prix : string
+    prix? : string
 
     isEtat? : boolean 
 

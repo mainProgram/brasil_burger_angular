@@ -1,0 +1,74 @@
+<div class="container mt-5 d-flex justify-content-center align-items-center flex-column">
+    <ng-container *ngIf="zones && zones.length > 0">
+        <h4 class="orange-text">Nouvelle Livraison<span class="material-icons icon" [routerLink] = "['/admin/livraisons']">list</span></h4>
+    
+        <div class="w-25">
+            <h6 class="mt-3 orange-text">Choisir la zone</h6>
+            <select class="form-select" (change)="zoneChoisie(zone)" #zone>
+                <option selected  value="0">choisir</option>
+                <option *ngFor="let zone of zones" value={{zone.id}}>{{zone.nom}}</option>
+            </select>
+        </div>
+    
+        <ng-container *ngIf= "commandes && commandes.length > 0">
+            <div class="row mt-3 d-flex justify-content-between w-100">
+                <div class="col-6">
+                    <h6 class="my-2 orange-text">Sélectionner les commandes</h6>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Commande</th>
+                                <th>Client</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let com of commandes">
+                                <td><input type="checkbox" name="checkedCommandes[]" value="{{com.id}}" (change)="areAllChecked()"></td>
+                                <td>{{com.numero}}</td>
+                                <td>{{com.client.prenom}} {{com.client.nom}}</td>
+                                <td>{{com.prix}} FCFA</td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-6" *ngIf="livreurs && livreurs.length > 0">
+                    <h6 class="my-2 orange-text">Sélectionner le livreur</h6>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Matricule</th>
+                                <th>Livreur</th>
+                                <th>Téléphone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let liv of livreurs">
+                                <td><input type="radio" name="checkedLivreurs[]" value="{{liv.id}}" (change)="areAllChecked()"></td>
+                                <td>{{liv.matriculeMoto}}</td>
+                                <td>{{liv.prenom}} {{liv.nom}}</td>
+                                <td>{{liv.telephone}}</td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-6" *ngIf="livreurs && livreurs.length == 0">
+                    <h4 class="text-danger">Pas de livreurs disponibles !</h4>
+                </div>
+            </div>
+    
+            <button class="btn btn-outline-dark my-3 disabled" id="create" (click) = "validerLivraison()">Nouvelle livraison</button>
+            
+        </ng-container>
+    
+        <ng-container *ngIf = "commandes && commandes.length == 0">
+            <h6 class="text-danger my-2">Pas de commandes !</h6>
+        </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="zones && zones.length == 0">
+        <h4 class="text-danger">Pas de commandes terminées à livrer !<span class="material-icons icon" [routerLink] = "['/admin/livraisons']">list</span></h4>
+    </ng-container>
+</div>

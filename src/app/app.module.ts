@@ -13,6 +13,7 @@ import { ClientModule } from './client/client.module';
 // import { TokenInterceptorProvider } from './_helpers/token.interceptor';
 import { registerLocaleData } from '@angular/common'; 
 import localeFr from '@angular/common/locales/fr'; 
+import { NgxPaginationModule } from 'ngx-pagination';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -30,6 +31,7 @@ registerLocaleData(localeFr, 'fr');
     AdminModule,
     PublicModule,
     ClientModule,
+    NgxPaginationModule
   ],
   providers: [
     // TokenInterceptorProvider

@@ -51,36 +51,37 @@
                     <p id="prixLivraison" *ngIf="commande.zone">Livraison: {{ commande['zone']['prix']}}  FCFA</p>
                     <p>Total: {{ commande.prix }} FCFA</p>
                     <p>Mode : {{ commande.zone ? "Livraison"  : "Sur place"  }}</p>
-                    <p>Etat: {{commande.etat | formatEtat}}</p>
+                    <p>Etat: <span [style.color]="getColour(commande.etat)">{{commande.etat | formatEtat}}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(commande.etat)}} </span></span></p>
                 </div>
                 <a [routerLink] = "['/admin/commandes']" class="btn btn-outline-dark">Commandes > </a>
             </div>
         </div>
     </ng-container>
     <ng-container *ngIf="commandes && commandes.length > 0">
-          <table class="table table-hover caption-top" style="width:70%;">
-            <!-- <caption>Les commandes du {{ newDate() }} <input type="date" id="input" (change)= "changeDate()"></caption> -->
-            <thead>
-                <tr>
-                    <th>N° Commande</th>
-                    <th>Heure</th>
-                    <th>Etat</th>
-                    <th>Client</th>
-                    <th>Détails</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let com of commandes">
-                    <td>{{com.numero}}</td>
-                    <td>{{com.date | date:"short":'+00:00':'fr'}}</td>
-                    <!-- <td [style.color]="getColour(com.etat)">{{com.etat | formatEtat }}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(com.etat)}} </span></td>  -->
-                    <!-- <td>{{com.client.prenom}} {{com.client.nom}}</td> -->
-                    <!-- <td [routerLink] = "['/admin/commandes', com.id]"><span class="material-icons orange">remove_red_eye</span></td> -->
-                    <!-- <td><a class="btn btn-outline-success p-1" *ngIf="com.etat == 'en attente'" (click) = "valider(com.id)">Valider</a><a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'" (click) = "annuler(com.id)">Annuler</a></td> -->
-                </tr>
-            </tbody>
-        </table>
+        <div class="d-flex align-items-center justify-content-center">
+            <table class="table table-hover caption-top" style="width:70%;">
+                <thead>
+                    <tr>
+                        <th>N° Commande</th>
+                        <th>Heure</th>
+                        <th>Etat</th>
+                        <th>Client</th>
+                        <th>Détails</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let com of commandes">
+                        <td>{{com.numero}}</td>
+                        <td>{{com.date | date:"short":'+00:00':'fr'}}</td>
+                        <td [style.color]="getColour(com.etat)">{{com.etat | formatEtat }}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(com.etat)}} </span></td> 
+                        <td>{{com.client['prenom']}} {{com.client['nom']}}</td>
+                        <td [routerLink] = "['/admin/commandes', com.id]"><span class="material-icons orange">remove_red_eye</span></td>
+                        <!-- <td><a class="btn btn-outline-success p-1" *ngIf="com.etat == 'en attente'" (click) = "valider(com.id)">Valider</a><a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'" (click) = "annuler(com.id)">Annuler</a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </ng-container>
     <ng-container *ngIf="commandes && commandes.length == 0">
         <h4 class="text-danger">Pas de résultats !</h4>

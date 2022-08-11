@@ -8,7 +8,6 @@ import { CommandeModule } from './commandes/commandes.module';
 import { LivraisonsModule } from './livraisons/livraisons.module';
 import { ProduitsModule } from './produits/produits.module';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -24,6 +23,13 @@ import { ProduitsModule } from './produits/produits.module';
   ],
   exports: [
     DashboardComponent,
+    CommonModule,
+    AdminRoutingModule,
+    PublicModule,
+    CommandeModule,
+    Daterangepicker,
+    LivraisonsModule,
+    ProduitsModule
   ]
 })
 export class AdminModule { }

@@ -62,6 +62,13 @@
     </div>
 </div>
 
+<div class="container my-5" *ngIf="elements.length != 0">
+    <h5>Accompagnements</h5>
+    <div class="row row-cols-1 row-cols-md-5 d-flex">
+        <app-card *ngFor = "let produit of complements" [produit]="produit" [miniCard]="'reduce'"></app-card>
+    </div>
+</div>
+
 <div class="container my-5" id="liv" hidden >
     <h5>Choix de la zone de livraison</h5>
     <div *ngFor = "let zone of zones" class="mt-3">
@@ -77,10 +84,5 @@
     </div>
 </div>
 
-<div class="container my-5" *ngIf="elements.length != 0">
-    <h5>Accompagnements</h5>
-    <div class="row row-cols-1 row-cols-md-5 d-flex">
-        <app-card *ngFor = "let produit of complements" [produit]="produit" [miniCard]="'reduce'"></app-card>
-    </div>
-</div>
+
 

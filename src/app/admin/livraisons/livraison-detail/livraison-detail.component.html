@@ -1,1 +1,32 @@
-<p>livraison-detail works!</p>
+<div class="container mt-5">
+    <h4 class="mb-4 orange-text">Détails de la livraison n° {{livraison.id}}</h4>
+
+    <div class="mb-2">
+        <b><span class="orange-text">Livreur: </span></b><span>{{livraison.livreur.prenom}} {{livraison.livreur.nom}}</span><br>
+    </div>
+    <div class="mb-2">
+        <b><span class="orange-text">Date: </span></b><span>{{livraison.date | date:'dd/MM/yyyy HH:mm'}}</span><br>
+    </div>
+    <div class="mb-2">
+        <b><span class="orange-text">Commandes</span></b>
+    </div>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Numéro</th>
+                <th>Total</th>
+                <th>Client</th>
+                <th>Détails</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let com of livraison.commandes">
+                <td>{{com.numero}}</td>
+                <td>{{com.prix}} FCFA</td>
+                <td>{{com.client.prenom}} {{com.client.nom}}</td>
+                <td [routerLink] = "['/admin/commandes', com.id]"><span class="material-icons orange">remove_red_eye</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

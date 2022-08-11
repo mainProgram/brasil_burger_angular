@@ -1,0 +1,19 @@
+caption
+{
+    color: black;
+}
+
+input{
+    outline: none;
+}
+
+.orange{
+    cursor: pointer;
+    &:hover{
+        color: #E89448;
+    }
+}
+
+.orange-text{
+    color: #E89448;
+}

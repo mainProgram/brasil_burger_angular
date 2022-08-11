@@ -18,30 +18,38 @@ export class CommandeDetailComponent implements OnInit {
 
   ngOnInit(): void 
   {        
-    const nom = this.route.snapshot.paramMap.get("id")
-    var regex = new RegExp('^[0-9]$');
+    let nom : string;
 
-    if(regex.test(nom))
-    {
-      this.commandes = null
-      const id = +this.route.snapshot.paramMap.get("id");    
-  
-      this.commandeService.getById(id).subscribe({
-        next: data => { this.commande = data },
-        error: err => { this.retour.navigate(["/admin/commandes"]) }
-      })
-    }
-    else
-    {
-      this.commande = null
-      this.commandeService.getCommandesByZone(nom).subscribe({
-        next: data => { 
-          this.commandes = data 
-          console.log(this.commandes);
-          
-        },
-      })
-    }
+    this.route.paramMap.subscribe(param => { //DYNAMISME DES ROUTES POUR LES DETAILS
+        nom = this.route.snapshot.paramMap.get("param")
+        var regex = new RegExp('^[0-9]$');
+    
+        if(regex.test(nom))
+        {
+          this.commandes = null
+          const id = +this.route.snapshot.paramMap.get("param");    
+      
+          this.commandeService.getById(id).subscribe({
+            next: data => { this.commande = data },
+            error: err => { this.retour.navigate(["/admin/commandes"]) }
+          })
+        }
+        else
+        {
+          this.commande = null
+          this.commandeService.getCommandesByZone(nom).subscribe({
+            next: data => { 
+              this.commandes = data 
+              console.log(this.commandes);
+              
+            },
+          })
+        }
+    })
   }
+
+  getColour(etat: string) {  return this.commandeService.getColour(etat)}
+
+  getIcon(etat: string){ return this.commandeService.getIcon(etat) }
 
 }

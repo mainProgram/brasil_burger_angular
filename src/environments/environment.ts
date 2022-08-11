@@ -12,7 +12,11 @@ export const environment = {
   BASE_URL : "https://127.0.0.1:8000/api/",
   // ZONES_URL : "https://127.0.0.1:8000/api/zones"
   ZONES_URL : "../api/zones.json",
-  LOGIN_URL : "https://127.0.0.1:8000/api/login_check"
+  LOGIN_URL : "https://127.0.0.1:8000/api/login_check",
+  COMMANDE_FILTERED : "https://127.0.0.1:8000/api/commandes?etat=termine&zone.id=",
+  ZONE_COMMANDES_ETAT_TERMINE : "https://127.0.0.1:8000/api/zonesCommandesterminees",
+  LIVREURS_URL : "https://127.0.0.1:8000/api/livreurs",
+  LIVRAISONS_URL : "https://127.0.0.1:8000/api/livraisons"
 };
 
 

@@ -27,50 +27,24 @@ export class CommandeService {
   public getCommandesById(id: number)
   {
     let COMMANDE_CLIENT_URL = "https://127.0.0.1:8000/api/clients/"+ id +"/commandes"
-
     return this.http.get<any>(COMMANDE_CLIENT_URL)
   }
 
-  public getCommandesByZone(zone: string)
-  {
-    console.log(zone);
-    
-  console.log((environment.COMMANDE_URL+"?zone.nom="+zone));
-  
-    return this.http.get<any>(environment.COMMANDE_URL+"?zone.nom="+zone)
-  }
+  public getCommandesByZone(zone: string) {  return this.http.get<any>(environment.COMMANDE_URL+"?zone.nom="+zone) }
 
-  public getById(id:number)
-  {  
-    return this.http.get<any>(environment.COMMANDE_URL+"/"+id)
-  }
+  public getById(id:number){  return this.http.get<any>(environment.COMMANDE_URL+"/"+id) }
 
-  public annulerCommande(id)
-  {
-    return this.http.put<any>(environment.COMMANDE_URL+"/"+id, {
-      "etat": "annule"
-    })
-  }
+  public annulerCommande(id) {  return this.http.put<any>(environment.COMMANDE_URL+"/"+id, { "etat": "annule" }) }
 
-  public validerCommande(id)
-  {
-    return this.http.put<any>(environment.COMMANDE_URL+"/"+id, {
-      "etat": "valide"
-    })
-  }
+  public validerCommande(id){ return this.http.put<any>(environment.COMMANDE_URL+"/"+id, {  "etat": "valide" }) }
 
-  public traiterCommande(id:number, etat:string)
-  {
-    console.log(etat);
-    
-    return this.http.put<any>(environment.COMMANDE_URL+"/"+id, {
-      "etat": etat  
-    })
-  }
+  public traiterCommande(id:number, etat:string){  return this.http.put<any>(environment.COMMANDE_URL+"/"+id, {  "etat": etat  }) }
 
-  public formatEtat(etat)
+  public getCommandes(){  return this.http.get<any>(environment.COMMANDE_URL)  }
+
+  public formatEtat(etat: string)
   {
-    let etatFormate
+    let etatFormate : string
     if(etat == "en attente")
       etatFormate = "En attente"
     else if(etat == "termine")
@@ -84,9 +58,34 @@ export class CommandeService {
     return etatFormate
   }
 
-  public getCommandes()
+  getColour(etat: string) : null | string
   {
-    return this.http.get<any>(environment.COMMANDE_URL)
+    if(etat == "en attente")
+        return "orange"
+    else if(etat == "termine")
+        return "green"
+    else if(etat == "valide")
+        return "blue"
+    else if(etat == "annule")
+        return "red";
+    else if(etat == "livraison")    
+        return "blue"
+    return null
+  }
+
+  getIcon(etat: string) : null | string
+  {
+    if(etat == "en attente")
+        return "pending"
+    else if(etat == "termine")
+        return "done"
+    else if(etat == "valide")
+        return "schedule"
+    else if(etat == "annule")
+        return "close";
+    else if(etat == "livraison")    
+        return "local_shipping"
+    return null
   }
 
 }

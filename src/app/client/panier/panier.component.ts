@@ -13,28 +13,22 @@ import { ZoneService } from 'src/app/shared/service/zone.service';
 export class PanierComponent implements OnInit 
 {
   public elements = []
-
   public prixTotal = 0
-
   public option = 0
-
   public zones = []
-
   public zone = null
-
   public prixLivraison = 0
-
   public complements = []
 
   constructor(private panierService: PanierService, private zoneService: ZoneService, private commandeService: CommandeService, private complementsService:BoissonService) { }
 
   ngOnInit(): void 
   {
-    this.panierService.getPanier().subscribe(produits => { this.elements = produits })
+    this.panierService.getPanier().subscribe(produits => { this.elements = produits }) // elements du panier
 
-    this.calculPrixPanier()
-
-    this.complementsService.getComplements().subscribe(
+    this.calculPrixPanier() //prix du panier
+  
+    this.complementsService.getComplements().subscribe(   //  Compléments 
       complements =>{
         complements.pm.forEach(b => { this.complements.push(b) })
         complements.gm.forEach(b => { this.complements.push(b) })
@@ -63,7 +57,7 @@ export class PanierComponent implements OnInit
       else if(option.value == 2) //livraison
       {
           valider.classList.add("disabled")        //on active le bouton valider 
-          this.zoneService.getZones().subscribe( zones => { 
+          this.zoneService.getAllZones().subscribe( zones => { 
             this.zones = zones                              //on stocke les zones dans lattribut
           } ) 
           liv.removeAttribute("hidden")                     //on affiche le texte livraison    
@@ -89,9 +83,7 @@ export class PanierComponent implements OnInit
 
       this.prixTotal = 0
 
-      this.elements.forEach(el => {
-        this.prixTotal += el.quantite * el.prix
-      })
+      this.elements.forEach(el => {  this.prixTotal += el.quantite * el.prix })
       
       this.prixTotal += this.prixLivraison
     })
@@ -233,19 +225,4 @@ export class PanierComponent implements OnInit
   }
 
   public resetPanier(){ this.panierService.resetPanier(); this.elements = []}
-
-  public scroll = function scroll(){
-    const { 
-        scrollTop, 
-        scrollHeight, 
-        clientHeight 
-    } = document.documentElement
-
-    // if(scrollTop + clientHeight >= scrollHeight - 5)  {  
-    //   TOP_ARROW.firstChild.classList.add("show")
-    // else
-    //   TOP_ARROW.firstChild.classList.remove("show")
-       
-    // }
-  }
 }

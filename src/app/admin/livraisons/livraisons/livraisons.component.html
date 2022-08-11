@@ -1,1 +1,22 @@
-<p>livraisons works!</p>
+<div class="container mt-5 d-flex justify-content-center align-items-center w-50 flex-column">
+    <h4 class="mb-4 orange-text">Liste des livraisons <span class="material-icons icon" [routerLink] = "['/admin/livraisons/new']">add</span></h4>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Livreur</th>
+                <th>Date</th>
+                <th>Détails</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let liv of livraisons">
+                <td>{{liv.id}}</td>
+                <td>{{liv.livreur.prenom}} {{liv.livreur.nom}}</td>
+                <td>{{liv.date | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td [routerLink] = "['/admin/livraisons', liv.id]"><span class="material-icons orange">remove_red_eye</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
