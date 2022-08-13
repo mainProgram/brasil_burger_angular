@@ -20,7 +20,7 @@ export class CommandeComponent implements OnInit
 
   public annulerCommande(id)
   {
-    this.commandeService.annulerCommande(id).subscribe(el => {
+    this.commandeService.traiterCommande(id, "annule").subscribe(el => {
       this.retour.navigate(["/commandes", el.id])
     })
   }

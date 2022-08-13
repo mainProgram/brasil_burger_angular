@@ -24,6 +24,10 @@
                 </tr>
             </tbody>
         </table>
+        <pagination-controls
+            class="pagi"
+            (pageChange)="page = $event"
+        ></pagination-controls>
     </ng-container>
     <div class="d-flex flex-column align-items-center">
         <h3 class="text-danger mb-5" *ngIf="commandes.length == 0">Pas de commande pour le moment !</h3>

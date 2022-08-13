@@ -10,8 +10,14 @@ import { CommandeService } from 'src/app/shared/service/commande.service';
 export class CommandesComponent implements OnInit {
 
   public commandes = []
-  public chosenDate = new Date().toISOString().substring(0,10);
+
+  public page: number = 1;
+  passenger: any; 
+  itemsPerPage = 2;
+  totalItems : any; 
+
   public commandeFiltrees = []
+  public chosenDate = new Date().toISOString().substring(0,10);
   public changedDate = new Date().toISOString().substring(0,10);
 
   constructor(private commandeService: CommandeService, private retour: Router) { }

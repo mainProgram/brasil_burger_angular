@@ -16,16 +16,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.panierService.getPanier().subscribe(
-      resultat => {
-        this.taillePanier = resultat.length
-      }
-    )
+    this.panierService.getPanier().subscribe({
+        next: data => { this.taillePanier = data.length}
+    })
   }
 
-  public logout(): void
-  {
-    this.tokenService.clearToken()
-  }
-
+  public logout(): void {  this.tokenService.clearToken() }
 }

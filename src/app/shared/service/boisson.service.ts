@@ -8,14 +8,22 @@ export class BoissonService {
 
   constructor(private http:HttpClient) { }
 
-  public getComplements(): Observable<any>
-    {
-        return this.http.get<any>(environment.COMPLEMENTS_URL).pipe(
-            catchError(this.handleError)
-        );
-    }
+  public getComplements(): Observable<any>{
+      return this.http.get<any>(environment.COMPLEMENTS_URL).pipe(  catchError(this.handleError)  );
+  }
 
-    private handleError(error: HttpErrorResponse) {
+  async getProducts(): Promise<any> 
+  {
+    return await firstValueFrom(
+      this.http.get<any>(environment.COMPLEMENTS_URL).pipe(
+        timeout(10000),
+        catchError(this.handleError)
+      )
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) 
+  {
       if (error.status === 0) {
         // A client-side or network error occurred. Handle it accordingly.
         console.error('An error occurred:', error.error);
@@ -29,10 +37,4 @@ export class BoissonService {
       return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  async getProducts(): Promise<any> {
-    return await firstValueFrom(
-      this.http.get<any>(environment.COMPLEMENTS_URL).pipe(timeout(10000))
-    );
-   
-  }
 }

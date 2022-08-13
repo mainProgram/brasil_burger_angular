@@ -12,19 +12,16 @@ export class ZoneService {
 
   // private readonly ZONES_URL = "api/zones.json";
 
-  public getAllZones(): Observable<any>
-  {
-      return this.http.get<any>(environment.ZONES_URL).pipe(
-          catchError(this.handleError)
-      );
+  public getAllZones(): Observable<any>{
+    return this.http.get<any>(environment.ZONES_URL).pipe(  catchError(this.handleError)  );
   }
 
   public getZonesDontCommandeEtatTermine() {
-    return this.http.get(environment.ZONE_COMMANDES_ETAT_TERMINE)
+    return this.http.get(environment.ZONE_COMMANDES_ETAT_TERMINE).pipe( catchError(this.handleError));
   }
-  public getCommandesTermineesParZones(id:number)
-  {    
-    return this.http.get(environment.COMMANDE_FILTERED+id)
+
+  public getCommandesTermineesParZones(id:number){    
+    return this.http.get(environment.COMMANDE_FILTERED+id).pipe( catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

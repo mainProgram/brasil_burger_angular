@@ -11,9 +11,6 @@ import { ICatalogue, IComplement, IProduit } from "../interface/interfaces";
 
 export class CatalogueService
 {
-    // private readonly CATALOGUE_URL = "api/produits.json";
-    // private readonly COMPLEMENTS_URL = "api/complements.json";
-
     constructor(private http:HttpClient){}
 
     public getProduits(): Observable<ICatalogue>
