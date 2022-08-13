@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IProduit } from 'src/app/shared/interface/interfaces';
 import { BoissonService } from 'src/app/shared/service/boisson.service';
 import { CommandeService } from 'src/app/shared/service/commande.service';
@@ -12,12 +12,17 @@ import { ZoneService } from 'src/app/shared/service/zone.service';
 })
 export class PanierComponent implements OnInit 
 {
+  @ViewChild("prixLivraison") prixLiv : ElementRef
+  @ViewChild("optionLiv") optionliv : ElementRef
+  @ViewChild("valider") valider : ElementRef
+  @ViewChild("liv") liv : ElementRef
+
   public elements = []
   public prixTotal = 0
   public option = 0
   public zones = []
   public zone = null
-  public prixLivraison = 0
+  public prixLivraison2 = 0
   public complements = []
 
   constructor(private panierService: PanierService, private zoneService: ZoneService, private commandeService: CommandeService, private complementsService:BoissonService) { }
@@ -42,25 +47,31 @@ export class PanierComponent implements OnInit
 
   mode(option, valider) // retrait ou livraison
   {
-      let liv = document.getElementById("liv")
-      let prixLiv = document.getElementById("prixLivraison")
+      let liv = this.liv.nativeElement
+      // let liv = document.getElementById("liv")
+      // let prixLiv = document.getElementById("prixLivraison")
+      let prixLiv = this.prixLiv.nativeElement                       
+
 
       if(option.value == 1) // retrait
       {
-          (<HTMLInputElement>document.getElementById("optionLiv")).value = "0";
+          // (<HTMLInputElement>document.getElementById("optionLiv")).value = "0";
+          this.optionliv.nativeElement.value = "0";
           liv.setAttribute("hidden", "hidden")        //on cache le texte livraison
           prixLiv.setAttribute("hidden", "hidden")    //on cache le prix de la livraison
           valider.classList.remove("disabled")        //on active le bouton valider
-          this.prixLivraison = 0                      //on remet le prix de la livraison a 0 
+          this.prixLivraison2 = 0                      //on remet le prix de la livraison a 0 
           this.calculPrixPanier()                     //et on recalcule le prix total du panier
       }
       else if(option.value == 2) //livraison
       {
-          valider.classList.add("disabled")        //on active le bouton valider 
+          // valider.classList.add("disabled")        //on active le bouton valider 
+          this.valider.nativeElement.classList.add('disabled')        //on active le bouton valider 
           this.zoneService.getAllZones().subscribe( zones => { 
             this.zones = zones                              //on stocke les zones dans lattribut
           } ) 
-          liv.removeAttribute("hidden")                     //on affiche le texte livraison    
+          // liv.removeAttribute("hidden")                     //on affiche le texte livraison    
+          this.liv.nativeElement.removeAttribute("hidden")                     //on affiche le texte livraison    
           let top = liv.offsetTop + 500                    //on abaisse le scrollbar jusquau niveau du div avec les zones de livraison
           window.scrollTo(0,top)
       }
@@ -70,22 +81,24 @@ export class PanierComponent implements OnInit
   {
     this.zones.forEach(zone => {
       if(zone.id == optionLiv.value)
-        this.prixLivraison = zone.prix
+        this.prixLivraison2 = zone.prix        
     })
-    let prixLiv = document.getElementById("prixLivraison")
-    prixLiv.removeAttribute("hidden")                                           //on affiche le prix de la livraison
-    document.getElementById("valider").classList.remove("disabled")            //on active le bouton valider
+    // let prixLiv = document.getElementById("prixLivraison")
+    // prixLiv.removeAttribute("hidden")                                           //on affiche le prix de la livraison
+
+    this.prixLiv.nativeElement.removeAttribute("hidden")                        
+    this.valider.nativeElement.classList.remove("disabled")            //on active le bouton valider
+    // document.getElementById("valider").classList.remove("disabled")            //on active le bouton valider
     this.calculPrixPanier()                                                   //et on recalcule le prix total du panier
   }
   
   public calculPrixPanier(){
-    this.panierService.getPanier().subscribe(produits => {
-
-      this.prixTotal = 0
-
-      this.elements.forEach(el => {  this.prixTotal += el.quantite * el.prix })
-      
-      this.prixTotal += this.prixLivraison
+    this.panierService.getPanier().subscribe({
+      next: data => { 
+          this.prixTotal = 0
+          this.elements.forEach(el => {  this.prixTotal += el.quantite * el.prix })
+          this.prixTotal += this.prixLivraison2
+      }
     })
   }
 

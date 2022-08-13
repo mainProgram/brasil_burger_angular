@@ -45,7 +45,7 @@
         <div class="border w-25 p-5 d-flex flex-column">
             <div>
                 <h5>Résumé du panier</h5>
-                <p hidden id="prixLivraison">Livraison: {{prixLivraison}} FCFA</p>
+                <p hidden id="prixLivraison" #prixLivraison>Livraison: {{prixLivraison2}} FCFA</p>
                 <p>Total: {{prixTotal}} FCFA</p>
                 <div class="d-flex justify-content-between mb-3 align-items-center">
                     <span>Mode : </span>
@@ -69,7 +69,7 @@
     </div>
 </div>
 
-<div class="container my-5" id="liv" hidden >
+<div class="container my-5" id="liv" hidden #liv >
     <h5>Choix de la zone de livraison</h5>
     <div *ngFor = "let zone of zones" class="mt-3">
         <span class="ocre"><b>{{zone.nom | titlecase}}: </b><span>{{zone.prix}} FCFA</span></span><br>
