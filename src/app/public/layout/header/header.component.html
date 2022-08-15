@@ -21,6 +21,7 @@
         <span class="badge text-dark" style="margin-bottom: -6px; font-size: 10px;">{{ taillePanier }}</span>
         <span class="material-symbols-outlined" style="font-size:18px;" [routerLink] = "['/panier']">shopping_cart</span> 
       </div>
-      <span class="material-symbols-outlined" (click)="logout()">account_circle</span>
+      <span class="material-symbols-outlined" (click)="logout()"*ngIf="isLogged">logout</span>
+      <span class="material-symbols-outlined" *ngIf="!isLogged" [routerLink]="['/auth/connexion']">account_circle</span>
     </div>
 </nav>

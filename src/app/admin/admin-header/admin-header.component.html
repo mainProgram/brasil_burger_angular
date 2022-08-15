@@ -19,6 +19,7 @@
         </div>
     </div>
     <div style="margin-right: 50px;" class="d-flex align-items-end">
-      <span class="material-symbols-outlined" (click)="logout()">account_circle</span>
+      <span class="material-symbols-outlined" (click)="logout()"*ngIf="isLogged">logout</span>
+      <span class="material-symbols-outlined" *ngIf="!isLogged" [routerLink]="['/auth/connexion']">account_circle</span>    
     </div>
 </nav>

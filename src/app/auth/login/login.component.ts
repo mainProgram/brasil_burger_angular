@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ICredential } from 'src/app/shared/interface/interfaces';
+import { Router } from '@angular/router';
+import { ICredential, IUser } from 'src/app/shared/interface/interfaces';
 import { AuthService } from 'src/app/shared/service/auth.service';
 import { TokenService } from 'src/app/shared/service/token.service';
 
@@ -15,7 +16,12 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(private authService :AuthService, private tokenService:TokenService) { }
+  public user: IUser
+
+  public hasRole(role: string){ console.log();
+     return this.user.roles.includes(role as never); }
+     
+  constructor(private authService :AuthService, private tokenService:TokenService, private retour:Router) { }
   
   public onSubmit()
   {
