@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser} from '../interface/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,12 @@ export class TokenService {
 
   saveToken(token: string)
   {
-    localStorage.setItem("token", token);
-    this.router.navigate(["admin/"])
+    localStorage.setItem("token", token);    
+  }
+
+  getUser(token: string)
+  {
+    return JSON.parse(atob(token.split(".")[1]))
   }
 
   isLogged(): boolean
@@ -23,7 +28,13 @@ export class TokenService {
   clearToken()
   {
     localStorage.removeItem("token");
-    this.router.navigate(["/"])
+    this.router.navigate(["/auth/connexion"])
+  }
+
+  clearTokenExpired()
+  {
+    localStorage.removeItem("token");
+    this.router.navigate(["/auth/connexion"])
   }
 
   getToken(): string | null

@@ -1,17 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { ICredential, IToken } from '../interface/interfaces';
-import { catchError, Observable, throwError } from 'rxjs';
+import { ICredential, IToken, IUser } from '../interface/interfaces';
+import { catchError, throwError } from 'rxjs';
+import { TokenService } from './token.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http:HttpClient) { }
+  public user: IUser
 
-  public login(body : ICredential) : Observable<IToken> {  return this.http.post<IToken>(environment.LOGIN_URL, body).pipe( catchError(this.handleError)) }
+  constructor(private http:HttpClient, private tokenService: TokenService, private retour:Router) { 
+    // this.user = this.tokenService.getUser(this.tokenService.getToken()) 
+  }
+
+  public hasRole(role: string){ console.log();
+   return this.user.roles.includes(role as never); }
+
+  public login(body : ICredential) 
+  {  
+    return this.http.post<IToken>(environment.LOGIN_URL, body).subscribe(
+    {
+      next: data => 
+      {  
+        this.user = this.tokenService.getUser(data.token) 
+        this.tokenService.saveToken(data.token)  ;  
+        // (this.hasRole("ROLE_CLIENT")) ?  this.retour.navigate(["/catalogue"]) : this.retour.navigate(["/admin/commandes"])
+      },
+      error: (e) => catchError(this.handleError),
+    });
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

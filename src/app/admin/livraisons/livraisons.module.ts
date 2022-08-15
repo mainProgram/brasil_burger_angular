@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { LivraisonsRoutingModule } from './livraisons-routing.module';
 import { LivraisonsComponent } from './livraisons/livraisons.component';
 import { LivraisonDetailComponent } from './livraison-detail/livraison-detail.component';
-import { LivraisonLivreurComponent } from './livraison-livreur/livraison-livreur.component';
 import { LivraisonCreateComponent } from './livraison-create/livraison-create.component';
 
 
@@ -12,8 +11,7 @@ import { LivraisonCreateComponent } from './livraison-create/livraison-create.co
   declarations: [
     LivraisonsComponent,
     LivraisonDetailComponent,
-    LivraisonLivreurComponent,
-    LivraisonCreateComponent
+    LivraisonCreateComponent,
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IUser } from '../interface/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class LivraisonService {
 
   constructor(private http:HttpClient) { }
 
-  public getLivreurs(){  return this.http.get(environment.LIVREURS_URL).pipe( catchError(this.handleError)) }
+  public getLivreurs():Observable<IUser[]>{  return this.http.get<IUser[]>(environment.LIVREURS_URL).pipe( catchError(this.handleError)) }
 
   public getLivreursDispo(){  return this.http.get(environment.LIVREURS_URL+"?isDisponible=1").pipe( catchError(this.handleError)) }
 
@@ -18,7 +19,11 @@ export class LivraisonService {
 
   public getAllLivraisons(){  return this.http.get(environment.LIVRAISONS_URL).pipe( catchError(this.handleError)) }
 
-  public getDetailLivraison(id){  return this.http.get(environment.LIVRAISONS_URL+"/"+id).pipe( catchError(this.handleError)) }
+  public getDetailLivraison(id: number){  return this.http.get(environment.LIVRAISONS_URL+"/"+id).pipe( catchError(this.handleError)) }
+
+  public getDetailLivreurs(id: number):Observable<IUser>{  return this.http.get<IUser>(environment.LIVREURS_URL+"/"+id).pipe( catchError(this.handleError)) }
+  
+  public setLivreurDisponible(id: number):Observable<IUser>{  return this.http.put<IUser>(environment.LIVREURS_URL+"/"+id, { "isDisponible" : true}).pipe( catchError(this.handleError)) }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

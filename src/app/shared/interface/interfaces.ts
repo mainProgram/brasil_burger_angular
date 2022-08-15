@@ -106,33 +106,44 @@ export interface Ticket
 
 }
 
-export interface User
+export interface IUser
 {
-    id? : number
+    [key : string] : any ;
+    
+    id? : number;
 
-    email? : string
+    email? : string;
 
-    roles? : []
+    roles? : [];
 
-    password? : string
+    password? : string;
 
-    confirmPassword? : string
+    confirmPassword? : string;
 
-    nom? : string
+    nom? : string;
 
-    prenom? : string
+    prenom? : string;
 
-    telephone? : string
+    telephone? : string;
 
     isEtat? : boolean
 
-    produits? : []
+    produits? : [];
 
-    token? : string
+    token? : string;
 
-    isActivated? : boolean
+    matriculeMoto? : string;
 
-    expiredAt? : Date
+    isActivated? : boolean;
+
+    expiredAt? : Date;
+
+    isDisponible? : boolean;
+
+    livraisons? : [{
+        id: number
+        date: string
+    }]
 }
 
 export interface ICredential

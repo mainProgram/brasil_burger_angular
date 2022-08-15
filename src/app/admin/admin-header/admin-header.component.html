@@ -4,23 +4,21 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink] = "['/home']">Home</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink] = "['/admin/dashboard']">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink] = "['/catalogue']">Catalogue</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink] = "['/admin/commandes']">Commandes</a>
             </li>
             <li class="nav-item">
-              <!-- <li class="nav-item" *appHasRole="'ROLE_CLIENT'"> -->
-              <a class="nav-link"  routerLinkActive="active" [routerLink] = "['/commandes']">Mes commandes</a>
+              <a class="nav-link"  routerLinkActive="active" [routerLink] = "['/admin/livraisons']">Livraisons</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  routerLinkActive="active" [routerLink] = "['/admin/livreurs']">Livreurs</a>
             </li>
           </ul>
         </div>
     </div>
     <div style="margin-right: 50px;" class="d-flex align-items-end">
-      <div class="d-flex flex-column" style="margin-right: 5px;">
-        <span class="badge text-dark" style="margin-bottom: -6px; font-size: 10px;">{{ taillePanier }}</span>
-        <span class="material-symbols-outlined" style="font-size:18px;" [routerLink] = "['/panier']">shopping_cart</span> 
-      </div>
       <span class="material-symbols-outlined" (click)="logout()">account_circle</span>
     </div>
 </nav>

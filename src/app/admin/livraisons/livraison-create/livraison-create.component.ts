@@ -19,7 +19,7 @@ export class LivraisonCreateComponent implements OnInit {
   
   ngOnInit(): void 
   {
-    this.zoneService.getZonesDontCommandeEtatTermine().subscribe(el => this.zones = el)
+    this.zoneService.getZonesDontCommandeEtatTermine().subscribe({next: el => this.zones = el})
   }
 
   public zoneChoisie(zone)

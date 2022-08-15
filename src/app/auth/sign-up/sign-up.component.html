@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-6">
                   <label for="yourFName" class="form-label">Prénom</label>
-                  <input type="text" name="prenom" class="form-control" id="yourEmail" required>
+                  <input type="text" name="prenom" class="form-control" required>
                   <div class="invalid-feedback">Entrez un prénom valide!</div>
                 </div>
             </div>
@@ -25,25 +25,25 @@
                   <label for="yourEmail" class="form-label">Email</label>
                   <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">@</span>
-                    <input type="email" name="email" class="form-control" id="yourEmail" required>
+                    <input type="email" name="email" class="form-control" required>
                     <div class="invalid-feedback">Entrez votre adresse email!</div>
                   </div>
                 </div>
                 <div class="col-6">
                   <label for="yourNumber" class="form-label">Téléphone</label>
-                  <input type="tel" name="telephone" class="form-control" id="yourPassword" required>
+                  <input type="tel" name="telephone" class="form-control" required>
                   <div class="invalid-feedback">Entrez votre numéro de téléphone!</div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                   <label for="yourPassword" class="form-label">Mot de passe</label>
-                  <input type="password" name="password" class="form-control" id="yourPassword" required>
+                  <input type="password" name="password" class="form-control" required>
                   <div class="invalid-feedback">Entrez votre mot de passe!</div>
                 </div>
                 <div class="col-6">
                   <label for="yourPassword" class="form-label">Confirmer votre mot de passe</label>
-                  <input type="password" name="confirm_password" class="form-control" id="yourPassword" required>
+                  <input type="password" name="confirm_password" class="form-control" required>
                   <div class="invalid-feedback">Entrez deux mot de passes identiques!</div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <button class="btn btn-warning w-100" type="submit">Soumettre</button>
               </div>
               <div class="col-12">
-                <p class="small mb-0">Vous avez déja un compte? <a >Connectez-vous.</a></p>
+                <p class="small mb-0">Vous avez déja un compte? <a [routerLink]="['/auth/connexion']">Connectez-vous.</a></p>
               </div>
             </form>
           </div>

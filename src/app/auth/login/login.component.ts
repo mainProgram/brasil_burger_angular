@@ -19,16 +19,7 @@ export class LoginComponent implements OnInit {
   
   public onSubmit()
   {
-    this.authService.login(this.form).subscribe(
-      {
-        next: (data) => {
-          console.log(data.token)
-          this.tokenService.saveToken(data.token)
-        },
-        error: (e) => console.error(e),
-        complete: () => console.info('complete') 
-      }
-    );
+    this.authService.login(this.form)
   }
 
   ngOnInit(): void 

@@ -19,8 +19,12 @@
                     <td [style.color]="getColour(com.etat)">{{com.etat | formatEtat }}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(com.etat)}} </span></td> 
                     <td>{{com.client.prenom}} {{com.client.nom}}</td>
                     <td [routerLink] = "['/admin/commandes', com.id]"><span class="material-icons orange">remove_red_eye</span></td>
-                    <td><a class="btn btn-outline-success p-1" *ngIf="com.etat == 'en attente'" (click) = "traiter(com.id, 'valide')">Valider</a><a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'annule')">Annuler</a></td>
-                    <!-- <td><a class="btn btn-outline-success p-1" *ngIf="com.etat == 'en attente'" (click) = "traiter(com.id, 'valide')">Valider</a><a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'annule')">Annuler</a></td> -->
+                    <td>
+                        <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'en attente'" (click) = "traiter(com.id, 'valide')">Valider</a>
+                        <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'termine')">Terminer</a>
+                        <a class="btn btn-outline-warning p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'livraison')">Livrer</a>
+                        <a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'  || com.etat == 'en attente'" (click) = "traiter(com.id, 'annule')">Annuler</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

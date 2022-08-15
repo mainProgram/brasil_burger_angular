@@ -17,10 +17,11 @@ export class LivraisonDetailComponent implements OnInit {
   {
     this.route.paramMap.subscribe({ 
       next: data => { 
-        let id  = this.route.snapshot.paramMap.get("id")   
+        let id  = +this.route.snapshot.paramMap.get("id")   
         
-        this.livraisonService.getDetailLivraison(id).subscribe(el => {
-          this.livraison = el;
+        this.livraisonService.getDetailLivraison(id).subscribe({
+          next: el => {  this.livraison = el;},
+          error: el => {  this.retour.navigate(["/admin/livraisons"]) }
         })
       }
     })

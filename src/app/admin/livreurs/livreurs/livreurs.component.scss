@@ -5,16 +5,16 @@
     }
 }
 
+.orange-text{
+    color: #E89448;
+}
+
 .icon{
-    color: white;
     cursor: pointer;
+    color: white;
     margin-left: 15px;
     background: #E89448;
     &:hover{
-        background: #000;
+        background-color: black;
     }
-}
-
-.orange-text{
-    color: #E89448;
 }

@@ -1,5 +1,14 @@
 <div class="container mt-5">
+    <!-- DETAIL COMMANDE -->
     <ng-container *ngIf="commande">
+        <div class="d-flex justify-content-end">
+            <div class="w-25 d-flex justify-content-between">
+                <a class="btn btn-outline-success p-1"  (click) = "traiter(commande.id, 'valide')">Valider</a>
+                <a class="btn btn-outline-info p-1"  (click) = "traiter(commande.id, 'termine')">Terminer</a>
+                <a class="btn btn-outline-warning p-1"  (click) = "traiter(commande.id, 'livraison')">Livrer</a>
+                <a class="btn btn-outline-danger p-1" (click) = "traiter(commande.id, 'annule')">Annuler</a>
+            </div>
+        </div>
         <div class="d-flex align-items-start justify-content-between">
             <table class="table table-hover" style="width:70%;">
                 <thead style="padding: 40px;">
@@ -45,7 +54,7 @@
                     </ng-container>
                 </tbody>
             </table>
-            <div class="border w-25 p-5 d-flex flex-column">
+            <div class="border w-25 p-5 d-flex flex-column mt-4">
                 <div>
                     <h5>Résumé commande</h5>
                     <p id="prixLivraison" *ngIf="commande.zone">Livraison: {{ commande['zone']['prix']}}  FCFA</p>
@@ -57,6 +66,8 @@
             </div>
         </div>
     </ng-container>
+
+    <!-- FILTRE PAR ZONE -->
     <ng-container *ngIf="commandes && commandes.length > 0">
         <div class="d-flex align-items-center justify-content-center">
             <table class="table table-hover caption-top" style="width:70%;">

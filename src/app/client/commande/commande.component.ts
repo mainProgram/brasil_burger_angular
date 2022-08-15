@@ -15,7 +15,7 @@ export class CommandeComponent implements OnInit
 
   ngOnInit(): void 
   {
-    this.commandeService.getCommandesById(1).subscribe(el => {  this.commandes = el })
+    this.commandeService.getCommandesById(1).subscribe({next: data => {  this.commandes = data }})
   }
 
   public annulerCommande(id)

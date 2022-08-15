@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <h4 class="mb-4 orange-text">Détails de la livraison n° {{livraison.id}}</h4>
+    <h4 class="mb-4 orange-text">Détails de la livraison n° {{livraison.id}}<span [routerLink] = "['/admin/livraisons']" class="material-icons icon">list</span></h4>
 
     <div class="mb-2">
         <b><span class="orange-text">Livreur: </span></b><span>{{livraison.livreur.prenom}} {{livraison.livreur.nom}}</span><br>

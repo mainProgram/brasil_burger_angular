@@ -10,10 +10,11 @@ import { AdminModule } from './admin/admin.module';
 import { PublicModule } from './public/public.module';
 import { NotFoundComponent } from './public/not-found/not-found.component';
 import { ClientModule } from './client/client.module';
-// import { TokenInterceptorProvider } from './_helpers/token.interceptor';
+import { TokenInterceptorProvider } from './_helpers/token.interceptor';
 import { registerLocaleData } from '@angular/common'; 
 import localeFr from '@angular/common/locales/fr'; 
 import { NgxPaginationModule } from 'ngx-pagination';
+// import { HasRoleDirective } from './shared/has-role.directive';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -21,6 +22,7 @@ registerLocaleData(localeFr, 'fr');
   [
     AppComponent,
     NotFoundComponent,
+    // HasRoleDirective,
   ],
   imports: [
     RouterModule,
@@ -34,7 +36,7 @@ registerLocaleData(localeFr, 'fr');
     NgxPaginationModule
   ],
   providers: [
-    // TokenInterceptorProvider
+    TokenInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })

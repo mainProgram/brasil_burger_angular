@@ -48,6 +48,13 @@ export class CommandeDetailComponent implements OnInit {
     })
   }
 
+  public traiter(id: number, etat: string)  //Valider ou annuler la commande
+  {                    
+    this.commandeService.traiterCommande(id, etat).subscribe({
+      next: data => {this.retour.navigate(["/admin/commandes", data.id]).then( () => window.location.reload()) }
+    }) 
+  }
+
   getColour(etat: string) {  return this.commandeService.getColour(etat)}
 
   getIcon(etat: string){ return this.commandeService.getIcon(etat) }

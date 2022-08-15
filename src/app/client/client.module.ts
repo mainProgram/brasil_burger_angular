@@ -11,6 +11,7 @@ import { GenericListFilterModule } from 'generic-list-filter';
 import { CommandeComponent } from './commande/commande.component';
 import { CommandeDetailComponent } from './commande/commande-detail/commande-detail.component';
 import { PublicModule } from '../public/public.module';
+import { ClientLayoutComponent } from './client-layout/client-layout.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PublicModule } from '../public/public.module';
     CardComponent,
     CommandeComponent,
     CommandeDetailComponent,
+    ClientLayoutComponent,
   ],
   imports: [
     CommonModule,

@@ -19,7 +19,8 @@ export class AuthGuard implements CanActivate
   {
     if(this.tokenService.isLogged())
       return true
-
+    // else if (this.tokenService.getUser(this.tokenService.getToken()).roles.includes("ROLE_CLIENT"))
+    //   return this.router.navigate(["/catalogue"]);
     return this.router.navigate(["/auth/connexion"]);
   }
   
