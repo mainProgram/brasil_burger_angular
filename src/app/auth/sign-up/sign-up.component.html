@@ -7,53 +7,67 @@
               <h5 class="card-title text-center pb-0 fs-4">Création d'un compte</h5>
               <p class="text-center small">Remplissez les champs</p>
             </div>
-            <form class="row g-3 needs-validation" method='post' novalidate>
+            <form class="row g-3" 
+                [formGroup]="reactiveForm"
+                (ngSubmit)="onSubmit()"
+                #form="ngForm" 
+            >
             <div class="row">
                 <div class="col-6">
-                  <label for="yourName" class="form-label">Nom</label>
-                  <input type="text" name="nom" class="form-control" id="yourName" required>
-                  <div class="invalid-feedback">Entrez un nom valide!</div>
+                  <label for="nom" class="form-label">Nom <span class="text-danger">*</span></label>
+                  <input type="text" formControlName="nom" class="form-control">
+                  <span class="form_error" *ngIf="f['nom'].getError('required')  && form.submitted">Le nom est requis !</span>
+                  <span class="form_error" *ngIf="f['nom'].getError('minlength') && form.submitted" >Longueur minimale de 2 !</span>
+                  <!-- <span class="form_error">Entrez un nom valide!</span> -->
                 </div>
                 <div class="col-6">
-                  <label for="yourFName" class="form-label">Prénom</label>
-                  <input type="text" name="prenom" class="form-control" required>
-                  <div class="invalid-feedback">Entrez un prénom valide!</div>
+                  <label for="prenom" class="form-label">Prénom <span class="text-danger">*</span></label>
+                  <input type="text" formControlName="prenom" class="form-control">
+                  <span class="form_error" *ngIf="f['prenom'].getError('required') && form.submitted">Le prénom est requis !</span>
+                  <span class="form_error" *ngIf="f['prenom'].getError('minlength') && form.submitted">Longueur minimale de 2 !</span>
+                  <!-- <span class="form_error">Entrez un prénom valide!</span> -->
                 </div>
             </div>
             <div class="row my-2">
                 <div class="col-6">
-                  <label for="yourEmail" class="form-label">Email</label>
+                  <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                   <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">@</span>
-                    <input type="email" name="email" class="form-control" required>
-                    <div class="invalid-feedback">Entrez votre adresse email!</div>
+                    <input type="email" formControlName="email" class="form-control">
                   </div>
+                  <span class="form_error" *ngIf="f['email'].getError('required')&& form.submitted">L'email est requis !</span>
+                  <span class="form_error" *ngIf="f['email'].getError('email')&& form.submitted">Email est invalide !</span>
                 </div>
                 <div class="col-6">
-                  <label for="yourNumber" class="form-label">Téléphone</label>
-                  <input type="tel" name="telephone" class="form-control" required>
-                  <div class="invalid-feedback">Entrez votre numéro de téléphone!</div>
+                  <label for="yourNumber" class="form-label">Téléphone <span class="text-danger">*</span></label>
+                  <input type="tel" formControlName="telephone" class="form-control">
+                  <span class="form_error" *ngIf="f['telephone'].getError('required')&& form.submitted">Le téléphone est requis !</span>
+                  <span class="form_error" *ngIf="f['telephone'].getError('pattern')&& form.submitted" >Numéro invalide !</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
-                  <label for="yourPassword" class="form-label">Mot de passe</label>
-                  <input type="password" name="password" class="form-control" required>
-                  <div class="invalid-feedback">Entrez votre mot de passe!</div>
+                  <label for="yourPassword" class="form-label">Mot de passe <span class="text-danger">*</span></label>
+                  <input type="password" formControlName="password" class="form-control">
+                  <span class="form_error" *ngIf="f['password'].getError('required') && form.submitted">Le mot de passe est requis !</span>
+                  <span class="form_error" *ngIf="f['password'].getError('pattern') && form.submitted" >Au moins 1 lettre et 1 chiffre, longueur minimale de 6 !</span>
+                  <!-- <span class="form_error">Entrez votre mot de passe!</span> -->
                 </div>
                 <div class="col-6">
-                  <label for="yourPassword" class="form-label">Confirmer votre mot de passe</label>
-                  <input type="password" name="confirm_password" class="form-control" required>
-                  <div class="invalid-feedback">Entrez deux mot de passes identiques!</div>
+                  <label for="yourPassword" class="form-label">Confirmer votre mot de passe <span class="text-danger">*</span></label>
+                  <input type="password" formControlName="confirmPassword" class="form-control">
+                  <span class="form_error" *ngIf="f['confirmPassword'].getError('required') && form.submitted">Confirmez le mot de passe !</span>
+                  <span class="form_error" *ngIf="f['confirmPassword'].getError('mustMatch') && form.submitted">Mot de passes non identiques!</span>
                 </div>
             </div>
               <div class="col-12">
                 <label for="yourAddress" class="form-label">Adresse</label>
-                <input type="text" name="address" class="form-control" id="yourAdress" required>
-                <div class="invalid-feedback">Entrez votre adresse!</div>
+                <input type="text" formControlName="adresse" class="form-control">
+                <!-- <span class="form_error">Entrez votre adresse!</span> -->
               </div>
               <div class="col-12">
-                <button class="btn btn-warning w-100" type="submit">Soumettre</button>
+                <!-- <button class="btn btn-warning w-100" type="submit">Soumettre</button> -->
+                <button class="btn btn-warning w-100" type="submit" [disabled]="reactiveForm.invalid && form.submitted">Soumettre</button>
               </div>
               <div class="col-12">
                 <p class="small mb-0">Vous avez déja un compte? <a [routerLink]="['/auth/connexion']">Connectez-vous.</a></p>

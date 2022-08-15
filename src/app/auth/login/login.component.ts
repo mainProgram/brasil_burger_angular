@@ -18,18 +18,13 @@ export class LoginComponent implements OnInit {
 
   public user: IUser
 
-  public hasRole(role: string){ console.log();
-     return this.user.roles.includes(role as never); }
-     
   constructor(private authService :AuthService, private tokenService:TokenService, private retour:Router) { }
   
-  public onSubmit()
-  {
-    this.authService.login(this.form)
-  }
+  ngOnInit(): void {}
+  
+  public hasRole(role: string){  return this.user.roles.includes(role as never); }
+  
+  public onSubmit(){  this.authService.login(this.form)}
 
-  ngOnInit(): void 
-  {
-  }
 
 }

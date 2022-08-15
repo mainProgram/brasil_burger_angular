@@ -16,7 +16,8 @@ export const environment = {
   COMMANDE_FILTERED : "https://127.0.0.1:8000/api/commandes?etat=termine&zone.id=",
   ZONE_COMMANDES_ETAT_TERMINE : "https://127.0.0.1:8000/api/zonesCommandesterminees",
   LIVREURS_URL : "https://127.0.0.1:8000/api/livreurs",
-  LIVRAISONS_URL : "https://127.0.0.1:8000/api/livraisons"
+  LIVRAISONS_URL : "https://127.0.0.1:8000/api/livraisons",
+  INSCRIPTION_URL : "https://127.0.0.1:8000/api/sign_up"
 };
 
 

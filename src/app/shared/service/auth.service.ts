@@ -17,18 +17,6 @@ export class AuthService {
 
   public hasRole(role: string){ return this.user.roles.includes(role as never); }
 
-  // public login(body : ICredential) 
-  // {  
-  //   return this.http.post<IToken>(environment.LOGIN_URL, body).subscribe(
-  //   {
-  //     next: data => 
-  //     {  
-  //       this.tokenService.saveToken(data.token)  ;  
-  //     },
-  //     error: (e) => catchError(this.handleError),
-  //   });
-  // }
-
   public async login(body : ICredential)
   {
     return await firstValueFrom(
@@ -43,6 +31,18 @@ export class AuthService {
             
       (this.hasRole("ROLE_CLIENT")) ?  this.retour.navigate(["/catalogue"]) : this.retour.navigate(["/admin/commandes"])
     })
+  }
+
+  public inscription(body: IUser)
+  {
+    return this.http.post<IUser>(environment.INSCRIPTION_URL, body).subscribe(
+    {
+      next: data => { 
+        console.log(data);
+        this.retour.navigate(["/auth/connexion"])
+      },
+      error: () => catchError(this.handleError),
+    });
   }
 
   private handleError(error: HttpErrorResponse) {
