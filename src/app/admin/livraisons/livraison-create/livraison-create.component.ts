@@ -41,7 +41,7 @@ export class LivraisonCreateComponent implements OnInit {
     let inputLivreurs = (Array.from(document.getElementsByName("checkedLivreurs[]")));
     let bouton = document.getElementById("create")
 
-    inputCommandes.forEach(element => {  if((<HTMLInputElement>element).checked)  bool += 1  })
+    inputCommandes.forEach(element => {  if((<HTMLInputElement>element).checked)  bool = 1  })
 
     inputLivreurs.forEach(element => {  if((<HTMLInputElement>element).checked)  bool += 1 })
 

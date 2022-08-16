@@ -1,5 +1,5 @@
 <div class="container mt-3 d-flex justify-content-center align-items-center flex-column">
-    <ng-container>
+    <ng-container *ngIf="commandes.length > 0">
         <table class="table table-hover caption-top" style="width:70%;">
             <caption class="mb-4">Commandes du {{ changedDate }} <input type="date" id="input" (change)= "changeDate()" style="margin-left: 15px;"></caption>
             <thead *ngIf="commandeFiltrees.length > 0">
@@ -22,7 +22,6 @@
                     <td>
                         <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'en attente'" (click) = "traiter(com.id, 'valide')">Valider</a>
                         <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'termine')">Terminer</a>
-                        <!-- <a class="btn btn-outline-warning p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'livraison')">Livrer</a> -->
                         <a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'  || com.etat == 'en attente'" (click) = "traiter(com.id, 'annule')">Annuler</a>
                     </td>
                 </tr>
@@ -34,9 +33,9 @@
         ></pagination-controls> -->
     </ng-container>
     <div class="d-flex flex-column align-items-center">
-        <h3 class="text-danger mb-5" *ngIf="commandes.length == 0">Pas de commande pour le moment !</h3>
+        <h4 class="text-danger mt-5" *ngIf="commandes.length == 0">Pas de commande pour le moment !</h4>
     </div>
-    <ng-container *ngIf="commandeFiltrees.length == 0">
+    <ng-container *ngIf="commandeFiltrees.length == 0 && commandes.length > 0">
         <h4 class="text-danger">Pas de commandes pour le {{changedDate}}</h4>
     </ng-container>
 </div>

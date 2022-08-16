@@ -13,6 +13,7 @@ export class LivraisonDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private retour:Router, private livraisonService: LivraisonService, private commandeService: CommandeService) { }
 
   public livraison: any
+  public activate: boolean
 
   ngOnInit(): void 
   {
@@ -21,7 +22,10 @@ export class LivraisonDetailComponent implements OnInit {
         let id  = +this.route.snapshot.paramMap.get("id")   
         
         this.livraisonService.getDetailLivraison(id).subscribe({
-          next: el => {  this.livraison = el;},
+          next: el => {  
+            this.livraison = el;
+            this.activate = this.activateButton()
+          },
           error: el => {  this.retour.navigate(["/admin/livraisons"]) }
         })
       }
@@ -34,5 +38,26 @@ export class LivraisonDetailComponent implements OnInit {
       next: data => { window.location.reload() }
     }) 
   }
+
+  public traiterLivraison(id: number, etat: string)  //Valider ou annuler la commande
+  {                    
+    this.livraisonService.traiterLivraison(id, etat).subscribe({
+      next: data => { window.location.reload() }
+    }) 
+  }
+
+  public activateButton()
+  {
+    let bool = false
+    this.livraison.commandes.forEach(commande => {
+      if(commande.etat != "paye" && commande.etat != "annule")
+        bool = true
+    })
+    return bool
+  }
+  
+  getColour(etat: string) {  return this.commandeService.getColour(etat)}
+
+  getIcon(etat: string){ return this.commandeService.getIcon(etat) }
 
 }
