@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   public hasRole(role: string){  return this.user.roles.includes(role as never); }
   
   public onSubmit(){  
-    this.authService.login(this.form).catch((err) => this.erroMessage = err);
+    this.authService.login(this.form).catch((err) => this.erroMessage = (err));
    
   }
 

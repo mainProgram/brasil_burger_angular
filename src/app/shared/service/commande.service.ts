@@ -14,7 +14,7 @@ export class CommandeService {
   public saveOrder(body)
   {
     this.http.post<any>(environment.COMMANDE_URL, body).subscribe({
-        next: data => {  this.retour.navigate(["/commandes/"+data.id]) },
+        next: data => {  this.retour.navigate(["/commandes/", data.id]) },
         error: error =>{  alert("Y'a erreur")}
     })
   }

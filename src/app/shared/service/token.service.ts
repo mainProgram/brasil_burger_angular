@@ -8,6 +8,10 @@ export class TokenService {
 
   constructor(private router:Router) { }
 
+  saveId(id: number){  localStorage.setItem("id", ""+id);    }
+
+  getId(){  return localStorage.getItem("id");    }
+
   saveToken(token: string){  localStorage.setItem("token", token);    }
 
   getUser(token: string){  return JSON.parse(atob(token.split(".")[1]))}

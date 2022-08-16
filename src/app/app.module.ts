@@ -14,6 +14,7 @@ import { TokenInterceptorProvider } from './_helpers/token.interceptor';
 import { registerLocaleData } from '@angular/common'; 
 import localeFr from '@angular/common/locales/fr'; 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { UserServiceService } from './shared/service/user-service.service';
 // import { HasRoleDirective } from './shared/has-role.directive';
 registerLocaleData(localeFr, 'fr');
 
@@ -36,7 +37,8 @@ registerLocaleData(localeFr, 'fr');
     NgxPaginationModule
   ],
   providers: [
-    TokenInterceptorProvider
+    TokenInterceptorProvider,
+    UserServiceService
   ],
   bootstrap: [AppComponent]
 })

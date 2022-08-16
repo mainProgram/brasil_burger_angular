@@ -5,6 +5,7 @@ import { ICredential, IToken, IUser } from '../interface/interfaces';
 import { catchError, firstValueFrom, throwError } from 'rxjs';
 import { TokenService } from './token.service';
 import { Router } from '@angular/router';
+import { UserServiceService } from './user-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
 
   public user: IUser
 
-  constructor(private http:HttpClient, private tokenService: TokenService, private retour:Router) {   }
+  constructor(private http:HttpClient, private tokenService: TokenService, private retour:Router, private userServiceService: UserServiceService) {   }
 
   public hasRole(role: string){ return this.user.roles.includes(role as never); }
 
@@ -31,7 +32,9 @@ export class AuthService {
     {
       this.tokenService.saveToken(data.token)  ;  
       this.user = (this.tokenService.getUser(data.token));
-      console.log(this.user.username);
+      this.userServiceService.getClientId().then(m =>
+        this.tokenService.saveId(m)        
+      );
             
       (this.hasRole("ROLE_CLIENT")) ?  this.retour.navigate(["/catalogue"]) : this.retour.navigate(["/admin/commandes"])
     })

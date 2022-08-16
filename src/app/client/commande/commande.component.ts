@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommandeService } from 'src/app/shared/service/commande.service';
+import { TokenService } from 'src/app/shared/service/token.service';
 
 @Component({
   selector: 'app-commande',
@@ -11,11 +12,12 @@ export class CommandeComponent implements OnInit
 {
   public commandes = []
 
-  constructor(private commandeService: CommandeService, private retour:Router) { }
+  constructor(private commandeService: CommandeService, private retour:Router, private tokenService: TokenService) { }
 
   ngOnInit(): void 
   {
-    this.commandeService.getCommandesById(1).subscribe({next: data => {  this.commandes = data }})
+    let idClientConnecte = +this.tokenService.getId()
+    this.commandeService.getCommandesById(idClientConnecte).subscribe({next: data => {  this.commandes = data }})
   }
 
   public annulerCommande(id)

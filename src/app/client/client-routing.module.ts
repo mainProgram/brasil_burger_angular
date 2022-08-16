@@ -14,8 +14,10 @@ const routes: Routes = [
   { path: '', component: ClientLayoutComponent, children: 
     [
       { path: '', component: HomeComponent }, 
-      { path: 'commandes', component: CommandeComponent, canActivate:[AuthGuard, HasRoleGuard], data: { role: "ROLE_CLIENT"}}, 
-      { path: 'commandes/:id', component: CommandeDetailComponent, canActivate:[AuthGuard, HasRoleGuard], data: { role: "ROLE_CLIENT"} }, 
+      { path: 'commandes', component: CommandeComponent}, 
+      // { path: 'commandes', component: CommandeComponent, canActivate:[AuthGuard, HasRoleGuard], data: { role: "ROLE_CLIENT"}}, 
+      // { path: 'commandes/:id', component: CommandeDetailComponent, canActivate:[AuthGuard, HasRoleGuard], data: { role: "ROLE_CLIENT"} }, 
+      { path: 'commandes/:id', component: CommandeDetailComponent}, 
       { path: 'home', component: HomeComponent }, 
       { path: 'catalogue', component: CatalogueComponent }, 
       { path: 'catalogue/:id', component: CatalogueDetailComponent }, 

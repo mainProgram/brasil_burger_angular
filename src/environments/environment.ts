@@ -18,7 +18,8 @@ export const environment = {
   LIVREURS_URL : "https://127.0.0.1:8000/api/livreurs",
   LIVRAISONS_URL : "https://127.0.0.1:8000/api/livraisons",
   INSCRIPTION_URL : "https://127.0.0.1:8000/api/sign_up",
-  CLIENT_URL: "https://127.0.0.1:8000/api/clients"
+  CLIENT_URL: "https://127.0.0.1:8000/api/clients",
+  USERS_URL: "https://127.0.0.1:8000/api/users",
 };
 
 

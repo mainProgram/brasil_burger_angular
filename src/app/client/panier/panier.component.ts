@@ -3,6 +3,7 @@ import { IProduit } from 'src/app/shared/interface/interfaces';
 import { BoissonService } from 'src/app/shared/service/boisson.service';
 import { CommandeService } from 'src/app/shared/service/commande.service';
 import { PanierService } from 'src/app/shared/service/panier.service';
+import { TokenService } from 'src/app/shared/service/token.service';
 import { ZoneService } from 'src/app/shared/service/zone.service';
 
 @Component({
@@ -25,7 +26,7 @@ export class PanierComponent implements OnInit
   public prixLivraison2  = 0
   public complements = []
 
-  constructor(private panierService: PanierService, private zoneService: ZoneService, private commandeService: CommandeService, private complementsService:BoissonService) { }
+  constructor(private panierService: PanierService, private zoneService: ZoneService, private commandeService: CommandeService, private complementsService:BoissonService, private tokenService: TokenService) { }
 
   ngOnInit(): void 
   {
@@ -112,7 +113,6 @@ export class PanierComponent implements OnInit
               "prix":  el.quantite * el.prix
           }
           tabBurgers.push(objet)
-          console.log(tabBurgers)
         }
         else if(el.categorie == "menu")
         {
@@ -151,10 +151,12 @@ export class PanierComponent implements OnInit
       if( optionLiv.value != 0)
           this.zone = "api/zones/"+optionLiv.value
 
+      let clientId = this.tokenService.getId()      
+
       const tab = 
       {
         "zone" : this.zone,
-        "client": "api/clients/1",
+        "client": "api/clients/"+clientId,
         "etat": "en attente",
         "prix": this.prixTotal,
         "commandeMenus": tabMenus,
@@ -183,4 +185,5 @@ export class PanierComponent implements OnInit
   }
 
   public resetPanier(){ this.panierService.resetPanier(); this.elements = []}
+
 }
