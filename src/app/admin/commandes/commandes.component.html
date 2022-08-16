@@ -22,7 +22,7 @@
                     <td>
                         <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'en attente'" (click) = "traiter(com.id, 'valide')">Valider</a>
                         <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'termine')">Terminer</a>
-                        <a class="btn btn-outline-warning p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'livraison')">Livrer</a>
+                        <!-- <a class="btn btn-outline-warning p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'livraison')">Livrer</a> -->
                         <a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'  || com.etat == 'en attente'" (click) = "traiter(com.id, 'annule')">Annuler</a>
                     </td>
                 </tr>

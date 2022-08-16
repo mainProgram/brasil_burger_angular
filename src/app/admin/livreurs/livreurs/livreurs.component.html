@@ -20,8 +20,9 @@
                 <td>{{liv.matriculeMoto }}</td>
                 <td [routerLink] = "['/admin/livreurs', liv.id]"><span class="material-icons orange">remove_red_eye</span></td>
                 <td>
-                    <a class="btn btn-outline-success" *ngIf="!liv.isDisponible"  (click)="setLivreurDisponible(liv.id)">De retour</a>
-                    <span *ngIf="liv.isDisponible" class="text-success mx-2">Disponible</span>
+                    <!-- <a class="btn btn-outline-success" *ngIf="!liv.isDisponible"  (click)="setLivreurDisponible(liv.id)">De retour</a> -->
+                    <span *ngIf="!liv.isDisponible" class="text-danger">Indisponible</span>
+                    <span *ngIf="liv.isDisponible" class="text-success">Disponible</span>
                 </td>
             </tr>
         </tbody>

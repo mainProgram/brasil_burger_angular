@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommandeService } from 'src/app/shared/service/commande.service';
 import { LivraisonService } from 'src/app/shared/service/livraison.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { LivraisonService } from 'src/app/shared/service/livraison.service';
 })
 export class LivraisonDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private retour:Router, private livraisonService: LivraisonService) { }
+  constructor(private route: ActivatedRoute, private retour:Router, private livraisonService: LivraisonService, private commandeService: CommandeService) { }
 
   public livraison: any
 
@@ -25,6 +26,13 @@ export class LivraisonDetailComponent implements OnInit {
         })
       }
     })
+  }
+
+  public traiter(id: number, etat: string)  //Valider ou annuler la commande
+  {                    
+    this.commandeService.traiterCommande(id, etat).subscribe({
+      next: data => { window.location.reload() }
+    }) 
   }
 
 }

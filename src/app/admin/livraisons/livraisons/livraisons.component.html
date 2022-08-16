@@ -7,7 +7,9 @@
                 <th>ID</th>
                 <th>Livreur</th>
                 <th>Date</th>
+                <th>Etat</th>
                 <th>Détails</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -15,7 +17,14 @@
                 <td>{{liv.id}}</td>
                 <td>{{liv.livreur.prenom}} {{liv.livreur.nom}}</td>
                 <td>{{liv.date | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td [style.color]="getColour(liv.etat)">
+                    {{liv.etat | formatEtat }}
+                    <span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(liv.etat)}}</span>
+                </td>
                 <td [routerLink] = "['/admin/livraisons', liv.id]"><span class="material-icons orange">remove_red_eye</span></td>
+                <td>
+                    <a class="btn btn-outline-success p-1" (click) = "traiter(liv.id, 'paye')" *ngIf="liv.etat != 'paye'">Terminée</a>
+                </td>
             </tr>
         </tbody>
     </table>

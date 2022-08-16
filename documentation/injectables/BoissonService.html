@@ -58,7 +58,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/service/boisson.service.ts</code>
+            <code>src/app/shared/service/boisson.service.ts</code>
         </p>
 
 
@@ -69,21 +69,6 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#COMPLEMENTS_URL" >COMPLEMENTS_URL</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -128,7 +113,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/app/service/boisson.service.ts:6</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/shared/service/boisson.service.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -193,8 +178,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">src/app/service/boisson.service.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="11"
+                            class="link-to-prism">src/app/shared/service/boisson.service.ts:11</a></div>
                 </td>
             </tr>
 
@@ -232,8 +217,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/app/service/boisson.service.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/app/shared/service/boisson.service.ts:15</a></div>
                 </td>
             </tr>
 
@@ -271,8 +256,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/app/service/boisson.service.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app/shared/service/boisson.service.ts:25</a></div>
                 </td>
             </tr>
 
@@ -321,44 +306,6 @@
         </tbody>
     </table>
 </section>
-            <section>
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="COMPLEMENTS_URL"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>COMPLEMENTS_URL</b></span>
-                        <a href="#COMPLEMENTS_URL"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&quot;api/complements.json&quot;</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/service/boisson.service.ts:10</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-</section>
 
     </div>
 
@@ -367,23 +314,29 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient, HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
 import { catchError, firstValueFrom, Observable, tap, throwError, timeout } from &#x27;rxjs&#x27;;
+import { environment } from &#x27;src/environments/environment&#x27;;
 
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class BoissonService {
 
   constructor(private http:HttpClient) { }
 
-  public COMPLEMENTS_URL &#x3D; &quot;api/complements.json&quot;;
-  // public COMPLEMENTS_URL &#x3D; &quot;https://127.0.0.1:8000/api/taille_boissons&quot;;
+  public getComplements(): Observable&lt;any&gt;{
+      return this.http.get&lt;any&gt;(environment.COMPLEMENTS_URL).pipe(  catchError(this.handleError)  );
+  }
 
-  public getComplements(): Observable&lt;any&gt;
-    {
-        return this.http.get&lt;any&gt;(this.COMPLEMENTS_URL).pipe(
-            catchError(this.handleError)
-        );
-    }
+  async getProducts(): Promise&lt;any&gt; 
+  {
+    return await firstValueFrom(
+      this.http.get&lt;any&gt;(environment.COMPLEMENTS_URL).pipe(
+        timeout(10000),
+        catchError(this.handleError)
+      )
+    );
+  }
 
-    private handleError(error: HttpErrorResponse) {
+  private handleError(error: HttpErrorResponse) 
+  {
       if (error.status &#x3D;&#x3D;&#x3D; 0) {
         // A client-side or network error occurred. Handle it accordingly.
         console.error(&#x27;An error occurred:&#x27;, error.error);
@@ -397,13 +350,6 @@ export class BoissonService {
       return throwError(() &#x3D;&gt; new Error(&#x27;Something bad happened; please try again later.&#x27;));
   }
 
-  async getProducts(): Promise&lt;any&gt; {
-    const res &#x3D; await firstValueFrom(
-      this.http.get&lt;any&gt;(this.COMPLEMENTS_URL).pipe(timeout(10000))
-    );
-    console.log(res);
-    return res
-  }
 }
 </code></pre>
     </div>

@@ -17,7 +17,8 @@ export const environment = {
   ZONE_COMMANDES_ETAT_TERMINE : "https://127.0.0.1:8000/api/zonesCommandesterminees",
   LIVREURS_URL : "https://127.0.0.1:8000/api/livreurs",
   LIVRAISONS_URL : "https://127.0.0.1:8000/api/livraisons",
-  INSCRIPTION_URL : "https://127.0.0.1:8000/api/sign_up"
+  INSCRIPTION_URL : "https://127.0.0.1:8000/api/sign_up",
+  CLIENT_URL: "https://127.0.0.1:8000/api/clients"
 };
 
 

@@ -21,13 +21,17 @@ export class AuthService {
   {
     return await firstValueFrom(
       this.http.post<IToken>(environment.LOGIN_URL, body).pipe(
-        catchError(this.handleError)
+        catchError( error => {            
+          if(error.status == 401)
+            console.log("Login et/ou mot de passe incorrect(s)!")
+          return throwError(() => new Error("Login et/ou mot de passe incorrect(s)!"))
+        })
       )
     ).then((data) => 
     {
       this.tokenService.saveToken(data.token)  ;  
       this.user = (this.tokenService.getUser(data.token));
-      console.log(this.user);
+      console.log(this.user.username);
             
       (this.hasRole("ROLE_CLIENT")) ?  this.retour.navigate(["/catalogue"]) : this.retour.navigate(["/admin/commandes"])
     })

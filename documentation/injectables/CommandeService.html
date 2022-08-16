@@ -58,7 +58,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/service/commande.service.ts</code>
+            <code>src/app/shared/service/commande.service.ts</code>
         </p>
 
 
@@ -69,22 +69,6 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#COMMANDE_URL" >COMMANDE_URL</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -96,10 +80,6 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#annulerCommande" >annulerCommande</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
                                 <a href="#formatEtat" >formatEtat</a>
                             </li>
                             <li>
@@ -107,12 +87,34 @@
                                 <a href="#getById" >getById</a>
                             </li>
                             <li>
+                                <a href="#getColour" >getColour</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getCommandes" >getCommandes</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                 <a href="#getCommandesById" >getCommandesById</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#getCommandesByZone" >getCommandesByZone</a>
+                            </li>
+                            <li>
+                                <a href="#getIcon" >getIcon</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#handleError" >handleError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#saveOrder" >saveOrder</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#traiterCommande" >traiterCommande</a>
                             </li>
                         </ul>
                     </td>
@@ -137,7 +139,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/service/commande.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/shared/service/commande.service.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -196,73 +198,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="annulerCommande"></a>
-                    <span class="name">
-                        <span class="modifier">Public</span>
-                        <span ><b>annulerCommande</b></span>
-                        <a href="#annulerCommande"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>annulerCommande(id)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="41"
-                            class="link-to-prism">src/app/service/commande.service.ts:41</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>id</td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="formatEtat"></a>
                     <span class="name">
                         <span class="modifier">Public</span>
@@ -274,15 +209,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>formatEtat(etat)</code>
+                    <code>formatEtat(etat: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">src/app/service/commande.service.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/shared/service/commande.service.ts:36</a></div>
                 </td>
             </tr>
 
@@ -297,12 +232,16 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>etat</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -316,7 +255,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </div>
                     <div class="io-description">
@@ -348,8 +287,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/app/service/commande.service.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/shared/service/commande.service.ts:30</a></div>
                 </td>
             </tr>
 
@@ -401,26 +340,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getCommandesById"></a>
+                    <a name="getColour"></a>
                     <span class="name">
-                        <span class="modifier">Public</span>
-                        <span ><b>getCommandesById</b></span>
-                        <a href="#getCommandesById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>getColour</b></span>
+                        <a href="#getColour"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getCommandesById(id)</code>
+<code>getColour(etat: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/service/commande.service.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/app/shared/service/commande.service.ts:52</a></div>
                 </td>
             </tr>
 
@@ -435,12 +372,337 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>etat</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>null | string</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCommandes"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getCommandes</b></span>
+                        <a href="#getCommandes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCommandes()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/shared/service/commande.service.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCommandesById"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getCommandesById</b></span>
+                        <a href="#getCommandesById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCommandesById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/shared/service/commande.service.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCommandesByZone"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getCommandesByZone</b></span>
+                        <a href="#getCommandesByZone"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCommandesByZone(zone: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/app/shared/service/commande.service.ts:28</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>zone</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getIcon"></a>
+                    <span class="name">
+                        <span ><b>getIcon</b></span>
+                        <a href="#getIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getIcon(etat: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/shared/service/commande.service.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>etat</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>null | string</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleError"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>handleError</b></span>
+                        <a href="#handleError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleError(error: <a href="https://angular.io/api/common/http/HttpErrorResponse" target="_blank">HttpErrorResponse</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/shared/service/commande.service.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>error</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/common/http/HttpErrorResponse" target="_blank" >HttpErrorResponse</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -487,7 +749,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/app/service/commande.service.ts:14</a></div>
+                            class="link-to-prism">src/app/shared/service/commande.service.ts:14</a></div>
                 </td>
             </tr>
 
@@ -531,43 +793,87 @@
             </tr>
         </tbody>
     </table>
-</section>
-            <section>
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="COMMANDE_URL"></a>
+                    <a name="traiterCommande"></a>
                     <span class="name">
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Readonly</span>
-                        <span ><b>COMMANDE_URL</b></span>
-                        <a href="#COMMANDE_URL"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Public</span>
+                        <span ><b>traiterCommande</b></span>
+                        <a href="#traiterCommande"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&quot;https://127.0.0.1:8000/api/commandes&quot;</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/service/commande.service.ts:12</a></div>
-                        </td>
-                    </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>traiterCommande(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, etat: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
 
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/shared/service/commande.service.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>etat</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
         </tbody>
     </table>
 </section>
@@ -576,9 +882,11 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient, HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { catchError, throwError } from &#x27;rxjs&#x27;;
+import { environment } from &#x27;src/environments/environment&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -587,46 +895,31 @@ export class CommandeService {
 
   constructor(private http:HttpClient, private retour:Router) { }
 
-  public readonly COMMANDE_URL &#x3D; &quot;https://127.0.0.1:8000/api/commandes&quot;
-
   public saveOrder(body)
   {
-    this.http.post&lt;any&gt;(this.COMMANDE_URL, body).subscribe(
-      {
-        next: data &#x3D;&gt; {
-          this.retour.navigate([&quot;/commandes/&quot;+data.id])
-        },
-        // error: error &#x3D;&gt;{
-        //   alert(&quot;Y&#x27;a erreur&quot;)
-        // }
-      }
-    )
-  }
-
-  public getCommandesById(id)
-  {
-    let COMMANDE_CLIENT_URL &#x3D; &quot;https://127.0.0.1:8000/api/clients/&quot;+ id +&quot;/commandes&quot;
-    // let COMMANDE_CLIENT_URL &#x3D; &quot;api/commandes.json&quot;
-
-    return this.http.get&lt;any&gt;(COMMANDE_CLIENT_URL)
-  }
-
-  public getById(id:number)
-  {  
-    return this.http.get&lt;any&gt;(this.COMMANDE_URL+&quot;/&quot;+id)
-  }
-
-  public annulerCommande(id)
-  {
-    return this.http.put&lt;any&gt;(&quot;https://127.0.0.1:8000/api/commandes/&quot;+id, {
-      &quot;etat&quot;: &quot;annule&quot;
+    this.http.post&lt;any&gt;(environment.COMMANDE_URL, body).subscribe({
+        next: data &#x3D;&gt; {  this.retour.navigate([&quot;/commandes/&quot;+data.id]) },
+        error: error &#x3D;&gt;{  alert(&quot;Y&#x27;a erreur&quot;)}
     })
   }
-  // public getById(id:number, tab: ICommande[]){  return tab.find(param &#x3D;&gt; param.id &#x3D;&#x3D; id)}
 
-  public formatEtat(etat)
+  public getCommandesById(id: number)
   {
-    let etatFormate
+    let COMMANDE_CLIENT_URL &#x3D; &quot;https://127.0.0.1:8000/api/clients/&quot;+ id +&quot;/commandes&quot;
+    return this.http.get&lt;any&gt;(COMMANDE_CLIENT_URL).pipe( catchError(this.handleError))
+  }
+
+  public getCommandesByZone(zone: string) {  return this.http.get&lt;any&gt;(environment.COMMANDE_URL+&quot;?zone.nom&#x3D;&quot;+zone).pipe( catchError(this.handleError)) }
+
+  public getById(id:number){  return this.http.get&lt;any&gt;(environment.COMMANDE_URL+&quot;/&quot;+id).pipe( catchError(this.handleError)) }
+
+  public traiterCommande(id:number, etat:string){  return this.http.put&lt;any&gt;(environment.COMMANDE_URL+&quot;/&quot;+id, {  &quot;etat&quot;: etat  }).pipe( catchError(this.handleError)) }
+
+  public getCommandes(){  return this.http.get&lt;any&gt;(environment.COMMANDE_URL).pipe( catchError(this.handleError))  }
+
+  public formatEtat(etat: string)
+  {
+    let etatFormate : string
     if(etat &#x3D;&#x3D; &quot;en attente&quot;)
       etatFormate &#x3D; &quot;En attente&quot;
     else if(etat &#x3D;&#x3D; &quot;termine&quot;)
@@ -640,6 +933,49 @@ export class CommandeService {
     return etatFormate
   }
 
+  getColour(etat: string) : null | string
+  {
+    if(etat &#x3D;&#x3D; &quot;en attente&quot;)
+        return &quot;orange&quot;
+    else if(etat &#x3D;&#x3D; &quot;termine&quot;)
+        return &quot;green&quot;
+    else if(etat &#x3D;&#x3D; &quot;valide&quot;)
+        return &quot;blue&quot;
+    else if(etat &#x3D;&#x3D; &quot;annule&quot;)
+        return &quot;red&quot;;
+    else if(etat &#x3D;&#x3D; &quot;livraison&quot;)    
+        return &quot;blue&quot;
+    return null
+  }
+
+  getIcon(etat: string) : null | string
+  {
+    if(etat &#x3D;&#x3D; &quot;en attente&quot;)
+        return &quot;pending&quot;
+    else if(etat &#x3D;&#x3D; &quot;termine&quot;)
+        return &quot;done&quot;
+    else if(etat &#x3D;&#x3D; &quot;valide&quot;)
+        return &quot;schedule&quot;
+    else if(etat &#x3D;&#x3D; &quot;annule&quot;)
+        return &quot;close&quot;;
+    else if(etat &#x3D;&#x3D; &quot;livraison&quot;)    
+        return &quot;local_shipping&quot;
+    return null
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status &#x3D;&#x3D;&#x3D; 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error(&#x27;An error occurred:&#x27;, error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        &#x60;Backend returned code ${error.status}, body was: &#x60;, error.error);
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(() &#x3D;&gt; new Error(&#x27;Something bad happened; please try again later.&#x27;));
+  }
 }
 
 

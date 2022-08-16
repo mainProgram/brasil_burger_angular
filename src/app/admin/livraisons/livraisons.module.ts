@@ -5,6 +5,7 @@ import { LivraisonsRoutingModule } from './livraisons-routing.module';
 import { LivraisonsComponent } from './livraisons/livraisons.component';
 import { LivraisonDetailComponent } from './livraison-detail/livraison-detail.component';
 import { LivraisonCreateComponent } from './livraison-create/livraison-create.component';
+import { PublicModule } from 'src/app/public/public.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LivraisonCreateComponent } from './livraison-create/livraison-create.co
   ],
   imports: [
     CommonModule,
-    LivraisonsRoutingModule
+    LivraisonsRoutingModule,
+    PublicModule
   ]
 })
 export class LivraisonsModule { }

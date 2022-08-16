@@ -25,6 +25,8 @@ export class LivraisonService {
   
   public setLivreurDisponible(id: number):Observable<IUser>{  return this.http.put<IUser>(environment.LIVREURS_URL+"/"+id, { "isDisponible" : true}).pipe( catchError(this.handleError)) }
 
+  public traiterLivraison(id: number, etat: string):Observable<any>{  return this.http.put<any>(environment.LIVRAISONS_URL+"/"+id, { "etat" : etat}).pipe( catchError(this.handleError)) }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

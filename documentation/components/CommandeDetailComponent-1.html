@@ -1,0 +1,710 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>snapface documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">snapface documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  CommandeDetailComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/client/commande/commande-detail/commande-detail.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-commande-detail</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./commande-detail.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./commande-detail.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#commande" >commande</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#commandes" >commandes</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getColour" >getColour</a>
+                            </li>
+                            <li>
+                                <a href="#getIcon" >getIcon</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, commandeService: <a href="../injectables/CommandeService.html" target="_self">CommandeService</a>, retour: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/client/commande/commande-detail/commande-detail.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>commandeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CommandeService.html" target="_self" >CommandeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>retour</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getColour"></a>
+                    <span class="name">
+                        <span ><b>getColour</b></span>
+                        <a href="#getColour"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getColour(etat: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/app/client/commande/commande-detail/commande-detail.component.ts:28</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>etat</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getIcon"></a>
+                    <span class="name">
+                        <span ><b>getIcon</b></span>
+                        <a href="#getIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getIcon(etat: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/client/commande/commande-detail/commande-detail.component.ts:30</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>etat</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/app/client/commande/commande-detail/commande-detail.component.ts:18</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="commande"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>commande</b></span>
+                        <a href="#commande"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ICommande.html" target="_self" >ICommande</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/client/commande/commande-detail/commande-detail.component.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="commandes"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>commandes</b></span>
+                        <a href="#commandes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ICommande.html" target="_self" >ICommande[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/client/commande/commande-detail/commande-detail.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { ICommande } from &#x27;src/app/shared/interface/interfaces&#x27;;
+import { CommandeService } from &#x27;src/app/shared/service/commande.service&#x27;;
+
+@Component({
+  selector: &#x27;app-commande-detail&#x27;,
+  templateUrl: &#x27;./commande-detail.component.html&#x27;,
+  styleUrls: [&#x27;./commande-detail.component.scss&#x27;]
+})
+export class CommandeDetailComponent implements OnInit {
+
+  public commande : ICommande
+  public commandes : ICommande[]
+
+  constructor(private route: ActivatedRoute, private commandeService: CommandeService, private retour:Router) { }
+
+  ngOnInit(): void 
+  {
+    const id &#x3D; +this.route.snapshot.paramMap.get(&quot;id&quot;);
+
+    this.commandeService.getById(id).subscribe({
+      next: data &#x3D;&gt; { this.commande &#x3D; data},
+      error: err &#x3D;&gt; {this.retour.navigate([&quot;/commandes&quot;])}
+    })
+  }
+
+  getColour(etat: string) {  return this.commandeService.getColour(etat)}
+
+  getIcon(etat: string){ return this.commandeService.getIcon(etat) }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container mt-5&quot;&gt;
+    &lt;div class&#x3D;&quot;d-flex align-items-start justify-content-between&quot;&gt;
+        &lt;table class&#x3D;&quot;table table-hover&quot; style&#x3D;&quot;width:70%;&quot;&gt;
+            &lt;thead style&#x3D;&quot;padding: 40px;&quot;&gt;
+                &lt;tr&gt;
+                    &lt;th colspan&#x3D;&quot;2&quot;&gt;Produits&lt;/th&gt;
+                    &lt;th&gt;Prix unitaire&lt;/th&gt;
+                    &lt;th&gt;Quantité&lt;/th&gt;
+                    &lt;th&gt;Sous-total&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;commande.commandeMenus.length &gt; 0&quot;&gt;
+                    &lt;tr *ngFor&#x3D;&quot;let menu of commande.commandeMenus&quot;&gt;
+                        &lt;td colspan&#x3D;&quot;2&quot;&gt;&lt;img src&#x3D;&quot;{{ &#x27;data:image/jpg;base64,&#x27; + menu[&#x27;menu&#x27;][&#x27;image&#x27;] }}&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:40px; margin-right: 8px;&quot;&gt;&lt;span&gt;{{ menu[&quot;menu&quot;][&quot;nom&quot;]| titlecase}}&lt;/span&gt;&lt;/td&gt;
+                        &lt;td&gt;{{ menu[&quot;menu&quot;][&quot;prix&quot;]}} FCFA&lt;/td&gt;
+                        &lt;td&gt;{{ menu[&quot;quantite&quot;]}}&lt;/td&gt;
+                        &lt;td&gt;{{ menu[&quot;menu&quot;][&quot;prix&quot;] * menu[&quot;quantite&quot;]}} FCFA&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-container&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;commande.commandeBurgers.length &gt; 0&quot;&gt;
+                    &lt;tr *ngFor&#x3D;&quot;let burger of commande.commandeBurgers&quot;&gt;
+                        &lt;td colspan&#x3D;&quot;2&quot;&gt;&lt;img src&#x3D;&quot;{{ &#x27;data:image/jpg;base64,&#x27; + burger[&#x27;burger&#x27;][&#x27;image&#x27;] }}&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:40px; margin-right: 8px;&quot;&gt;&lt;span&gt;{{ burger[&quot;burger&quot;][&quot;nom&quot;]| titlecase}}&lt;/span&gt;&lt;/td&gt;
+                        &lt;td&gt;{{ burger[&quot;burger&quot;][&quot;prix&quot;]}} FCFA&lt;/td&gt;
+                        &lt;td&gt;{{ burger[&quot;quantite&quot;]}}&lt;/td&gt;
+                        &lt;td&gt;{{ burger[&quot;burger&quot;][&quot;prix&quot;] * burger[&quot;quantite&quot;]}} FCFA&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-container&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;commande.commandeFrites.length &gt; 0&quot;&gt;
+                    &lt;tr *ngFor&#x3D;&quot;let frite of commande.commandeFrites&quot;&gt;
+                        &lt;td colspan&#x3D;&quot;2&quot;&gt;&lt;img src&#x3D;&quot;{{ &#x27;data:image/jpg;base64,&#x27; + frite[&#x27;frite&#x27;][&#x27;image&#x27;] }}&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:40px; margin-right: 8px;&quot;&gt;&lt;span&gt;{{ frite[&quot;frite&quot;][&quot;nom&quot;]| titlecase}}&lt;/span&gt;&lt;/td&gt;
+                        &lt;td&gt;{{ frite[&quot;frite&quot;][&quot;prix&quot;]}} FCFA&lt;/td&gt;
+                        &lt;td&gt;{{ frite[&quot;quantite&quot;]}}&lt;/td&gt;
+                        &lt;td&gt;{{ frite[&quot;frite&quot;][&quot;prix&quot;] * frite[&quot;quantite&quot;]}} FCFA&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-container&gt;
+                &lt;ng-container *ngIf&#x3D;&quot;commande.commandeTailleBoissons.length &gt; 0&quot;&gt;
+                    &lt;tr *ngFor&#x3D;&quot;let tailleBoisson of commande.commandeTailleBoissons&quot;&gt;
+                        &lt;td colspan&#x3D;&quot;2&quot;&gt;&lt;img src&#x3D;&quot;{{ &#x27;data:image/jpg;base64,&#x27; + tailleBoisson[&#x27;tailleBoisson&#x27;][&#x27;image&#x27;] }}&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:40px; margin-right: 8px;&quot;&gt;&lt;span&gt;{{ tailleBoisson[&quot;tailleBoisson&quot;][&quot;nom&quot;]| titlecase}}&lt;/span&gt;&lt;/td&gt;
+                        &lt;td&gt;{{ tailleBoisson[&quot;tailleBoisson&quot;][&quot;prix&quot;]}} FCFA&lt;/td&gt;
+                        &lt;td&gt;{{ tailleBoisson[&quot;quantite&quot;]}}&lt;/td&gt;
+                        &lt;td&gt;{{ tailleBoisson[&quot;tailleBoisson&quot;][&quot;prix&quot;] * tailleBoisson[&quot;quantite&quot;]}} FCFA&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/ng-container&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+        &lt;div class&#x3D;&quot;border w-25 p-5 d-flex flex-column&quot;&gt;
+            &lt;div&gt;
+                &lt;h5&gt;Résumé commande&lt;/h5&gt;
+                &lt;p id&#x3D;&quot;prixLivraison&quot; *ngIf&#x3D;&quot;commande.zone&quot;&gt;Livraison: {{ commande[&#x27;zone&#x27;][&#x27;prix&#x27;]}}  FCFA&lt;/p&gt;
+                &lt;p&gt;Total: {{ commande.prix }} FCFA&lt;/p&gt;
+                &lt;p&gt;Mode : {{ commande.zone ? &quot;Livraison&quot;  : &quot;Sur place&quot;  }}&lt;/p&gt;
+                &lt;p&gt;Etat: &lt;span [style.color]&#x3D;&quot;getColour(commande.etat)&quot;&gt;{{commande.etat | formatEtat}}&lt;span class&#x3D;&quot;material-icons&quot; style&#x3D;&quot;font-size: 12px; margin-left: 5px;&quot;&gt;{{getIcon(commande.etat)}} &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+
+            &lt;/div&gt;
+            &lt;a [routerLink] &#x3D; &quot;[&#x27;/commandes&#x27;]&quot; class&#x3D;&quot;btn btn-outline-dark&quot;&gt;Mes commandes &gt; &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./commande-detail.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container mt-5">    <div class="d-flex align-items-start justify-content-between">        <table class="table table-hover" style="width:70%;">            <thead style="padding: 40px;">                <tr>                    <th colspan="2">Produits</th>                    <th>Prix unitaire</th>                    <th>Quantité</th>                    <th>Sous-total</th>                </tr>            </thead>            <tbody>                <ng-container *ngIf="commande.commandeMenus.length > 0">                    <tr *ngFor="let menu of commande.commandeMenus">                        <td colspan="2"><img src="{{ \'data:image/jpg;base64,\' + menu[\'menu\'][\'image\'] }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ menu["menu"]["nom"]| titlecase}}</span></td>                        <td>{{ menu["menu"]["prix"]}} FCFA</td>                        <td>{{ menu["quantite"]}}</td>                        <td>{{ menu["menu"]["prix"] * menu["quantite"]}} FCFA</td>                    </tr>                </ng-container>                <ng-container *ngIf="commande.commandeBurgers.length > 0">                    <tr *ngFor="let burger of commande.commandeBurgers">                        <td colspan="2"><img src="{{ \'data:image/jpg;base64,\' + burger[\'burger\'][\'image\'] }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ burger["burger"]["nom"]| titlecase}}</span></td>                        <td>{{ burger["burger"]["prix"]}} FCFA</td>                        <td>{{ burger["quantite"]}}</td>                        <td>{{ burger["burger"]["prix"] * burger["quantite"]}} FCFA</td>                    </tr>                </ng-container>                <ng-container *ngIf="commande.commandeFrites.length > 0">                    <tr *ngFor="let frite of commande.commandeFrites">                        <td colspan="2"><img src="{{ \'data:image/jpg;base64,\' + frite[\'frite\'][\'image\'] }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ frite["frite"]["nom"]| titlecase}}</span></td>                        <td>{{ frite["frite"]["prix"]}} FCFA</td>                        <td>{{ frite["quantite"]}}</td>                        <td>{{ frite["frite"]["prix"] * frite["quantite"]}} FCFA</td>                    </tr>                </ng-container>                <ng-container *ngIf="commande.commandeTailleBoissons.length > 0">                    <tr *ngFor="let tailleBoisson of commande.commandeTailleBoissons">                        <td colspan="2"><img src="{{ \'data:image/jpg;base64,\' + tailleBoisson[\'tailleBoisson\'][\'image\'] }}" alt="" style="width:40px; margin-right: 8px;"><span>{{ tailleBoisson["tailleBoisson"]["nom"]| titlecase}}</span></td>                        <td>{{ tailleBoisson["tailleBoisson"]["prix"]}} FCFA</td>                        <td>{{ tailleBoisson["quantite"]}}</td>                        <td>{{ tailleBoisson["tailleBoisson"]["prix"] * tailleBoisson["quantite"]}} FCFA</td>                    </tr>                </ng-container>            </tbody>        </table>        <div class="border w-25 p-5 d-flex flex-column">            <div>                <h5>Résumé commande</h5>                <p id="prixLivraison" *ngIf="commande.zone">Livraison: {{ commande[\'zone\'][\'prix\']}}  FCFA</p>                <p>Total: {{ commande.prix }} FCFA</p>                <p>Mode : {{ commande.zone ? "Livraison"  : "Sur place"  }}</p>                <p>Etat: <span [style.color]="getColour(commande.etat)">{{commande.etat | formatEtat}}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(commande.etat)}} </span></span></p>            </div>            <a [routerLink] = "[\'/commandes\']" class="btn btn-outline-dark">Mes commandes > </a>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminHeaderComponent', 'selector': 'app-admin-header'},{'name': 'AdminLayoutComponent', 'selector': 'app-admin-layout'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CarouselComponent', 'selector': 'app-carousel'},{'name': 'CatalogueComponent', 'selector': 'app-catalogue'},{'name': 'CatalogueDetailComponent', 'selector': 'app-catalogue-detail'},{'name': 'ClientLayoutComponent', 'selector': 'app-client-layout'},{'name': 'CommandeComponent', 'selector': 'app-commande'},{'name': 'CommandeDetailComponent', 'selector': 'app-commande-detail'},{'name': 'CommandeDetailComponent', 'selector': 'app-commande-detail'},{'name': 'CommandesComponent', 'selector': 'app-commandes'},{'name': 'CreateComponent', 'selector': 'app-create'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LivraisonCreateComponent', 'selector': 'app-livraison-create'},{'name': 'LivraisonDetailComponent', 'selector': 'app-livraison-detail'},{'name': 'LivraisonsComponent', 'selector': 'app-livraisons'},{'name': 'LivreurCreateComponent', 'selector': 'app-livreur-create'},{'name': 'LivreurDetailComponent', 'selector': 'app-livreur-detail'},{'name': 'LivreursComponent', 'selector': 'app-livreurs'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'PanierComponent', 'selector': 'app-panier'},{'name': 'ProduitsComponent', 'selector': 'app-produits'},{'name': 'SignUpComponent', 'selector': 'app-sign-up'}];
+    var DIRECTIVES = [{'name': 'HasRoleDirective', 'selector': '[appHasRole]'}];
+    var ACTUAL_COMPONENT = {'name': 'CommandeDetailComponent-1'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CommandeDetailComponent-1.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

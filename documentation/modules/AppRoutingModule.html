@@ -74,29 +74,21 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &quot;@angular/core&quot;;
 import { RouterModule, Routes } from &quot;@angular/router&quot;;
-import { CommandeDetailComponent } from &quot;./commande/commande-detail/commande-detail.component&quot;;
-import { CommandeComponent } from &quot;./commande/commande.component&quot;;
-import { NotFoundComponent } from &quot;./not-found/not-found.component&quot;;
+import { NotFoundComponent } from &quot;./public/not-found/not-found.component&quot;;
+import { AuthGuard } from &quot;./_helpers/auth.guard&quot;;
 
-const routes: Routes &#x3D; [
-    { path: &#x27;commandes&#x27;, component: CommandeComponent }, 
-    { path: &#x27;commandes/:id&#x27;, component: CommandeDetailComponent }, 
-    { path: &#x27;&#x27;, redirectTo: &#x27;home&#x27;,pathMatch:&quot;full&quot;}, 
-    // { path: &#x27;login&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./securite/securite.module&#x27;).then(m &#x3D;&gt; m.SecuriteModule) },
-    {
-        path: &#x27;auth&#x27;, loadChildren: () &#x3D;&gt;  &quot;import(&#x27;./auth/auth.module&#x27;).then(m &#x3D;&gt; m.AuthModule)&quot;
-    },
-    {
-        path: &#x27;&#x27;, loadChildren: () &#x3D;&gt;  &quot;import(&#x27;./public/public.module&#x27;).then(m &#x3D;&gt; m.PublicModule)&quot;
-    },
+const routes: Routes &#x3D; [ 
+    { path: &#x27;auth&#x27;, loadChildren: () &#x3D;&gt;  &quot;import(&#x27;./auth/auth.module&#x27;).then(m &#x3D;&gt; m.AuthModule)&quot;},
+    { path: &#x27;&#x27;, loadChildren: () &#x3D;&gt;  &quot;import(&#x27;./client/client.module&#x27;).then(m &#x3D;&gt; m.ClientModule)&quot;},
+    { path: &#x27;admin&#x27;, loadChildren: () &#x3D;&gt;  &quot;import(&#x27;./admin/admin.module&#x27;).then(m &#x3D;&gt; m.AdminModule)&quot;, canActivate:[AuthGuard]},
     { path: &quot;**&quot;,component: NotFoundComponent},
 ]
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
-  })
-  export class AppRoutingModule { }
+})
+export class AppRoutingModule { }
   </code></pre>
     </div>
 </div>

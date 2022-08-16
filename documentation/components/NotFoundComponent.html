@@ -64,7 +64,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/not-found/not-found.component.ts</code>
+    <code>src/app/public/not-found/not-found.component.ts</code>
 </p>
 
 
@@ -160,7 +160,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/not-found/not-found.component.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/public/not-found/not-found.component.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -198,7 +198,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/not-found/not-found.component.ts:12</a></div>
+                            class="link-to-prism">src/app/public/not-found/not-found.component.ts:12</a></div>
                 </td>
             </tr>
 
@@ -239,8 +239,9 @@ export class NotFoundComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;p&gt;not-found works!&lt;/p&gt;
-</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container mt-5&quot;&gt;
+    &lt;h4 class&#x3D;&quot;text-danger&quot;&gt;Error 404 ! Page not found !&lt;/h4&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -275,9 +276,9 @@ export class NotFoundComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><p>not-found works!</p></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CarouselComponent', 'selector': 'app-carousel'},{'name': 'CatalogueComponent', 'selector': 'app-catalogue'},{'name': 'CatalogueDetailComponent', 'selector': 'app-catalogue-detail'},{'name': 'CommandeComponent', 'selector': 'app-commande'},{'name': 'CommandeDetailComponent', 'selector': 'app-commande-detail'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'PanierComponent', 'selector': 'app-panier'},{'name': 'SignUpComponent', 'selector': 'app-sign-up'}];
-    var DIRECTIVES = [];
+        var COMPONENT_TEMPLATE = '<div><div class="container mt-5">    <h4 class="text-danger">Error 404 ! Page not found !</h4></div></div>'
+    var COMPONENTS = [{'name': 'AdminHeaderComponent', 'selector': 'app-admin-header'},{'name': 'AdminLayoutComponent', 'selector': 'app-admin-layout'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CarouselComponent', 'selector': 'app-carousel'},{'name': 'CatalogueComponent', 'selector': 'app-catalogue'},{'name': 'CatalogueDetailComponent', 'selector': 'app-catalogue-detail'},{'name': 'ClientLayoutComponent', 'selector': 'app-client-layout'},{'name': 'CommandeComponent', 'selector': 'app-commande'},{'name': 'CommandeDetailComponent', 'selector': 'app-commande-detail'},{'name': 'CommandeDetailComponent', 'selector': 'app-commande-detail'},{'name': 'CommandesComponent', 'selector': 'app-commandes'},{'name': 'CreateComponent', 'selector': 'app-create'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LivraisonCreateComponent', 'selector': 'app-livraison-create'},{'name': 'LivraisonDetailComponent', 'selector': 'app-livraison-detail'},{'name': 'LivraisonsComponent', 'selector': 'app-livraisons'},{'name': 'LivreurCreateComponent', 'selector': 'app-livreur-create'},{'name': 'LivreurDetailComponent', 'selector': 'app-livreur-detail'},{'name': 'LivreursComponent', 'selector': 'app-livreurs'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'PanierComponent', 'selector': 'app-panier'},{'name': 'ProduitsComponent', 'selector': 'app-produits'},{'name': 'SignUpComponent', 'selector': 'app-sign-up'}];
+    var DIRECTIVES = [{'name': 'HasRoleDirective', 'selector': '[appHasRole]'}];
     var ACTUAL_COMPONENT = {'name': 'NotFoundComponent'};
 </script>
 <script src="../js/tree.js"></script>

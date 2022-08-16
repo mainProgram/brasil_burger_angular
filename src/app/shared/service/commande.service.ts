@@ -39,19 +39,21 @@ export class CommandeService {
     if(etat == "en attente")
       etatFormate = "En attente"
     else if(etat == "termine")
-      etatFormate = "Livré"
+      etatFormate = "Terminé"
     else if(etat == "valide")
       etatFormate = "En cours"
     else if(etat == "annule")
       etatFormate = "Annulé"
     else if(etat == "livraison")    
       etatFormate = "En cours de livraison"
+    else if(etat == "paye")    
+      etatFormate = "Livré"
     return etatFormate
   }
 
   getColour(etat: string) : null | string
   {
-    if(etat == "en attente")
+    if(etat == "en attente" || etat == "en cours")
         return "orange"
     else if(etat == "termine")
         return "green"
@@ -61,12 +63,14 @@ export class CommandeService {
         return "red";
     else if(etat == "livraison")    
         return "blue"
+    else if(etat == "paye")    
+        return "green"
     return null
   }
 
   getIcon(etat: string) : null | string
   {
-    if(etat == "en attente")
+    if(etat == "en attente" || etat == "en cours")
         return "pending"
     else if(etat == "termine")
         return "done"
@@ -76,6 +80,8 @@ export class CommandeService {
         return "close";
     else if(etat == "livraison")    
         return "local_shipping"
+    else if(etat == "paye")    
+        return "done"
     return null
   }
 

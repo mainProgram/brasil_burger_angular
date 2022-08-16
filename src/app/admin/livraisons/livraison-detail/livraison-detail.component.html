@@ -18,6 +18,7 @@
                 <th>Total</th>
                 <th>Client</th>
                 <th>Détails</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,10 @@
                 <td>{{com.prix}} FCFA</td>
                 <td>{{com.client.prenom}} {{com.client.nom}}</td>
                 <td [routerLink] = "['/admin/commandes', com.id]"><span class="material-icons orange">remove_red_eye</span></td>
+                <td>
+                    <a class="btn btn-outline-success p-1 mx-3"  (click) = "traiter(com.id, 'paye')" *ngIf="com.etat != 'paye '">Payé</a>
+                    <a class="btn btn-outline-danger p-1" (click) = "traiter(com.id, 'annule')">Annulé</a>
+                </td>
             </tr>
         </tbody>
     </table>

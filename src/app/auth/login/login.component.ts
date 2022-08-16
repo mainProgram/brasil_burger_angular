@@ -18,13 +18,19 @@ export class LoginComponent implements OnInit {
 
   public user: IUser
 
+  public erroMessage = ""
+
+
   constructor(private authService :AuthService, private tokenService:TokenService, private retour:Router) { }
   
   ngOnInit(): void {}
   
   public hasRole(role: string){  return this.user.roles.includes(role as never); }
   
-  public onSubmit(){  this.authService.login(this.form)}
+  public onSubmit(){  
+    this.authService.login(this.form).catch((err) => this.erroMessage = err);
+   
+  }
 
 
 }

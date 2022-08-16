@@ -74,8 +74,21 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
+import { AdminLayoutComponent } from &#x27;./admin-layout/admin-layout.component&#x27;;
+import { DashboardComponent } from &#x27;./dashboard/dashboard.component&#x27;;
 
-const routes: Routes &#x3D; [];
+const routes: Routes &#x3D; [
+  { path: &quot;&quot;, component: AdminLayoutComponent, children:
+    [
+      { path: &quot;dashboard&quot;, component: DashboardComponent},
+      { path: &quot;&quot;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./commandes/commandes.module&#x27;).then(m &#x3D;&gt; m.CommandeModule)&quot;},
+      { path: &quot;produits&quot;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./produits/produits.module&#x27;).then(m &#x3D;&gt; m.ProduitsModule)&quot;},
+      { path: &#x27;commandes&#x27;, loadChildren: () &#x3D;&gt;  &quot;import(&#x27;./commandes/commandes.module&#x27;).then(m &#x3D;&gt; m.CommandeModule)&quot;},
+      { path: &quot;livraisons&quot;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./livraisons/livraisons.module&#x27;).then(m &#x3D;&gt; m.LivraisonsModule)&quot;},
+      { path: &quot;livreurs&quot;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./livreurs/livreurs.module&#x27;).then(m &#x3D;&gt; m.LivreursModule)&quot;},
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
