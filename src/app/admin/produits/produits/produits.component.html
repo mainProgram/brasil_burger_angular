@@ -1,1 +1,9 @@
-<p>produits works!</p>
+<div class="container mt-5">
+    <ng-container *ngIf="produits.length > 0">
+        
+    </ng-container>
+
+    <ng-container *ngIf="produits.length == 0">
+        <h4 class="text-danger">Pas de produits pour le moment !</h4>
+    </ng-container>
+</div>

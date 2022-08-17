@@ -5,7 +5,7 @@
             <div class="w-25 d-flex justify-content-between">
                 <a class="btn btn-outline-success p-1"  (click) = "traiter(commande.id, 'valide')">Valider</a>
                 <a class="btn btn-outline-info p-1"  (click) = "traiter(commande.id, 'termine')">Terminer</a>
-                <!-- <a class="btn btn-outline-warning p-1"  (click) = "traiter(commande.id, 'livraison')">Livrer</a> -->
+                <a class="btn btn-outline-warning p-1"  (click) = "traiter(commande.id, 'paye')" *ngIf="!commande.zone">Payé</a>
                 <a class="btn btn-outline-danger p-1" (click) = "traiter(commande.id, 'annule')">Annuler</a>
             </div>
         </div>

@@ -20,6 +20,12 @@ export const environment = {
   INSCRIPTION_URL : "https://127.0.0.1:8000/api/sign_up",
   CLIENT_URL: "https://127.0.0.1:8000/api/clients",
   USERS_URL: "https://127.0.0.1:8000/api/users",
+  PRODUITS_URL: "https://127.0.0.1:8000/api/produits",
+  MENUS_URL: "https://127.0.0.1:8000/api/menus",
+  BURGERS_URL: "https://127.0.0.1:8000/api/burgers",
+  FRITES_URL: "https://127.0.0.1:8000/api/frites",
+  BOISSONS_URL: "https://127.0.0.1:8000/api/boissons",
+  TAILLE_BOISSONS_URL: "https://127.0.0.1:8000/api/taille_boissons",
 };
 
 

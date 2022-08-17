@@ -1,0 +1,25 @@
+.orange{
+    cursor: pointer;
+    &:hover{
+        color: #E89448;
+    }
+}
+
+.icon{
+    color: white;
+    cursor: pointer;
+    margin-left: 15px;
+    background: #E89448;
+    &:hover{
+        background: #000;
+    }
+}
+
+.orange-text{
+    color: #E89448;
+}
+
+caption
+{
+    color: black;
+}

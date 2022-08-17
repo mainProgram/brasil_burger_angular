@@ -8,11 +8,6 @@
             <table class="table table-hover caption-top" style="width:70%;" *ngIf="(commandes | filter: searchTerm) as result">
                 <caption class="mb-4 text-center"> 
                     <input type="date" id="input"  style="margin-left: 15px;" [(ngModel)]="searchTerm">
-                    <select class="form-select w-25" name="select">
-                        <option value="en attente"></option>
-                        <option value="livraison"></option>
-                        <option value="termine"></option>
-                    </select>
                 </caption>
                 <ng-container *ngIf="result.length > 0">
                     <thead>
@@ -35,6 +30,7 @@
                             <td>
                                 <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'en attente'" (click) = "traiter(com.id, 'valide')">Valider</a>
                                 <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'termine')">Terminer</a>
+                                <a class="btn btn-outline-warning p-1"  (click) = "traiter(com.id, 'paye')" *ngIf="!com.zone && com.etat == 'termine'">Payé</a>
                                 <a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'  || com.etat == 'en attente'" (click) = "traiter(com.id, 'annule')">Annuler</a>
                             </td>
                         </tr>

@@ -1,0 +1,75 @@
+.form_error{
+    font-size: 10px;
+    color:  red;
+}
+
+.orange{
+    cursor: pointer;
+    &:hover{
+        color: #E89448;
+    }
+}
+
+.orange-text{
+    color: #E89448;
+}
+
+.icon{
+    cursor: pointer;
+    color: white;
+    margin-left: 15px;
+    background: #E89448;
+    &:hover{
+        background-color: black;
+    }
+}
+
+.avatar{
+    width: 50%;
+    margin-right: 5px;
+    background-color: transparent;
+    border-radius: 5px;
+    color: #E89448;
+    border: 1px solid #E89448;
+    padding: 0.2rem;
+    &:hover{
+        background-color: #E89448;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+input[type="file"]{
+    display: none;
+}
+
+.the_avatar {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 30%;
+    height: 30%;
+    img {
+        width: 100px;
+        height: 100px;
+        border-radius: 2px;
+        object-fit: contain;
+    }
+}
+
+.btn-warning{
+    background-color: #E89448 ;
+    border:none;
+    &:hover{
+        background-color: black;
+        color: white;
+    }   
+}
+
+textarea{
+    resize: none;
+}
+
+label{
+    cursor: pointer;
+}
