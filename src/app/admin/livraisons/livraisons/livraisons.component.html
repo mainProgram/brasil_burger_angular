@@ -1,31 +1,42 @@
 <div class="container mt-5 d-flex justify-content-center align-items-center w-50 flex-column">
 
-    <ng-container>
-        <h4 class="mb-4 orange-text">Liste des livraisons <span class="material-icons icon" [routerLink] = "['/admin/livraisons/new']">add</span></h4>
-    
-        <table class="table table-hover" *ngIf="livraisons.length > 0">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Livreur</th>
-                    <th>Date</th>
-                    <th>Etat</th>
-                    <th>Détails</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let liv of livraisons">
-                    <td>{{liv.id}}</td>
-                    <td>{{liv.livreur.prenom}} {{liv.livreur.nom}}</td>
-                    <td>{{liv.date | date:'dd/MM/yyyy HH:mm' }}</td>
-                    <td [style.color]="getColour(liv.etat)">
-                        {{liv.etat | formatEtat }}
-                        <span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(liv.etat)}}</span>
-                    </td>
-                    <td [routerLink] = "['/admin/livraisons', liv.id]"><span class="material-icons orange">remove_red_eye</span></td>
-                </tr>
-            </tbody>
-        </table>
+    <ng-container *ngIf="livraisons.length > 0">
+        <ng-container  *ngIf="(livraisons | filter: searchTerm) as result">
+            <h4 class="mb-4 orange-text">Liste des livraisons <span class="material-icons icon" [routerLink] = "['/admin/livraisons/new']">add</span></h4>
+            <table class="table table-hover caption-top" *ngIf="livraisons.length > 0">
+                <caption class="mb-4 text-center"> 
+                    <input type="date" id="input"  style="margin-left: 15px;" [(ngModel)]="searchTerm">
+                </caption>
+                <ng-container *ngIf="result.length > 0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Livreur</th>
+                            <th>Date</th>
+                            <th>Etat</th>
+                            <th>Détails</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let liv of livraisons  | filter: searchTerm">
+                            <ng-container>
+                                <td>{{liv.id}}</td>
+                                <td>{{liv.livreur.prenom}} {{liv.livreur.nom}}</td>
+                                <td>{{liv.date | date:'dd/MM/yyyy HH:mm' }}</td>
+                                <td [style.color]="getColour(liv.etat)">
+                                    {{liv.etat | formatEtat }}
+                                    <span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(liv.etat)}}</span>
+                                </td>
+                                <td [routerLink] = "['/admin/livraisons', liv.id]"><span class="material-icons orange">remove_red_eye</span></td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </ng-container>
+            </table>
+            <ng-container *ngIf="result.length == 0">
+                <h6 class="text-danger mt-3">Pas de livraison pour le {{searchTerm}} !</h6>
+            </ng-container>
+        </ng-container>
     </ng-container>
 
     <ng-container *ngIf="livraisons.length == 0">

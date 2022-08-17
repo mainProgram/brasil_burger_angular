@@ -11,6 +11,8 @@ import { TokenService } from 'src/app/shared/service/token.service';
 export class CommandeComponent implements OnInit 
 {
   public commandes = []
+  public newDate = ""
+  searchTerm = new Date().toISOString().substring(0,10);
 
   constructor(private commandeService: CommandeService, private retour:Router, private tokenService: TokenService) { }
 
@@ -18,6 +20,7 @@ export class CommandeComponent implements OnInit
   {
     let idClientConnecte = +this.tokenService.getId()
     this.commandeService.getCommandesById(idClientConnecte).subscribe({next: data => {  this.commandes = data }})
+    this.todayDate()
   }
 
   public annulerCommande(id)
@@ -30,5 +33,7 @@ export class CommandeComponent implements OnInit
   getColour(etat: string) {  return this.commandeService.getColour(etat)}
 
   getIcon(etat: string){ return this.commandeService.getIcon(etat) }
+
+  public todayDate(){  this.newDate = this.commandeService.newDate()  }
 
 }

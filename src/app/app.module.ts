@@ -26,11 +26,11 @@ registerLocaleData(localeFr, 'fr');
     // HasRoleDirective,
   ],
   imports: [
-    RouterModule,
     BrowserModule,
+    FormsModule,
+    RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     AdminModule,
     PublicModule,
     ClientModule,

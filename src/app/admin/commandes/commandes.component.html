@@ -1,41 +1,49 @@
-<div class="container mt-3 d-flex justify-content-center align-items-center flex-column">
-    <ng-container *ngIf="commandes.length > 0">
-        <table class="table table-hover caption-top" style="width:70%;">
-            <caption class="mb-4">Commandes du {{ changedDate }} <input type="date" id="input" (change)= "changeDate()" style="margin-left: 15px;"></caption>
-            <thead *ngIf="commandeFiltrees.length > 0">
-                <tr>
-                    <th>N° Commande</th>
-                    <th>Heure</th>
-                    <th>Etat</th>
-                    <th>Client</th>
-                    <th>Détails</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody *ngIf="commandeFiltrees.length > 0">
-                <tr *ngFor="let com of commandeFiltrees">
-                    <td>{{com.numero}}</td>
-                    <td>{{com.date | date:"short":'+00:00':'fr'}}</td>
-                    <td [style.color]="getColour(com.etat)">{{com.etat | formatEtat }}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(com.etat)}} </span></td> 
-                    <td>{{com.client.prenom}} {{com.client.nom}}</td>
-                    <td [routerLink] = "['/admin/commandes', com.id]"><span class="material-icons orange">remove_red_eye</span></td>
-                    <td>
-                        <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'en attente'" (click) = "traiter(com.id, 'valide')">Valider</a>
-                        <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'termine')">Terminer</a>
-                        <a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'  || com.etat == 'en attente'" (click) = "traiter(com.id, 'annule')">Annuler</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- <pagination-controls
-            class="pagi"
-            (pageChange)="page = $event"
-        ></pagination-controls> -->
-    </ng-container>
-    <div class="d-flex flex-column align-items-center">
-        <h4 class="text-danger mt-5" *ngIf="commandes.length == 0">Pas de commande pour le moment !</h4>
+<div class="container mt-5 d-flex justify-content-center align-items-center flex-column">
+    <div class="d-flex flex-column align-items-center" *ngIf="commandes.length == 0">
+        <h4 class="text-danger mt-5">Pas de commande pour le moment !</h4>
     </div>
-    <ng-container *ngIf="commandeFiltrees.length == 0 && commandes.length > 0">
-        <h4 class="text-danger">Pas de commandes pour le {{changedDate}}</h4>
+
+    <ng-container *ngIf="commandes.length > 0">
+        <ng-container  *ngIf="(commandes | filter: searchTerm) as result">
+            <table class="table table-hover caption-top" style="width:70%;" *ngIf="(commandes | filter: searchTerm) as result">
+                <caption class="mb-4 text-center"> 
+                    <input type="date" id="input"  style="margin-left: 15px;" [(ngModel)]="searchTerm">
+                    <select class="form-select w-25" name="select">
+                        <option value="en attente"></option>
+                        <option value="livraison"></option>
+                        <option value="termine"></option>
+                    </select>
+                </caption>
+                <ng-container *ngIf="result.length > 0">
+                    <thead>
+                        <tr>
+                            <th>N° Commande</th>
+                            <th>Heure</th>
+                            <th>Etat</th>
+                            <th>Client</th>
+                            <th>Détails</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr *ngFor="let com of commandes | filter: searchTerm">
+                            <td>{{com.numero}}</td>
+                            <td>{{com.date | date:"short":'+00:00':'fr'}}</td>
+                            <td [style.color]="getColour(com.etat)">{{com.etat | formatEtat }}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(com.etat)}} </span></td> 
+                            <td>{{com.client.prenom}} {{com.client.nom}}</td>
+                            <td [routerLink] = "['/admin/commandes', com.id]"><span class="material-icons orange">remove_red_eye</span></td>
+                            <td>
+                                <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'en attente'" (click) = "traiter(com.id, 'valide')">Valider</a>
+                                <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'termine')">Terminer</a>
+                                <a class="btn btn-outline-danger p-1" *ngIf="com.etat == 'valide'  || com.etat == 'en attente'" (click) = "traiter(com.id, 'annule')">Annuler</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </ng-container>
+            </table>
+            <ng-container *ngIf="result.length == 0">
+                <h4 class="text-danger mt-5">Pas de commandes pour le {{searchTerm}} !</h4>
+            </ng-container>
+        </ng-container>
     </ng-container>
 </div>

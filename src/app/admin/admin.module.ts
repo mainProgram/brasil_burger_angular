@@ -10,6 +10,9 @@ import { ProduitsModule } from './produits/produits.module';
 import { LivreursModule } from './livreurs/livreurs.module';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -19,18 +22,18 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AdminRoutingModule,
     PublicModule,
     CommandeModule,
     Daterangepicker,
     LivraisonsModule,
     ProduitsModule,
-    LivreursModule
+    LivreursModule,
+    Ng2SearchPipeModule,
   ],
   exports: [
     DashboardComponent,
-    CommonModule,
-    AdminRoutingModule,
     PublicModule,
     CommandeModule,
     Daterangepicker,

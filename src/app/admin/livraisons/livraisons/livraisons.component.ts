@@ -12,6 +12,8 @@ export class LivraisonsComponent implements OnInit {
   constructor(private livraisonService: LivraisonService, private commandeService: CommandeService) { }
 
   public livraisons : any
+  public newDate = ""
+  searchTerm = new Date().toISOString().substring(0,10);
 
   ngOnInit(): void 
   {
@@ -25,5 +27,8 @@ export class LivraisonsComponent implements OnInit {
   getIcon(etat: string){ return this.commandeService.getIcon(etat) }
 
   public traiter(id: number, etat: string) { this.livraisonService.traiterLivraison(id, etat)}
+
+  public todayDate(){  this.newDate = this.commandeService.newDate()  }
+
 
 }
