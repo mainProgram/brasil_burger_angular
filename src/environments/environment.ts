@@ -24,6 +24,7 @@ export const environment = {
   MENUS_URL: "https://127.0.0.1:8000/api/menus",
   BURGERS_URL: "https://127.0.0.1:8000/api/burgers",
   FRITES_URL: "https://127.0.0.1:8000/api/frites",
+  TAILLES_URL: "https://127.0.0.1:8000/api/tailles",
   BOISSONS_URL: "https://127.0.0.1:8000/api/boissons",
   TAILLE_BOISSONS_URL: "https://127.0.0.1:8000/api/taille_boissons",
 };

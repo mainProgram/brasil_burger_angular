@@ -9,18 +9,17 @@
 
             <div class="d-flex justify-content-center align-items-center">
                 <div class="w-25">
-                    <h6 class="mt-3 orange-text">Choisir le type</h6>
-                    <select class="form-select" (change)="changeCategorie()" #categorie>
+                    <select class="form-select mt-2" (change)="changeCategorie()" #categorie>
                         <option selected value="0">choisir</option>
                         <option value="menu">Menu</option>
                         <option value="burger">Burger</option>
                         <option value="frite">Frite</option>
-                        <option value="boisson">Boisson</option>
+                        <option value="taille_boisson">Boisson</option>
+                        <option value="boisson">Variété boisson</option>
                     </select>
                 </div>
             </div>
-            <ng-container>
-                <!-- <ng-container *ngIf="categorie.value != '0'"> -->
+            <ng-container *ngIf="categorie.value != '0'"> 
                 <form class="row mt-3 "
                     [formGroup]="reactiveForm"
                     (ngSubmit)="onSubmit()"
@@ -33,7 +32,7 @@
                             <!-- <span class="form_error" *ngIf="f['nom'].getError('required')  && form.submitted">Le nom est requis !</span>
                             <span class="form_error" *ngIf="f['nom'].getError('minlength') && form.submitted" >Longueur minimale de 2 !</span> -->
                         </div>
-                        <div class="col-6">
+                        <div class="col-6" *ngIf="categorie.value != 'boisson'">
                             <label for="prix" class="form-label">Prix <span class="text-danger">*</span></label>
                             <input type="number" formControlName="prix" class="form-control" id="prix" min="100">
                             <!-- <span class="form_error" *ngIf="f['prix'].getError('required')  && form.submitted">Le prix est requis !</span>
@@ -41,8 +40,34 @@
                             <span class="form_error" *ngIf="f['prix'].getError('pattern')  && form.submitted">Le prix est invalide, min:100 FCFA !</span> -->
                         </div>
                     </div>
-                    <div class="row mt-3">
+
+                    <div class="row mt-3" *ngIf="categorie.value == 'taille_boisson'">
                         <div class="col">
+                            <label for="varietes">Variété <span class="text-danger">*</span></label>
+                            <select name="" id="varietes" class="form-select" formControlName="boisson">
+                                <option *ngFor="let v of varietesBoissons" value="{{v.id}}">{{v.nom}}</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="taille">Taille <span class="text-danger">*</span></label>
+                            <select name="" id="taille" class="form-select" formControlName="taille">
+                                <option  *ngFor="let taille of tabTailles" value="{{taille.id}}">{{taille.nom}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3" *ngIf="categorie.value == 'taille_boisson'">
+                        <div class="col">
+                            <label for="quantiteStock" class="form-label">Stock <span class="text-danger">*</span></label>
+                            <input type="number" formControlName="quantiteStock" class="form-control" id="quantiteStock" min="1">
+                                <!-- <span class="form_error" *ngIf="f['quantiteStock'].getError('required')  && form.submitted">La quantité en stock est requise !</span>
+                                <span class="form_error" *ngIf="f['quantiteStock'].getError('min')  && form.submitted">La quantité en stock est invalide, min:1 !</span>
+                                <span class="form_error" *ngIf="f['quantiteStock'].getError('pattern')  && form.submitted">LLa quantité en stock est invalide, min:1 !</span> -->
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col" *ngIf="categorie.value == 'burger' || categorie.value == 'menu'">
                             <label for="detail">Détails</label>
                             <textarea id="detail" cols="30" rows="6" class="form-control" formControlName="detail"></textarea>
                         </div>
@@ -56,10 +81,50 @@
                                 <label for="avatar"> <img src="img/simone-secci-49uySSA678U-unsplash.jpg" alt="Image" [src]="imageSrc" *ngIf="imageSrc"></label>
                             </div>
                             <!-- <span class="form_error" *ngIf="f['imageWrapper'].getError('required')  && form.submitted">L'image est requise !</span> -->
-                         </div>
+                        </div>
                     </div>
+                  
+                    <div class="row mt-3" *ngIf="categorie.value == 'menu'">
+                        <p>Burgers</p>
+                        <div class="row scrollBar" formArrayName="burgers">
+                            <div *ngFor="let in = index; let burger of tabBurgers | async" class="m-5 content" >
+                                <img src="{{'data:image/jpg;base64,' + burger.image}}" alt="">
+                                <p class="mini">{{burger.nom | titlecase}}</p>
+                                <div class="d-flex justify-content-around" style="width: 100px;"  (change)="onCheckboxChange($event)">
+                                    <input type="checkbox" [value]="burger.id" >
+                                    <input type="number" style="width: 45px;" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5" *ngIf="categorie.value == 'menu'">
+                        <p>Frites</p>
+                        <div class="row scrollBar">
+                            <div *ngFor="let frite of tabFrites | async" class="m-5 content">
+                                <img src="{{'data:image/jpg;base64,' + frite.image}}" alt="">
+                                <p class="mini">{{frite.nom | titlecase}}</p>
+                                <div class="d-flex justify-content-around" style="width: 100px;">
+                                    <input type="checkbox" value="{{ frite.id}}">
+                                    <input type="number" style="width: 45px;" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5" *ngIf="categorie.value == 'menu'">
+                        <p>Tailles des boissons</p>
+                        <div class="row scrollBar">
+                            <div *ngFor="let taille of tabTailles | async" class="m-5 content">
+                                <p>{{ taille.nom}}</p>
+                                <div class="d-flex justify-content-around" style="width: 100px;">
+                                    <input type="checkbox" value="{{ taille.id}}">
+                                    <input type="number" style="width: 45px;" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row mt-5 d-flex justify-content-center align-items-center">
-                        <button class="btn btn-warning w-25" type="submit" #ajouter disabled>Ajouter</button>
+                        <button class="btn btn-warning w-25" type="submit" #ajouter >Ajouter</button>
                     </div>
                 </form> 
             </ng-container>

@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IProduit } from 'src/app/shared/interface/interfaces';
 import { ProduitService } from 'src/app/shared/service/produit.service';
 
@@ -16,6 +16,11 @@ export class CreateComponent implements OnInit {
   public reactiveForm: FormGroup
   public form: IProduit
   public imageSrc = ""
+  public tabTailles : any
+  public varietesBoissons : any
+  public tabBurgers : any
+  public tabFrites : any
+  selectedItems: any
 
   constructor(private formBuilder: FormBuilder, private produitService: ProduitService) { 
     this.reactiveForm = this.formBuilder.group(
@@ -25,6 +30,12 @@ export class CreateComponent implements OnInit {
             Validators.minLength(2),
           ]),
         ),
+        quantiteStock: new FormControl('', Validators.compose([
+            Validators.required, 
+            Validators.min(1),
+            Validators.pattern('^(0|[1-9][0-9]*)$')
+          ]
+        )),
         prix: new FormControl('', Validators.compose([
             Validators.required, 
             Validators.min(100),
@@ -38,11 +49,23 @@ export class CreateComponent implements OnInit {
         )),
         detail: new FormControl(''),
         categorie: new FormControl(''),
+        boisson: new FormControl(''),
+        taille: new FormControl(''),
+        burgers:  this.formBuilder.array([
+          
+        ])
       }
     )
   }
 
   ngOnInit(): void {
+    this.tabTailles = this.produitService.getAllTailles(1)
+
+    this.varietesBoissons = this.produitService.getAllVarieteBoissons(1)
+
+    this.tabBurgers = this.produitService.getAllBurgers(1)
+
+    this.tabFrites = this.produitService.getAllFrites(1)
   }
 
   public get f(){  return this.reactiveForm.controls }
@@ -52,17 +75,18 @@ export class CreateComponent implements OnInit {
 
     form.categorie = this.changeCategorie()
 
-    console.log(form);
+    console.log(form);    
     
-    this.produitService.ajouterProduit(form).subscribe({
+    /* this.produitService.ajouterProduit(form).subscribe({
       next: data => { console.log(data)},
       error: err => { console.log(err)}
-    });
+    }); */
   }
 
-  public changeCategorie()
-  {
-    return (this.cat.nativeElement.value);
+  public changeCategorie(){  
+    this.reactiveForm.reset();
+    
+    return (this.cat.nativeElement.value); 
   }
 
   public requiredFileType( type: string ) {
@@ -83,7 +107,7 @@ export class CreateComponent implements OnInit {
     };
   }
 
-  onFileChange(event) {
+  public onFileChange(event) {
     
     const reader = new FileReader();
     
@@ -108,7 +132,58 @@ export class CreateComponent implements OnInit {
 
   public afterLoadedImage()
   {
-    alert("after");
-    
+    alert("after"); 
   }
+
+  onCheckboxChange(event: any) {
+    
+    const burgers = (this.reactiveForm.controls['burgers'] as FormArray);
+
+    if(event.target.type == "checkbox")
+    {
+      if (event.target.checked) {
+        // let burger : any = this.addBurger()
+
+        let burger : any = {
+          quantite: "",
+          burger: ""
+        }
+
+        burger.burger = event.target.value
+        burger.quantite = event.target.nextElementSibling.value
+        // burger.controls.burger = event.target.value
+        
+        // burger.controls.quantite = event.target.nextElementSibling.value
+        // console.log(burger.controls);
+      
+        
+        burgers.push(this.formBuilder.group(burger));
+                console.log(burger);
+                console.log(burgers.value);
+      } 
+      else{
+        const index = burgers.controls.findIndex(x => x.value === event.target.value);
+        burgers.removeAt(index);
+      }
+    }
+  }
+
+  public addBurger() : FormGroup
+  {
+    return this.formBuilder.group({
+      burger: [""],
+      quantite:  [""]
+    });
+    // return this.formBuilder.group({
+    //   burger: new FormControl("", Validators.compose([
+    //     Validators.required, 
+    //   ])),
+    //   quantite:  new FormControl("", Validators.compose([
+    //     Validators.required, 
+    //     Validators.min(1),
+    //     Validators.pattern('^(0|[1-9][0-9]*)$')
+    //   ]))
+    // });
+  }
+
 }

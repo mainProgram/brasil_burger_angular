@@ -29,6 +29,27 @@ export class ProduitService {
     return this.http.post<IProduit>(url, produit).pipe( catchError(this.handleError)) 
   }
 
+  public getAllVarieteBoissons(isEtat = null){  
+    let url = (isEtat) ? environment.BOISSONS_URL+"?isEtat="+isEtat : environment.BOISSONS_URL
+    return this.http.get<IProduit[]>(url).pipe( catchError(this.handleError)) 
+  }
+
+  public getAllTailles(isEtat = null){  
+    let url = (isEtat) ? environment.TAILLES_URL+"?isEtat="+isEtat : environment.TAILLES_URL
+    
+    return this.http.get<IProduit[]>(url).pipe( catchError(this.handleError)) 
+  }
+
+  public getAllBurgers(isEtat = null){  
+    let url = (isEtat) ? environment.BURGERS_URL+"?isEtat="+isEtat : environment.BURGERS_URL
+    return this.http.get<IProduit[]>(url).pipe( catchError(this.handleError)) 
+  }
+
+  public getAllFrites(isEtat = null){  
+    let url = (isEtat) ? environment.FRITES_URL+"?isEtat="+isEtat : environment.FRITES_URL
+    return this.http.get<IProduit[]>(url).pipe( catchError(this.handleError)) 
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
