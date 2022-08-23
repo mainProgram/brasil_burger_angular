@@ -45,13 +45,13 @@
                         <div class="col">
                             <label for="varietes">Variété <span class="text-danger">*</span></label>
                             <select name="" id="varietes" class="form-select" formControlName="boisson">
-                                <option *ngFor="let v of varietesBoissons" value="{{v.id}}">{{v.nom}}</option>
+                                <option *ngFor="let v of varietesBoissons | async" value="{{v.id}}">{{v.nom}}</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="taille">Taille <span class="text-danger">*</span></label>
                             <select name="" id="taille" class="form-select" formControlName="taille">
-                                <option  *ngFor="let taille of tabTailles" value="{{taille.id}}">{{taille.nom}}</option>
+                                <option  *ngFor="let taille of tabTailles | async" value="{{taille.id}}">{{taille.nom}}</option>
                             </select>
                         </div>
                     </div>
@@ -90,34 +90,34 @@
                             <div *ngFor="let in = index; let burger of tabBurgers | async" class="m-5 content" >
                                 <img src="{{'data:image/jpg;base64,' + burger.image}}" alt="">
                                 <p class="mini">{{burger.nom | titlecase}}</p>
-                                <div class="d-flex justify-content-around" style="width: 100px;"  (change)="onCheckboxChange($event)">
-                                    <input type="checkbox" [value]="burger.id" >
-                                    <input type="number" style="width: 45px;" min="0">
+                                <div class="d-flex justify-content-around" style="width: 100px;">
+                                    <input type="checkbox" [value]="burger.id" (change)="onCheckboxChange($event, 'burgers')">
+                                    <input type="number" style="width: 45px;" min="0" (input)="onCheckboxChange($event, 'burgers')">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mt-5" *ngIf="categorie.value == 'menu'">
                         <p>Frites</p>
-                        <div class="row scrollBar">
+                        <div class="row scrollBar" formArrayName="frites">
                             <div *ngFor="let frite of tabFrites | async" class="m-5 content">
                                 <img src="{{'data:image/jpg;base64,' + frite.image}}" alt="">
                                 <p class="mini">{{frite.nom | titlecase}}</p>
                                 <div class="d-flex justify-content-around" style="width: 100px;">
-                                    <input type="checkbox" value="{{ frite.id}}">
-                                    <input type="number" style="width: 45px;" min="0">
+                                    <input type="checkbox" [value]="frite.id" (change)="onCheckboxChange($event, 'frites')">
+                                    <input type="number" style="width: 45px;" min="0" (input)="onCheckboxChange($event, 'frites')">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mt-5" *ngIf="categorie.value == 'menu'">
                         <p>Tailles des boissons</p>
-                        <div class="row scrollBar">
+                        <div class="row scrollBar" formArrayName="tailles">
                             <div *ngFor="let taille of tabTailles | async" class="m-5 content">
                                 <p>{{ taille.nom}}</p>
                                 <div class="d-flex justify-content-around" style="width: 100px;">
-                                    <input type="checkbox" value="{{ taille.id}}">
-                                    <input type="number" style="width: 45px;" min="0">
+                                    <input type="checkbox" [value]="taille.id" (change)="onCheckboxChange($event, 'tailles')">
+                                    <input type="number" style="width: 45px;" min="0" (input)="onCheckboxChange($event, 'tailles')">
                                 </div>
                             </div>
                         </div>

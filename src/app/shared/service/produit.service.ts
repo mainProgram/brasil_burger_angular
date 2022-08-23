@@ -15,16 +15,34 @@ export class ProduitService {
 
   public getOneProduct(id: number){  return this.http.get<IProduit>(environment.PRODUITS_URL+"/"+id).pipe( catchError(this.handleError)) }
 
-  public ajouterProduit(produit: IProduit){  
+  public ajouterProduit(produit: IProduit | any){  
     let url = ""
+
     if(produit.categorie == "menu")
+    {
       url = environment.MENUS_URL
+      if(produit.burgers.length > 0)
+        produit.burgers.forEach(p => { p.burger = "/api/burgers/" + p.burger})
+      if(produit.frites.length > 0)
+        produit.frites.forEach(p => { p.frite = "/api/frites/" + p.frite})
+      if(produit.tailles.length > 0)
+        produit.tailles.forEach(p => { p.taille = "/api/tailles/" + p.taille})
+    }
     else if(produit.categorie == "burger")
       url = environment.BURGERS_URL
     else if(produit.categorie == "frite")
       url = environment.FRITES_URL
     else if(produit.categorie == "boisson")
       url = environment.BOISSONS_URL
+    else if(produit.categorie == "taille_boisson")
+    {
+      if(produit.taille)
+        produit.taille = "/api/tailles/" + produit.taille
+
+      if(produit.boisson)
+      produit.boisson = "/api/boissons/" + produit.boisson
+      url = environment.TAILLE_BOISSONS_URL
+    }
 
     return this.http.post<IProduit>(url, produit).pipe( catchError(this.handleError)) 
   }

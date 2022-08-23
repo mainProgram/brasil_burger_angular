@@ -16,6 +16,10 @@ export interface IProduit
 
     tailles?: any[],
 
+    taille?: string,
+
+    boisson?: string,
+
     burgers?: any[],
 
     quantite?: number,

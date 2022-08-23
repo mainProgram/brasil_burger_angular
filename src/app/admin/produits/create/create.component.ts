@@ -44,17 +44,17 @@ export class CreateComponent implements OnInit {
         )),
         imageWrapper: new FormControl('', Validators.compose([
             Validators.required,
-            // this.requiredFileType('png')
+            this.requiredFileType('png'),
           ]
         )),
         detail: new FormControl(''),
         categorie: new FormControl(''),
         boisson: new FormControl(''),
         taille: new FormControl(''),
-        burgers:  this.formBuilder.array([
-          
-        ])
-      }
+        burgers:  this.formBuilder.array([]),
+        frites:  this.formBuilder.array([]),
+        tailles:  this.formBuilder.array([]),
+      },
     )
   }
 
@@ -76,16 +76,17 @@ export class CreateComponent implements OnInit {
     form.categorie = this.changeCategorie()
 
     console.log(form);    
+    form.detail="";
     
-    /* this.produitService.ajouterProduit(form).subscribe({
-      next: data => { console.log(data)},
-      error: err => { console.log(err)}
-    }); */
+    // this.produitService.ajouterProduit(form)
+      this.produitService.ajouterProduit(form).subscribe({
+      next: data => { alert(data)},
+      error: err => { alert(err)}
+    }); 
   }
 
   public changeCategorie(){  
-    this.reactiveForm.reset();
-    
+    this.reset();    
     return (this.cat.nativeElement.value); 
   }
 
@@ -132,58 +133,138 @@ export class CreateComponent implements OnInit {
 
   public afterLoadedImage()
   {
-    alert("after"); 
+    console.log(("after")); 
   }
 
-  onCheckboxChange(event: any) {
+  // onCheckboxChange(event: any) {
     
-    const burgers = (this.reactiveForm.controls['burgers'] as FormArray);
+  //   const burgers = (this.reactiveForm.controls['burgers'] as FormArray);
+  //   let burger : any = {
+  //     burger: "",
+  //     quantite: "",
+  //   }
+    
+  //   if(event.target.type == "checkbox")
+  //   {
+  //     if (event.target.checked) 
+  //     {
+  //       if(+event.target.nextElementSibling.value > 0)
+  //       {
+  //         burger[Object.keys(burger)[0]] = event.target.value
+  //         burger.quantite = event.target.nextElementSibling.value
+          
+  //         burgers.push(this.formBuilder.group(burger));
+  //         console.log(burgers.value);
+  //       }
+  //     } 
+  //     else
+  //     {        
+  //       let index = -1;
+
+  //       for(let i = 0; i < burgers.value.length; i++)
+  //         if(event.target.value == burgers.value[i][Object.keys(burger)[0]])
+  //           index = i
+
+  //       if(index != -1)
+  //         burgers.removeAt(index);
+  //     }
+  //   }
+  //   else
+  //   {
+  //     console.log(burgers.value);
+  //     for(let i = 0; i < burgers.value.length; i++)
+  //       if(event.target.previousElementSibling.value == burgers.value[i][Object.keys(burger)[0]]) 
+  //         burgers.value[i].quantite = event.target.value
+
+  //   }
+  // }
+
+  onCheckboxChange(event: any, type: any) {
+    
+    // frites, tailles, burgers
+    let obj: any
+
+    if (type == "frites")
+    {
+      obj = {
+        frite: "",
+        quantite: 0,
+      }
+    }else if(type == "burgers") 
+      obj = {
+        burger: "",
+        quantite: 0,
+      }
+    else if(type == "tailles") 
+      obj = {
+        taille: "",
+        quantite: 0,
+      }
+
+    const objets = (this.reactiveForm.controls[type] as FormArray);
 
     if(event.target.type == "checkbox")
     {
-      if (event.target.checked) {
-        // let burger : any = this.addBurger()
-
-        let burger : any = {
-          quantite: "",
-          burger: ""
+      if (event.target.checked) 
+      {
+        if(+event.target.nextElementSibling.value > 0)
+        {
+          obj[Object.keys(obj)[0]] = event.target.value
+          obj.quantite = +event.target.nextElementSibling.value
+          
+          objets.push(this.formBuilder.group(obj));
         }
-
-        burger.burger = event.target.value
-        burger.quantite = event.target.nextElementSibling.value
-        // burger.controls.burger = event.target.value
-        
-        // burger.controls.quantite = event.target.nextElementSibling.value
-        // console.log(burger.controls);
-      
-        
-        burgers.push(this.formBuilder.group(burger));
-                console.log(burger);
-                console.log(burgers.value);
       } 
-      else{
-        const index = burgers.controls.findIndex(x => x.value === event.target.value);
-        burgers.removeAt(index);
+      else
+      {        
+        let index = -1;
+
+        for(let i = 0; i < objets.value.length; i++)
+          if(event.target.value == objets.value[i][Object.keys(obj)[0]])
+            index = i
+
+        if(index != -1)
+          objets.removeAt(index);        
       }
+      console.log(objets.value);
+
+    }
+    else
+    {
+      let bool = false
+      for(let i = 0; i < objets.value.length; i++)
+      {
+        if(event.target.previousElementSibling.value == objets.value[i][Object.keys(obj)[0]]) 
+        {
+          objets.value[i].quantite = +event.target.value
+          bool = true
+        }
+      }
+      if(!bool && event.target.previousElementSibling.checked)
+      {
+        
+        obj[Object.keys(obj)[0]] = event.target.previousElementSibling.value
+        obj.quantite = +event.target.value
+        
+        objets.push(this.formBuilder.group(obj));
+      }
+      console.log(objets.value);
     }
   }
 
-  public addBurger() : FormGroup
-  {
-    return this.formBuilder.group({
-      burger: [""],
-      quantite:  [""]
-    });
-    // return this.formBuilder.group({
-    //   burger: new FormControl("", Validators.compose([
-    //     Validators.required, 
-    //   ])),
-    //   quantite:  new FormControl("", Validators.compose([
-    //     Validators.required, 
-    //     Validators.min(1),
-    //     Validators.pattern('^(0|[1-9][0-9]*)$')
-    //   ]))
-    // });
+  public reset() {
+    this.reactiveForm.reset();
+    this.imageSrc = ""
+
+    const tabObjets = ["burgers", "frites", "tailles"]
+    tabObjets.forEach(item => this.remove(item))
   }
 
+  public remove(type: string){
+    const objets = (this.reactiveForm.controls[type] as FormArray);
+    while ( objets.length > 0)
+      objets.removeAt(0)
+  }
+
+  
 }
