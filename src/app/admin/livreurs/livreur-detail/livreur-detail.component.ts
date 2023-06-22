@@ -13,13 +13,19 @@ export class LivreurDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private livreursService: LivraisonService, private retour:Router) { }
 
   public livreur : IUser
+  public isLoaded:  boolean
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
       next: param => {
         let id: number = +param.get("id")
         this.livreursService.getDetailLivreurs(id).subscribe({
-          next: data => { this.livreur = data },
+          next: data => { 
+            this.livreur = data 
+            setTimeout(() => {
+              this.isLoaded = true
+            }, 3000);
+          },
           error: data => { this.retour.navigate(["admin/livreurs"]) }
         })
       }

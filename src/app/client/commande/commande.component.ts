@@ -12,6 +12,7 @@ export class CommandeComponent implements OnInit
 {
   public commandes = []
   public newDate = ""
+  public isLoaded : boolean
   searchTerm = new Date().toISOString().substring(0,10);
 
   constructor(private commandeService: CommandeService, private retour:Router, private tokenService: TokenService) { }
@@ -19,7 +20,14 @@ export class CommandeComponent implements OnInit
   ngOnInit(): void 
   {
     let idClientConnecte = +this.tokenService.getId()
-    this.commandeService.getCommandesById(idClientConnecte).subscribe({next: data => {  this.commandes = data }})
+    this.commandeService.getCommandesById(idClientConnecte).subscribe({
+      next: data => {  
+        this.commandes = data 
+        setTimeout(() => {
+          this.isLoaded = true
+        }, 3000);
+      }
+    })
     this.todayDate()
   }
 

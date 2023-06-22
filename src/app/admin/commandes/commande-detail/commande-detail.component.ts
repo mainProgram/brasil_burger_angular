@@ -13,7 +13,8 @@ export class CommandeDetailComponent implements OnInit {
   public commande : ICommande
   public commandes : ICommande[]
   public etatFormate = ""
-
+  public isLoaded : boolean
+  
   constructor(private route: ActivatedRoute, private commandeService: CommandeService, private retour:Router) { }
 
   ngOnInit(): void 
@@ -30,7 +31,12 @@ export class CommandeDetailComponent implements OnInit {
           const id = +this.route.snapshot.paramMap.get("param");    
       
           this.commandeService.getById(id).subscribe({
-            next: data => { this.commande = data },
+            next: data => { 
+              this.commande = data 
+              setTimeout(() => {
+                this.isLoaded = true
+              }, 3000);
+            },
             error: err => { this.retour.navigate(["/admin/commandes"]) }
           })
         }
@@ -41,7 +47,9 @@ export class CommandeDetailComponent implements OnInit {
             next: data => { 
               this.commandes = data 
               console.log(this.commandes);
-              
+              setTimeout(() => {
+                this.isLoaded = true
+              }, 3000);
             },
           })
         }

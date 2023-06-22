@@ -14,6 +14,7 @@ export class LivraisonDetailComponent implements OnInit {
 
   public livraison: any
   public activate: boolean
+  public isLoaded: boolean
 
   ngOnInit(): void 
   {
@@ -25,6 +26,9 @@ export class LivraisonDetailComponent implements OnInit {
           next: el => {  
             this.livraison = el;
             this.activate = this.activateButton()
+            setTimeout(() => {
+              this.isLoaded = true
+            }, 2500);
           },
           error: el => {  this.retour.navigate(["/admin/livraisons"]) }
         })

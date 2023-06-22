@@ -1,46 +1,47 @@
-<div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-        <div class="card mb-3">
-          <div class="card-body">
-            <div class="pt-4 pb-2">
-              <h5 class="card-title text-center pb-0 fs-4">Connexion</h5>
-              <p class="text-center small">Entrez votre identifiant et votre mot de passe.</p>
-              <p class="text-danger">{{erroMessage}}</p>
+<div class="conteneur d-flex align-items-center">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="pt-2 pb-2">
+            <div class="img d-flex justify-content-center">
+              <img src="../../../assets/images/Artboard 1.png" alt="" style="width: 50px;">
             </div>
-            <form class="row g-3" 
-                name="form" 
-                #f="ngForm"
-                (ngSubmit)="f.form.valid && onSubmit()"
-            >
-              <div class="col-12">
-                <label  class="form-label">Adresse email</label>
-                <div class="input-group">
-                  <span class="input-group-text" id="inputGroupPrepend">@</span>
-                  <input type="text" name="email" value="" class="form-control" id="email" required #email="ngModel" [(ngModel)] = "form.email">
-                </div>
-                <span class="form_error" *ngIf="email.errors?.['required'] && f.submitted">L'email est requis !</span>
-              </div>
-
-
-              <div class="col-12 mt-3">
-                <label for="yourPassword" class="form-label">Mot de passe</label>
-                <input type="password" name="password" id="yourPassword" required class="form-control"  #password="ngModel" [(ngModel)] = "form.password" minlength="6">
-              </div>
-              <span class="form_error" *ngIf="password.errors?.['required'] && f.submitted">Le mot de passe est requis !</span>
-              <span class="form_error" *ngIf="password.errors?.['minlength'] && f.submitted" >Longueur minimale de 6 !</span>
-
-
-              <input type="hidden" name="_csrf_token" value="">
-              <div class="col-12 mt-3">
-                <button class="btn btn-warning w-100" type="submit">Soumettre</button>
-              </div>
-              <div class="col-12">
-                <p class="small mb-0">Vous n'avez de compte? <a [routerLink]="['/auth/inscription']">Créez un compte.</a></p>
-              </div>
-            </form>
+            <h5 class="card-title text-center pb-0 fs-4">Connexion</h5>
+            <p class="text-center small">Renseignez vos identifiant et mot de passe.</p>
+            <p class="text-danger">{{erroMessage}}</p>
           </div>
+          <form class="row g-3" 
+              name="form" 
+              #f="ngForm"
+              (ngSubmit)="f.form.valid && onSubmit()"
+          >
+            <div class="col-12">
+              <label  class="form-label">Adresse email</label>
+              <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input type="text" name="email" value="" class="form-control" id="email" required #email="ngModel" [(ngModel)] = "form.email">
+              </div>
+              <span class="form_error" *ngIf="email.errors?.['required'] && f.submitted">L'email est requis !</span>
+            </div>
+            <div class="col-12 mt-3">
+              <label for="yourPassword" class="form-label">Mot de passe</label>
+              <input type="password" name="password" id="yourPassword" required class="form-control"  #password="ngModel" [(ngModel)] = "form.password" minlength="6">
+            </div>
+            <span class="form_error" *ngIf="password.errors?.['required'] && f.submitted">Le mot de passe est requis !</span>
+            <span class="form_error" *ngIf="password.errors?.['minlength'] && f.submitted" >Longueur minimale de 6 !</span>
+
+
+            <input type="hidden" name="_csrf_token" value="">
+            <div class="col-12 mt-3">
+              <button class="btn btn-warning w-100" type="submit">Soumettre</button>
+            </div>
+            <div class="col-12">
+              <p class="small mb-0">Vous n'avez pas de compte ? <a [routerLink]="['/auth/inscription']" class="orange-bold">Créez un compte.</a></p>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>

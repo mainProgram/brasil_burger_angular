@@ -4,14 +4,14 @@
 
 export const environment = {
   production: false,
-  // CATALOGUE_URL : "https://127.0.0.1:8000/api/catalogue",
-  CATALOGUE_URL : "../api/produits.json",
-  // COMPLEMENTS_URL : "https://127.0.0.1:8000/api/complements",
-  COMPLEMENTS_URL : "../api/complements.json",
+  CATALOGUE_URL : "https://127.0.0.1:8000/api/catalogue",
+  // CATALOGUE_URL : "../api/produits.json",
+  COMPLEMENTS_URL : "https://127.0.0.1:8000/api/complements",
+  // COMPLEMENTS_URL : "../api/complements.json",
   COMMANDE_URL : "https://127.0.0.1:8000/api/commandes",
   BASE_URL : "https://127.0.0.1:8000/api/",
-  // ZONES_URL : "https://127.0.0.1:8000/api/zones"
-  ZONES_URL : "../api/zones.json",
+  ZONES_URL : "https://127.0.0.1:8000/api/zones",
+  // ZONES_URL : "../api/zones.json",
   LOGIN_URL : "https://127.0.0.1:8000/api/login_check",
   COMMANDE_FILTERED : "https://127.0.0.1:8000/api/commandes?etat=termine&zone.id=",
   ZONE_COMMANDES_ETAT_TERMINE : "https://127.0.0.1:8000/api/zonesCommandesterminees",

@@ -34,35 +34,35 @@ export class CatalogueComponent implements OnInit
 
     ngOnInit(): void 
     {
-        setTimeout(()=> {
-            this.isLoaded = true
-            this.catalogueService.getProduits().subscribe({         //Menus et burgers
-                next: c => {
-                    this.menus = c.menus
-                    this.burgers = c.burgers
-                    this.menus.forEach(element => {
-                        if(this.tabPrixFiltered.indexOf(element.prix) == -1)    //initialisation tableau de filtre de prix
-                            this.tabPrixFiltered.push(""+element.prix)
-                    });
-                    
-                    this.burgers.forEach(element => {
-                        if(this.tabPrixFiltered.indexOf(element.prix) == -1)    //initialisation tableau de filtre de prix
-                            this.tabPrixFiltered.push(""+element.prix)
-                    });  
+        this.catalogueService.getProduits().subscribe({         //Menus et burgers
+            next: c => {
+                this.menus = c.menus
+                this.burgers = c.burgers
+                this.menus.forEach(element => {
+                    if(this.tabPrixFiltered.indexOf(element.prix) == -1)    //initialisation tableau de filtre de prix
+                        this.tabPrixFiltered.push(""+element.prix)
+                });
+                
+                this.burgers.forEach(element => {
+                    if(this.tabPrixFiltered.indexOf(element.prix) == -1)    //initialisation tableau de filtre de prix
+                        this.tabPrixFiltered.push(""+element.prix)
+                });  
 
-                    this.tabPrixFiltered.sort() //tri
-                },
-                error: err => this.errorMsg = err
-            });
+                this.tabPrixFiltered.sort() //tri
+            },
+            error: err => this.errorMsg = err
+        });
 
-            this.catalogueService.getComplements().subscribe({      //frites et boissons
-                next: c => {
-                    this.frites = c.frites
-                    this.boissons = c.pm.concat(c.gm)
-                },
-                error: err => this.errorMsg = err
-            });
-        },1000);
+        this.catalogueService.getComplements().subscribe({      //frites et boissons
+            next: c => {
+                this.frites = c.frites
+                this.boissons = c.pm.concat(c.gm)
+                setTimeout(()=> {
+                    this.isLoaded = true
+                },3000);
+            },
+            error: err => this.errorMsg = err
+        });
     }
 
     //Initialisation de ma liste de filtre

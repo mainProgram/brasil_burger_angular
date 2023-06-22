@@ -1,5 +1,8 @@
-<div class="container mt-5">
-    <h4 class="mb-4 orange-text">Détails du livreur {{livreur.prenom}} {{livreur.nom}}<span [routerLink] = "['/admin/livreurs']" class="material-icons icon">list</span></h4>
+<div class="container mt-5" *ngIf="isLoaded">
+    <h4 class="mb-4">
+        Détails du livreur {{livreur.prenom}} {{livreur.nom}}
+        <i [routerLink] = "['/admin/livreurs']" class="fa fa-list orange"  title="Liste des livreurs" data-toggle="tooltip" data-placement="top"></i>
+    </h4>
 
     <div class="mb-2">
         <b><span class="orange-text">Matricule: </span></b><span>{{livreur.matriculeMoto}}</span><br>
@@ -42,5 +45,7 @@
     <ng-container *ngIf="!livreur.livraisons">
         <h4 class="text-danger">Pas encore de livraisons !</h4>
     </ng-container>
-
+</div>
+<div class="spinner d-flex justify-content-center align-items-center" *ngIf="!isLoaded">
+    <img src="../../../assets/spinner.gif" alt="spinner">
 </div>

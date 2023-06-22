@@ -10,6 +10,7 @@ td{
     cursor: not-allowed !important;
     background: rgba(128, 128, 128, 0.651) ;
     color: gray;
+    border: 1px solid gray;
 }
 
 
@@ -17,19 +18,29 @@ select{
     border-radius: 5px;
     padding: 3px;
 }
-
-.ocre {
-    color: #E89448;
-}
-
 .badge{
     &:hover{
-        background-color: #E89448 !important;
+        background-color: #EAB708 !important;
     }
 }
 
 .delete{
     &:hover{
-        color: #E89448 !important;
+        color: #EAB708 !important;
+    }
+}
+
+.panier-vide{
+    width: 100%;
+}
+
+.img{
+    width: 300px;
+    height: 300px;
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        object-fit: cover;
     }
 }

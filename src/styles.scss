@@ -1,4 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~bootstrap/dist/css/bootstrap.min.css";
-@import '~material-icons/iconfont/material-icons.css'
+@import '~material-icons/iconfont/material-icons.css';
+
+h4, h3, h5{
+    color: #EAB708;
+}
+
+.btn-warning{
+    background-color: #EAB708 ;
+    color: white;
+    border: 1px solid #fff;
+    &:hover{
+        background-color: white;
+        color: #EAB708;
+        border: 1px solid #EAB708;
+    }   
+}
+
+.form_error{
+    font-size: 10px;
+    color:  red;
+}
+
+.orange-bold{
+    color: #EAB708;
+    text-decoration: none;
+    font-weight: 600;
+    &:hover{
+        color: black;
+    }
+}
+
+.orange{
+    cursor: pointer;
+    &:hover{
+        color: #EAB708;
+    }
+}
+
+.orange-text{
+    color: #EAB708;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Customize the shadow properties as per your requirements */
+}
+
+.text-red{
+    color: red;
+    &:hover{
+        cursor: pointer;
+        color: rgb(197, 18, 18);
+    }
+}
+
+.spinner{
+    height: 500px;
+}
+
+nav{
+    height: 10vh;
+    background-color: #EAB708;
+    color: white;
+    font-size: 16px;
+}
+
+.icon{
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    padding: 3px 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+    background: #EAB708;
+    border: 1px solid white;
+    &:hover{
+        background-color: white;
+        color: #EAB708;
+        border: 1px solid  #EAB708;
+    }
+}

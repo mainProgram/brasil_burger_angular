@@ -1,5 +1,8 @@
 <div class="container mt-5">
-    <div class="d-flex align-items-start justify-content-between">
+    <div class="spinner d-flex justify-content-center align-items-center" *ngIf="!isLoaded">
+        <img src="../../../assets/spinner.gif" alt="spinner">
+    </div>
+    <div class="d-flex align-items-start justify-content-between" *ngIf="isLoaded">
         <table class="table table-hover" style="width:70%;">
             <thead style="padding: 40px;">
                 <tr>
@@ -44,16 +47,21 @@
                 </ng-container>
             </tbody>
         </table>
-        <div class="border w-25 p-5 d-flex flex-column">
+        <div class="border w-25 p-4 d-flex flex-column card">
             <div>
-                <h5>Résumé commande</h5>
+                <h5>Résumé de la commande</h5>
                 <p id="prixLivraison" *ngIf="commande.zone">Livraison: {{ commande['zone']['prix']}}  FCFA</p>
                 <p>Total: {{ commande.prix }} FCFA</p>
                 <p>Mode : {{ commande.zone ? "Livraison"  : "Sur place"  }}</p>
-                <p>Etat: <span [style.color]="getColour(commande.etat)">{{commande.etat | formatEtat}}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(commande.etat)}} </span></span></p>
-
+                <p>Etat: 
+                    <span [style.color]="getColour(commande.etat)">{{commande.etat | formatEtat}}
+                        <span class="material-icons" style="font-size: 12px; margin-left: 5px;">
+                            {{getIcon(commande.etat)}} 
+                        </span>
+                    </span>
+                </p>
             </div>
-            <a [routerLink] = "['/commandes']" class="btn btn-outline-dark">Mes commandes > </a>
+            <a [routerLink] = "['/commandes']" class="btn btn-warning">Mes commandes</a>
         </div>
     </div>
 </div>

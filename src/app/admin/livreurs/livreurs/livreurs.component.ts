@@ -13,10 +13,16 @@ export class LivreursComponent implements OnInit {
   constructor(private livreursService: LivraisonService, private retour:Router) { }
 
   public livreurs : IUser[]
+  public isLoaded: boolean
 
   ngOnInit(): void {
     this.livreursService.getLivreurs().subscribe({
-      next: data => {  this.livreurs = data }
+      next: data => {  
+        this.livreurs = data 
+        setTimeout(() => {
+          this.isLoaded = true
+        }, 3000);
+      }
     })
   }
 

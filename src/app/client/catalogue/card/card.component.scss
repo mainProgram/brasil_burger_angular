@@ -1,14 +1,5 @@
-.detail{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    &:hover{ 
-        a{
-            color: #fff;
-        }
-    }
-}
 .reduce{
+    padding-top: 10px;
     width: 200px;
     height: 200px;
     display: flex;
@@ -16,16 +7,14 @@
     align-items: center;
     
     img{
-        height: 70px;
-        width: 70px;
+        height: 55px;
+        width: 55px;
     }
-    .monlien{
-        display: none;
-    }
-    
-    .addAndDetails{
-        align-items: center !important;
-        justify-content: center !important;
+
+    .btn{
+        span{
+            display: none;
+        }
     }
 }
 
@@ -50,7 +39,7 @@ img{
 
 .plusOne.show{
     visibility: visible;
-    background-color: #E89448;
+    background-color: #EAB708;
     animation-name: disappear;
     animation-duration: .5s;
 }

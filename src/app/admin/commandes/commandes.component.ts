@@ -16,6 +16,8 @@ export class CommandesComponent implements OnInit {
   itemsPerPage = 2;
   totalItems : any; 
 
+  public isLoaded : boolean
+
   public commandeFiltrees = []
   public newDate = ""
   searchTerm = new Date().toISOString().substring(0,10);
@@ -28,6 +30,9 @@ export class CommandesComponent implements OnInit {
     { 
       this.commandes = elements
       this.todayDate()
+      setTimeout(() => {
+        this.isLoaded = true
+      }, 3000);
     })
   }
 

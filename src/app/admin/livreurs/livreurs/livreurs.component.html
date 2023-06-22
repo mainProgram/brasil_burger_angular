@@ -1,30 +1,38 @@
 <div class="container mt-5 d-flex justify-content-center align-items-center w-50 flex-column">
-    <h4 class="mb-4 orange-text">Liste des livreurs <span class="material-icons icon" [routerLink] = "['/admin/livreurs/new']">add</span></h4>
-
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Prénom(s)</th>
-                <th>Nom</th>
-                <th>Moto</th>
-                <th>Détails</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let liv of livreurs">
-                <td>{{liv.id}}</td>
-                <td>{{liv.prenom}}</td>
-                <td>{{liv.nom}}</td>
-                <td>{{liv.matriculeMoto }}</td>
-                <td [routerLink] = "['/admin/livreurs', liv.id]"><span class="material-icons orange">remove_red_eye</span></td>
-                <td>
-                    <!-- <a class="btn btn-outline-success" *ngIf="!liv.isDisponible"  (click)="setLivreurDisponible(liv.id)">De retour</a> -->
-                    <span *ngIf="!liv.isDisponible" class="text-danger">Indisponible</span>
-                    <span *ngIf="liv.isDisponible" class="text-success">Disponible</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="spinner d-flex justify-content-center align-items-center" *ngIf="!isLoaded">
+        <img src="../../../assets/spinner.gif" alt="spinner">
+    </div>
+    <div class="w-75 d-flex flex-column align-items-center" *ngIf="isLoaded">
+        <h4 class="mb-4 orange-text">
+            Liste des livreurs 
+            <i class="fa fa-plus icon align-top" [routerLink] = "['/admin/livreurs/new']" title="Ajout d'un nouveau livreur" data-toggle="tooltip" data-placement="top"></i>
+        </h4>
+    
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Prénom(s)</th>
+                    <th>Nom</th>
+                    <th>Moto</th>
+                    <th>Détails</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let liv of livreurs">
+                    <td>{{liv.prenom}}</td>
+                    <td>{{liv.nom}}</td>
+                    <td>{{liv.matriculeMoto }}</td>
+                    <td [routerLink] = "['/admin/livreurs', liv.id]">
+                        <i class="fa fa-eye orange" title="Détails du livreur" data-toggle="tooltip" data-placement="top"></i>
+                    </td>
+                    <td>
+                        <span *ngIf="!liv.isDisponible" class="text-danger">Indisponible</span>
+                        <span *ngIf="liv.isDisponible" class="text-success">Disponible</span>
+                        <a class="btn btn-outline-success mx-2" *ngIf="!liv.isDisponible"  (click)="setLivreurDisponible(liv.id)">De retour</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

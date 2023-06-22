@@ -14,11 +14,15 @@ export class LivraisonsComponent implements OnInit {
   public livraisons : any
   public newDate = ""
   searchTerm = new Date().toISOString().substring(0,10);
+  public isLoaded: boolean
 
   ngOnInit(): void 
   {
     this.livraisonService.getAllLivraisons().subscribe({
-      next: data => { this.livraisons = data}
+      next: data => { 
+        this.livraisons = data
+        this.isLoaded = true
+      }
     })
   }
 

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { IProduit } from 'src/app/shared/interface/interfaces';
 import { BoissonService } from 'src/app/shared/service/boisson.service';
 import { CommandeService } from 'src/app/shared/service/commande.service';
@@ -25,8 +26,9 @@ export class PanierComponent implements OnInit
   public zone = null
   public prixLivraison2  = 0
   public complements = []
+  public isLogged : boolean
 
-  constructor(private panierService: PanierService, private zoneService: ZoneService, private commandeService: CommandeService, private complementsService:BoissonService, private tokenService: TokenService) { }
+  constructor(private panierService: PanierService, private zoneService: ZoneService, private commandeService: CommandeService, private complementsService:BoissonService, private tokenService: TokenService, private retour:Router, ) { }
 
   ngOnInit(): void 
   {
@@ -40,6 +42,8 @@ export class PanierComponent implements OnInit
         complements.gm.forEach(b => { this.complements.push(b) })
         complements.frites.forEach(b => { this.complements.push(b) })
       })
+
+    this.isLogged = this.tokenService.isLogged()    
   }
 
   public delete(produit:IProduit) {  this.panierService.remove(produit) } //Supression d'un produit du panier
@@ -95,81 +99,90 @@ export class PanierComponent implements OnInit
 
   public commander(optionLiv)
   {
-    if(!this.isThereAMenuOrABurger())
-      alert("Choisissez un menu ou un burger !")
-    else
+    if(this.isLogged)
     {
-      let tabBurgers = []
-      let tabMenus = []
-      let tabFrites = []
-      let tabTailleBoissons = []
-
-      this.elements.forEach(el => {
-        if(el.categorie == "burger")
-        {
-          let objet = {
-              "quantite": el.quantite,
-              "burger": "/api/burgers/"+el.id,
-              "prix":  el.quantite * el.prix
-          }
-          tabBurgers.push(objet)
-        }
-        else if(el.categorie == "menu")
-        {
-          let tabBoissonsMenus = el.tabBoissonsMenu.length > 0 ? el.tabBoissonsMenu : null
-          let objet = {
-            "quantite": el.quantite,
-            "menu": "/api/menus/"+el.id,
-            "prix":  el.quantite * el.prix,
-            "commandeMenuTailleBoissons": tabBoissonsMenus
-          }
-          tabMenus.push(objet)
-        }
-        else if(el.categorie == "frite")
-        {
-          let objet =
-          {
-            "quantite": el.quantite,
-            "frite": "/api/frites/"+el.id,
-            "prix":  el.quantite * el.prix
-          }
-          tabFrites.push(objet)
-        }
-        else
-        {
-          let objet =
-          {
-            
-            "quantite": el.quantite,
-            "tailleBoisson": "/api/taille_boissons/"+el.id,
-            "prix":  el.quantite * el.prix
-          }
-          tabTailleBoissons.push(objet)
-        }
-      })
-
-      if( optionLiv.value != 0)
-          this.zone = "api/zones/"+optionLiv.value
-
-      let clientId = this.tokenService.getId()      
-
-      const tab = 
+      if(!this.isThereAMenuOrABurger())
+        alert("Choisissez un menu ou un burger !")
+      else
       {
-        "zone" : this.zone,
-        "client": "api/clients/"+clientId,
-        "etat": "en attente",
-        "prix": this.prixTotal,
-        "commandeMenus": tabMenus,
-        "commandeBurgers": tabBurgers,
-        "commandeFrites": tabFrites,
-        "commandeTailleBoissons": tabTailleBoissons
+        
+        let tabBurgers = []
+        let tabMenus = []
+        let tabFrites = []
+        let tabTailleBoissons = []
+  
+        this.elements.forEach(el => {
+        console.log(el);
+          if(el.categorie == "burger")
+          {
+            let objet = {
+                "quantite": el.quantite,
+                "burger": "/api/burgers/"+el.id,
+                "prix":  el.quantite * el.prix
+            }
+            tabBurgers.push(objet)
+          }
+          else if(el.categorie == "menu")
+          {
+            let tabBoissonsMenus = el.tabBoissonsMenu.length > 0 ? el.tabBoissonsMenu : null
+            let objet = {
+              "quantite": el.quantite,
+              "menu": "/api/menus/"+el.id,
+              "prix":  el.quantite * el.prix,
+              "commandeMenuTailleBoissons": tabBoissonsMenus
+            }
+            tabMenus.push(objet)
+          }
+          else if(el.categorie == "frite")
+          {
+            let objet =
+            {
+              "quantite": el.quantite,
+              "frite": "/api/frites/"+el.id,
+              "prix":  el.quantite * el.prix
+            }
+            tabFrites.push(objet)
+          }
+          else
+          {
+            let objet =
+            {
+              
+              "quantite": el.quantite,
+              "tailleBoisson": "/api/taille_boissons/"+el.id,
+              "prix":  el.quantite * el.prix
+            }
+            tabTailleBoissons.push(objet)
+          }
+        })
+  
+        if( optionLiv.value != 0)
+            this.zone = "api/zones/"+optionLiv.value
+  
+        let clientId = this.tokenService.getId()      
+  
+        const tab = 
+        {
+          "zone" : this.zone,
+          "client": "api/clients/"+clientId,
+          "etat": "en attente",
+          "prix": this.prixTotal,
+          "commandeMenus": tabMenus,
+          "commandeBurgers": tabBurgers,
+          "commandeFrites": tabFrites,
+          "commandeTailleBoissons": tabTailleBoissons
+        }
+  
+        this.commandeService.saveOrder(tab);
+        console.log(tab);
+  
+        this.panierService.resetPanier()
+        
+        this.liv.nativeElement.setAttribute("hidden", "hidden")
       }
-
-      this.commandeService.saveOrder(tab);
-
-      this.panierService.resetPanier()
-      
-      this.liv.nativeElement.setAttribute("hidden", "hidden")
+    }
+    else{
+      this.retour.navigate(["/auth/connexion"])
     }
   }
 

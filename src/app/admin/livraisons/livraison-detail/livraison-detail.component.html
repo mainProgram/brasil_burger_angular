@@ -1,10 +1,10 @@
-<div class="container mt-5">
+<div class="container mt-5" *ngIf="isLoaded">
     <h4 class="mb-4 orange-text">Détails de la livraison n° {{livraison.id}}<span [routerLink] = "['/admin/livraisons']" class="material-icons icon">list</span></h4>
 
     <div class="mb-2">
         <b><span class="orange-text">Livreur: </span></b>
         <span>{{livraison.livreur.prenom}} {{livraison.livreur.nom}}</span>
-        <span class="material-icons orange" [routerLink] = "['/admin/livreurs', livraison.livreur.id]" style="margin-left: 15px; font-size:15px;">remove_red_eye</span>
+        <i class="fa fa-eye orange mx-2" [routerLink] = "['/admin/livreurs', livraison.livreur.id]"></i>
         <br>
     </div>
     <div class="mb-2">
@@ -35,10 +35,10 @@
                 <td>{{com.numero}}</td>
                 <td>{{com.prix}} FCFA</td>
                 <td>{{com.client.prenom}} {{com.client.nom}}</td>
-                <td [routerLink] = "['/admin/commandes', com.id]"><span class="material-icons orange">remove_red_eye</span></td>
+                <td [routerLink] = "['/admin/commandes', com.id]"><i class="fa fa-eye orange"></i></td>
                 <td class="d-flex justify-content-around">
-                    <a class="btn btn-outline-success p-1"  (click) = "traiter(com.id, 'paye')" *ngIf="com.etat != 'paye'">Payé</a>
-                    <a class="btn btn-outline-danger p-1" (click) = "traiter(com.id, 'annule')">Annulé</a>
+                    <a class="btn btn-outline-success p-1"  (click) = "traiter(com.id, 'paye')" *ngIf="com.etat != 'paye'">Payée</a>
+                    <a class="btn btn-outline-danger p-1" (click) = "traiter(com.id, 'annule')">Annulée</a>
                 </td>
             </tr>
         </tbody>
@@ -46,4 +46,7 @@
     <div class="d-flex justify-content-center align-items-center mt-5">
         <button class="btn btn-outline-success p-1" (click) = "traiterLivraison(livraison.id, 'paye')" *ngIf="livraison.etat != 'paye'" [disabled]="activate">Livraison terminée</button>
     </div>
+</div>
+<div class="spinner d-flex justify-content-center align-items-center" *ngIf="!isLoaded">
+    <img src="../../../assets/spinner.gif" alt="spinner">
 </div>

@@ -1,7 +1,7 @@
-<div class="container mt-5">
+<div class="container mt-5" *ngIf="isLoaded">
     <!-- DETAIL COMMANDE -->
     <ng-container *ngIf="commande">
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end" *ngIf="commande.etat != 'paye'" >
             <div class="w-25 d-flex justify-content-between">
                 <a class="btn btn-outline-success p-1"  (click) = "traiter(commande.id, 'valide')">Valider</a>
                 <a class="btn btn-outline-info p-1"  (click) = "traiter(commande.id, 'termine')">Terminer</a>
@@ -54,15 +54,15 @@
                     </ng-container>
                 </tbody>
             </table>
-            <div class="border w-25 p-5 d-flex flex-column mt-4">
+            <div class="border w-25 p-4 d-flex flex-column mt-4 card">
                 <div>
-                    <h5>Résumé commande</h5>
+                    <h5 class=" mb-2">Résumé de la commande</h5>
                     <p id="prixLivraison" *ngIf="commande.zone">Livraison: {{ commande['zone']['prix']}}  FCFA</p>
                     <p>Total: {{ commande.prix }} FCFA</p>
                     <p>Mode : {{ commande.zone ? "Livraison"  : "Sur place"  }}</p>
                     <p>Etat: <span [style.color]="getColour(commande.etat)">{{commande.etat | formatEtat}}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(commande.etat)}} </span></span></p>
                 </div>
-                <a [routerLink] = "['/admin/commandes']" class="btn btn-outline-dark">Commandes > </a>
+                <a [routerLink] = "['/admin/commandes']" class="btn btn-warning">Commandes</a>
             </div>
         </div>
     </ng-container>
@@ -97,4 +97,7 @@
     <ng-container *ngIf="commandes && commandes.length == 0">
         <h4 class="text-danger">Pas de résultats !</h4>
     </ng-container>
+</div>
+<div class="spinner d-flex justify-content-center align-items-center" *ngIf="!isLoaded">
+    <img src="../../../assets/spinner.gif" alt="spinner">
 </div>

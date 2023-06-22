@@ -10,7 +10,7 @@
             </select>
         </div>
     
-        <ng-container *ngIf= "commandes && commandes.length > 0">
+        <ng-container *ngIf= "commandes && commandes.length > 0 && isLoaded">
             <div class="row mt-3 d-flex justify-content-between w-100">
                 <div class="col-6">
                     <h6 class="my-2 orange-text">Sélectionner les commandes</h6>
@@ -59,16 +59,20 @@
                 </div>
             </div>
     
-            <button class="btn btn-outline-dark my-3 disabled" id="create" (click) = "validerLivraison()">Nouvelle livraison</button>
+            <button class="btn btn-warning my-3 disabled" id="create" (click) = "validerLivraison()">Nouvelle livraison</button>
             
         </ng-container>
     
-        <ng-container *ngIf = "commandes && commandes.length == 0">
-            <h6 class="text-danger my-2">Pas de commandes !</h6>
+        <ng-container *ngIf = "commandes && commandes.length == 0  && isLoaded">
+            <h6 class="text-danger my-4">Pas de commandes !</h6>
         </ng-container>
     </ng-container>
 
-    <ng-container *ngIf="zones && zones.length == 0">
+    <ng-container *ngIf="zones && zones.length == 0  && isLoaded">
         <h4 class="text-danger">Pas de commandes terminées à livrer !<span class="material-icons icon" [routerLink] = "['/admin/livraisons']">list</span></h4>
     </ng-container>
+</div>
+
+<div class="spinner d-flex justify-content-center align-items-center" *ngIf="!isLoaded && zoneValue != 0 ">
+    <img src="../../../assets/spinner.gif" alt="spinner">
 </div>

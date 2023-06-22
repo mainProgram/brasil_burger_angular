@@ -24,6 +24,7 @@ export class CatalogueDetailComponent implements OnInit {
     public find:boolean
     public complements = []
     public produitsSimilaires = []
+    public isLoaded: boolean
 
     constructor(private route: ActivatedRoute, private catalogueService: CatalogueService, private retour:Router, private complementsService:BoissonService, private panierService: PanierService) { }
 
@@ -43,6 +44,9 @@ export class CatalogueDetailComponent implements OnInit {
                  this.produit = this.catalogueService.getById(id, this.burgers);    
                  if(this.produit === undefined)
                      this.produit = this.catalogueService.getById(id, this.menus);
+                    console.log("p");
+                    console.log(this.produit);
+                    
    
                  if(this.produit === undefined)
                    this.retour.navigate(["/catalogue"]);
@@ -59,6 +63,9 @@ export class CatalogueDetailComponent implements OnInit {
                    this.burgers.forEach(burger => {  if(burger.id != this.produit.id && this.produitsSimilaires.length < 5)  this.produitsSimilaires.push(burger) })
                    this.produitsSimilaires = this.shuffleArray(this.produitsSimilaires)
                  }
+                 setTimeout(() => {
+                  this.isLoaded = true
+                 }, 3000);
              },
            });
         })
@@ -177,7 +184,9 @@ export class CatalogueDetailComponent implements OnInit {
         {
           if(tableauBoissons.length > 0)
             produit = Object.assign({}, produit, {"tabBoissonsMenu":tableauBoissons}) //Si le menu contient des boissons
-
+          console.log("le produit");
+          console.log(produit);
+          
           this.panierService.ajouterAuPanier(produit)
 
           notificationPlusUn.classList.add("show")

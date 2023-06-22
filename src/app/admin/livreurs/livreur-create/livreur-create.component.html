@@ -1,1 +1,83 @@
-<p>livreur-create works!</p>
+<div class="conteneur mt-5 d-flex align-items-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-6 d-flex flex-column align-items-center justify-content-center">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="pb-2">
+                <h5 class="card-title text-center pb-3 fs-4">
+                    Création d'un compte livreur
+                    <i [routerLink] = "['/admin/livreurs']" class="fa fa-list orange"  title="Liste des livreurs" data-toggle="tooltip" data-placement="top"></i>
+                </h5>
+            </div>
+            <form class="row g-3" 
+                [formGroup]="reactiveForm"
+                (ngSubmit)="onSubmit()"
+                #form="ngForm" 
+            >
+            <div class="row">
+                <div class="col-6">
+                  <label for="nom" class="form-label">Nom <span class="text-danger">*</span></label>
+                  <input type="text" formControlName="nom" class="form-control">
+                  <span class="form_error" *ngIf="f['nom'].getError('required')  && form.submitted">Le nom est requis !</span>
+                  <span class="form_error" *ngIf="f['nom'].getError('minlength') && form.submitted" >Longueur minimale de 2 !</span>
+                  <!-- <span class="form_error">Entrez un nom valide!</span> -->
+                </div>
+                <div class="col-6">
+                  <label for="prenom" class="form-label">Prénom <span class="text-danger">*</span></label>
+                  <input type="text" formControlName="prenom" class="form-control">
+                  <span class="form_error" *ngIf="f['prenom'].getError('required') && form.submitted">Le prénom est requis !</span>
+                  <span class="form_error" *ngIf="f['prenom'].getError('minlength') && form.submitted">Longueur minimale de 2 !</span>
+                  <!-- <span class="form_error">Entrez un prénom valide!</span> -->
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-6">
+                  <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    <input type="email" formControlName="email" class="form-control">
+                  </div>
+                  <span class="form_error" *ngIf="f['email'].getError('required')&& form.submitted">L'email est requis !</span>
+                  <span class="form_error" *ngIf="f['email'].getError('email')&& form.submitted">Email est invalide !</span>
+                </div>
+                <div class="col-6">
+                  <label for="yourNumber" class="form-label">Téléphone <span class="text-danger">*</span></label>
+                  <input type="tel" formControlName="telephone" class="form-control">
+                  <span class="form_error" *ngIf="f['telephone'].getError('required')&& form.submitted">Le téléphone est requis !</span>
+                  <span class="form_error" *ngIf="f['telephone'].getError('pattern')&& form.submitted" >Numéro invalide !</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                  <label for="yourPassword" class="form-label">Mot de passe <span class="text-danger">*</span></label>
+                  <input type="password" formControlName="password" class="form-control">
+                  <span class="form_error" *ngIf="f['password'].getError('required') && form.submitted">Le mot de passe est requis !</span>
+                  <span class="form_error" *ngIf="f['password'].getError('pattern') && form.submitted" >Au moins 1 lettre et 1 chiffre, longueur minimale de 6 !</span>
+                  <!-- <span class="form_error">Entrez votre mot de passe!</span> -->
+                </div>
+                <div class="col-6">
+                  <label for="yourPassword" class="form-label">Confirmer le mot de passe <span class="text-danger">*</span></label>
+                  <input type="password" formControlName="confirmPassword" class="form-control">
+                  <span class="form_error" *ngIf="f['confirmPassword'].getError('required') && form.submitted">Confirmez le mot de passe !</span>
+                  <span class="form_error" *ngIf="f['confirmPassword'].getError('mustMatch') && form.submitted">Mot de passes non identiques!</span>
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="Matricule" class="form-label">Matricule moto</label>
+                <input type="text" formControlName="matriculeMoto" class="form-control">
+            </div>
+            <div class="col-12">
+              <label for="yourAddress" class="form-label">Adresse</label>
+              <input type="text" formControlName="adresse" class="form-control">
+              <!-- <span class="form_error">Entrez votre adresse!</span> -->
+            </div>
+            <div class="col-12">
+              <!-- <button class="btn btn-warning w-100" type="submit">Soumettre</button> -->
+              <button class="btn btn-warning w-100" type="submit" [disabled]="reactiveForm.invalid && form.submitted">Créer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

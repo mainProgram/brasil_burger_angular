@@ -1,4 +1,8 @@
-<div class="container d-flex my-5 flex-column" style="width:75%;"  id="{{produit.id}}">
+<div class="spinner d-flex justify-content-center align-items-center" *ngIf="!isLoaded">
+    <img src="../../../assets/spinner.gif" alt="spinner">
+</div>
+
+<div class="container d-flex my-5 flex-column" style="width:75%;"  id="{{produit.id}}" *ngIf="isLoaded">
     <div class="d-flex">
         <div class="description" style="width: 50%; margin-left: 20px;">
             <h3>{{produit.nom | titlecase}}</h3>
@@ -28,34 +32,34 @@
                 </ul>
             </ng-container>
 
-            <div class="d-flex align-items-center p-1 w-50 justify-content-center mt-5 {{ produit.burgers === undefined ?  'btn btn-outline-dark detail' : 'disabled' }} " id="addToPanier" (click)="addToCart(produit)">   
-                <span class="badge text-dark plusOne">+1</span>  
-                <a class="monlien" >Ajouter au panier</a>
+            <div class="d-flex align-items-center w-50 justify-content-center mt-5 {{ produit.burgers === undefined ?  'btn btn-warning' : 'disabled' }} " id="addToPanier" (click)="addToCart(produit)">   
+                <span class="badge text-white plusOne">+1</span>  
+                <a>Ajouter au panier  </a>
                 <p class="d-none">Choisir les boissons d'abord !</p>
-                <span class="material-icons" style="font-size:18px; margin-left: 5px;">add_shopping_cart</span>
+                <i class="fa-solid fa-cart-shopping"></i>
             </div>    
         </div>
 
         <div class="image">
-            <img src="{{ produit.image }}" alt="" style="width: 400px;">
-            <!-- <img src="{{'data:image/jpg;base64,' + produit.image }}" alt="" style="width: 400px;"> -->
+            <img src="{{'data:image/jpg;base64,' + produit.image }}" alt="" style="width: 400px;">
         </div>
     </div>
 
-    <div class="d-flex align-items-center detail btn btn-outline-dark p-1 w-25 justify-content-center align-self-end" [routerLink]="['/catalogue']">   
-        <a class="monlien">Retour au catalogue</a>
-        <span class="material-icons" style="font-size:18px;">keyboard_arrow_right</span>
+    <div class="d-flex align-items-center p-1 w-25 justify-content-center align-self-end" [routerLink]="['/catalogue']">   
+        <a class="btn btn-warning">
+            Retourner au catalogue <i class="fa-solid fa-arrow-right"></i>                
+        </a>
     </div>  
 </div>
 
 
 <!-- Choix des boissons du menu -->
-<div class="container my-5" style="width:75%;" *ngIf="produit.tailles">
+<div class="container my-5" style="width:75%;" *ngIf="produit?.tailles && isLoaded">
     <div *ngIf="!taillepmvide" class="mb-5">
         <b><p >Choix boisson(s) PM</p></b>
         <div class="d-flex" style="overflow-x: auto; ">        
             <div  *ngFor="let boisson of pm" class="d-flex flex-column align-items-center justify-content-around m-1" style="width:200px;">
-                <img src="{{boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
+                <img src="{{'data:image/jpg;base64,' + boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
                <div class="d-flex justify-content-around w-50">
                     <input type="checkbox" value="{{ boisson.id}}" name="choixPM[]" (change)="tryme(taillePM, tailleGM)">
                     <input type="number" style="width: 45px;" min="0" max="{{ taillePM}}"  name="qtePM[]"  (input)="tryme(taillePM, tailleGM)" value="0">
@@ -67,7 +71,7 @@
         <b><p >Choix boisson(s) GM</p></b>
         <div class="d-flex" style="overflow-x: auto; ">        
             <div  *ngFor="let boisson of gm" class="d-flex flex-column align-items-center justify-content-around m-1" style="width:200px;">
-                <img src="{{boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
+                <img src="{{'data:image/jpg;base64,' + boisson.image}}" alt="" style="width: 100px; height: 100px;  margin-bottom: 10px;">
                <div class="d-flex justify-content-around w-50">
                     <input type="checkbox" value="{{ boisson.id}}" name="choixGM[]" (change)="tryme(taillePM, tailleGM)">
                     <input type="number" style="width: 45px;" min="0" max="{{ tailleGM}}"  name="qteGM[]"  (input)="tryme(taillePM, tailleGM)" value="0">
@@ -77,14 +81,14 @@
     </div>
 </div> 
 
-<div class="container my-2">
+<div class="container my-2" *ngIf="isLoaded">
     <h5>Produits Similaires</h5>
     <div class="row row-cols-1 row-cols-md-5 d-flex">
         <app-card *ngFor = "let produit of produitsSimilaires" [produit]="produit" [miniCard]="'reduce'"></app-card>
     </div>
 </div>
 
-<div class="container my-5">
+<div class="container my-5" *ngIf="isLoaded">
     <h5>Accompagnements</h5>
     <div class="row row-cols-1 row-cols-md-5 d-flex">
         <app-card *ngFor = "let produit of complements" [produit]="produit" [miniCard]="'reduce'"></app-card>

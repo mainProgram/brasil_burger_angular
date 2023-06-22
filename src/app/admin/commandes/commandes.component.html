@@ -1,4 +1,4 @@
-<div class="container mt-5 d-flex justify-content-center align-items-center flex-column">
+<div class="container mt-5 d-flex justify-content-center align-items-center flex-column" *ngIf="isLoaded">
     <div class="d-flex flex-column align-items-center" *ngIf="commandes.length == 0">
         <h4 class="text-danger mt-5">Pas de commande pour le moment !</h4>
     </div>
@@ -7,7 +7,10 @@
         <ng-container  *ngIf="(commandes | filter: searchTerm) as result">
             <table class="table table-hover caption-top" style="width:70%;" *ngIf="(commandes | filter: searchTerm) as result">
                 <caption class="mb-4 text-center"> 
-                    <input type="date" id="input"  style="margin-left: 15px;" [(ngModel)]="searchTerm">
+                    <h4 class="mb-4">
+                        Liste des commandes du {{ searchTerm | date:'dd-MM-yyyy' }}
+                    </h4>
+                    <input type="date" id="input" class="form-control" [(ngModel)]="searchTerm">
                 </caption>
                 <ng-container *ngIf="result.length > 0">
                     <thead>
@@ -23,10 +26,12 @@
                     <tbody >
                         <tr *ngFor="let com of commandes | filter: searchTerm">
                             <td>{{com.numero}}</td>
-                            <td>{{com.date | date:"short":'+00:00':'fr'}}</td>
+                            <td>{{com.date | date:'HH:mm' }}</td>
                             <td [style.color]="getColour(com.etat)">{{com.etat | formatEtat }}<span class="material-icons" style="font-size: 12px; margin-left: 5px;">{{getIcon(com.etat)}} </span></td> 
                             <td>{{com.client.prenom}} {{com.client.nom}}</td>
-                            <td [routerLink] = "['/admin/commandes', com.id]"><span class="material-icons orange">remove_red_eye</span></td>
+                            <td>
+                                <i class="fa fa-eye orange" [routerLink] = "['/admin/commandes', com.id]"></i>
+                            </td>
                             <td>
                                 <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'en attente'" (click) = "traiter(com.id, 'valide')">Valider</a>
                                 <a class="btn btn-outline-success p-1 mx-2" *ngIf="com.etat == 'valide'" (click) = "traiter(com.id, 'termine')">Terminer</a>
@@ -38,8 +43,11 @@
                 </ng-container>
             </table>
             <ng-container *ngIf="result.length == 0">
-                <h4 class="text-danger mt-5">Pas de commandes pour le {{searchTerm}} !</h4>
+                <h6 class="text-danger mt-3">Pas de commandes !</h6>
             </ng-container>
         </ng-container>
     </ng-container>
+</div>
+<div class="spinner d-flex justify-content-center align-items-center" *ngIf="!isLoaded">
+    <img src="../../../assets/spinner.gif" alt="spinner">
 </div>

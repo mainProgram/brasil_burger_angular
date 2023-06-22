@@ -1,21 +1,21 @@
-<div class="col my-3 " id="{{produit.nom}}{{ produit.id }}">
+<div class="col my-3" id="{{produit.nom}}{{ produit.id }}">
     <div class="card {{miniCard}}"  >
-        <!-- <img src="{{'data:image/jpg;base64,' + produit.image }}" class="card-img-top" alt="..."> -->
-        <img src="{{produit.image }}" class="card-img-top" alt="...">
-        <div class="card-body">
+        <img src="{{'data:image/jpg;base64,' + produit.image }}" class="card-img-top" alt="...">
+        <div class="card-body text-center">
             <h6 class="card-title">{{ produit.nom | titlecase}}</h6>
+
             <p class="card-text">{{ produit.prix }} FCFA</p>
-            <div class="d-flex justify-content-between align-items-end addAndDetails">
-                <span class="badge text-dark plusOne">+1</span>  
-                
-                <div class="detail btn btn-outline-dark p-1 {{( produit.categorie == 'menu' && produit.tailles) ? 'rm' : ''}}" (click)="addToCart(produit)"> 
-                    <a class="monlien">Ajouter</a>
-                    <span class="material-icons" style="font-size:18px; margin-left: 5px;">add_shopping_cart</span>
-                </div>
-                <div class="detail btn btn-outline-dark p-1 {{( produit.categorie && (produit.categorie == 'burger' ||  produit.categorie == 'menu')) ? '' : 'rm'}}" [routerLink]="['/catalogue', produit.id]">   
-                    <a class="monlien ">détails</a>
-                    <span class="material-icons" style="font-size:18px;">keyboard_arrow_right</span>
-                </div>
+
+            <div class="d-flex justify-content-around align-items-center">
+                <span class="badge text-white plusOne">+1</span>     
+                <a class="btn btn-warning {{( produit.categorie == 'menu' && produit.tailles) ? 'rm' : ''}}" (click)="addToCart(produit)">
+                    <span>Ajouter </span>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+                <a class="btn btn-warning {{( produit.categorie && (produit.categorie == 'burger' ||  produit.categorie == 'menu')) ? '' : 'rm'}}" [routerLink]="['/catalogue', produit.id]">
+                    <span>Détails </span>
+                    <i class="fa-solid fa-arrow-right"></i>                
+                </a>
             </div>
         </div>
     </div>

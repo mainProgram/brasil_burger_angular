@@ -16,6 +16,8 @@ export class LivraisonCreateComponent implements OnInit {
   public zones : any
   public commandes : any
   public livreurs: any
+  public isLoaded: boolean
+  public zoneValue = 0
   
   ngOnInit(): void 
   {
@@ -29,8 +31,14 @@ export class LivraisonCreateComponent implements OnInit {
     })
 
     this.livraisonService.getLivreursDispo().subscribe({
-      next: data => { this.livreurs = data }
+      next: data => { 
+        this.livreurs = data 
+      }
     })
+    this.zoneValue = zone
+    setTimeout(() => {
+      this.isLoaded = true
+    }, 2000);
   }
 
   public areAllChecked()

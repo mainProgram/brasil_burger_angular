@@ -1,7 +1,6 @@
 <!-- <app-header [receiveInfo] = "receive"></app-header> -->
-<div class="container d-flex justify-content-center align-items-center" *ngIf="!isLoaded">
-    <img src="" alt="" srcset="">
-    <p>Spinner</p>
+<div class="spinner d-flex justify-content-center align-items-center" *ngIf="!isLoaded">
+    <img src="../../../assets/spinner.gif" alt="spinner">
 </div>
 
 <div class="container mt-3" *ngIf="isLoaded">
@@ -35,7 +34,7 @@
         </div>
     </div>
 
-    <div  class="hide">
+    <div class="hide">
         <h4 class="my-3">Boissons</h4>
         <div class="row row-cols-1 row-cols-md-5 d-flex">
             <app-card *ngFor = "let produit of boissons" [produit]="produit"></app-card>

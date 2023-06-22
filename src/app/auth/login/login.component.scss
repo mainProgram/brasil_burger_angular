@@ -1,13 +1,22 @@
-.btn-warning{
-    background-color: #E89448;
-    border:none;
-    &:hover{
-        background-color: black;
-        color: white;
-    }   
-}
-
 .form_error{
     font-size: 10px;
     color:  red;
+}
+
+.orange-bold{
+    color: #EAB708;
+    text-decoration: none;
+    font-weight: 600;
+    &:hover{
+        color: black;
+    }
+}
+
+.conteneur{
+    height: 100vh;
+    overflow: hidden;
+    background-color: #EAB708;
+}
+.row{
+    width: 100%;
 }
